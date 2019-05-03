@@ -1830,7 +1830,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #00ebff;
+  background: #ff0ee7;
 }
 .feed-link,
 .chat {
@@ -2540,7 +2540,7 @@ embed {
   display: inline-block;
 }
 body {
-  background: url("10.jpg");
+  background: url("/images/background.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
