@@ -1769,7 +1769,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffccc7;
+  background: #a2f436;
 }
 .feed-link,
 .chat {
@@ -2791,6 +2791,7 @@ body {
   background-size: cover;
 /* 设置背景颜色，背景图加载过程中会显示背景色 */
   background-color: rgba(0,0,0,0.5);
+  cursor: url("/image/normal.cur"), auto;
 }
 .content-wrap {
   float: right;
