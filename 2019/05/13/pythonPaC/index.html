@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="山渐青">
 <meta property="og:description" content="天地不仁以万物为刍狗  url的一般格式（[]内为可选）：1protocol://hostname[:port]/path/[;parameters][?query]#fragment 第一部分是协议，http，https，ftp，ed2k第二部分是存放资源的服务器的域名系统或IP地址(有时候要包含端口号，各种传输协议都有默认的端口号，如http是80)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-13T06:59:12.373Z">
+<meta property="og:updated_time" content="2019-05-13T07:01:53.078Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python爬虫">
 <meta name="twitter:description" content="天地不仁以万物为刍狗  url的一般格式（[]内为可选）：1protocol://hostname[:port]/path/[;parameters][?query]#fragment 第一部分是协议，http，https，ftp，ed2k第二部分是存放资源的服务器的域名系统或IP地址(有时候要包含端口号，各种传输协议都有默认的端口号，如http是80)">
@@ -199,7 +199,7 @@
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="تغییر ناوبری">
+    <button aria-label="Navigationsleiste an/ausschalten">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -383,14 +383,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">نوشته شده در</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="ایجاد شده: 2019-05-13 14:51:18 / تغییر یافته: 14:59:12" itemprop="dateCreated datePublished" datetime="2019-05-13T14:51:18+08:00">2019-05-13</time>
+              <time title="Erstellt: 2019-05-13 14:51:18 / Geändert am: 15:01:53" itemprop="dateCreated datePublished" datetime="2019-05-13T14:51:18+08:00">2019-05-13</time>
             
 
             
@@ -437,7 +437,7 @@
 <p>例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request</span><br><span class="line">import urllib.parse</span><br><span class="line">import json</span><br><span class="line">#这里的url  _o字段删掉就可以运行</span><br><span class="line">content = input(&apos;请输入要翻译的内容：&apos;)</span><br><span class="line">url = &apos;http://fanyi.youdao.com/translate?smartresult=dict&amp;smartresult=rule&apos;</span><br><span class="line">data=&#123;</span><br><span class="line">    &apos;i&apos;:content,</span><br><span class="line">    &apos;from&apos;:&apos;AUTO&apos;,</span><br><span class="line">    &apos;to&apos;:&apos;AUTO&apos;,</span><br><span class="line">	&apos;smartresult&apos;:&apos;dict&apos;,</span><br><span class="line">	&apos;client&apos;:&apos;fanyideskweb&apos;,</span><br><span class="line">	&apos;salt&apos;:&apos;15577280513442&apos;,</span><br><span class="line">	&apos;sign&apos;:&apos;bc30acac02900ec468d0b180dbfd52b4&apos;,</span><br><span class="line">	&apos;ts&apos;:&apos;1557728051344&apos;,</span><br><span class="line">	&apos;bv&apos;:&apos;43e486d853ef63af6932375b449635ab&apos;,</span><br><span class="line">	&apos;doctype&apos;:&apos;json&apos;,</span><br><span class="line">	&apos;version&apos;:&apos;2.1&apos;,</span><br><span class="line">	&apos;keyfrom&apos;:&apos;fanyi.web&apos;,</span><br><span class="line">	&apos;action&apos;:&apos;FY_BY_CLICKBUTTION&apos;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">data = urllib.parse.urlencode(data).encode(&apos;utf-8&apos;)</span><br><span class="line"></span><br><span class="line">r = urllib.request.urlopen(url,data)</span><br><span class="line"></span><br><span class="line">html = r.read().decode(&apos;utf-8&apos;)</span><br><span class="line"></span><br><span class="line">target = json.loads(html)</span><br><span class="line"></span><br><span class="line">print(&apos;翻译结果为:&apos;,target[&apos;translateResult&apos;][0][0][&apos;tgt&apos;])</span><br></pre></td></tr></table></figure></p>
 <p>这里的html返回结果为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;type&quot;:&quot;ZH_CN2EN&quot;,&quot;errorCode&quot;:0,&quot;elapsedTime&quot;:1,&quot;translateResult&quot;:[[&#123;&quot;src&quot;:&quot;我&quot;,&quot;tgt&quot;:&quot;I&quot;&#125;]]&#125;</span><br></pre></td></tr></table></figure></p>
 <p> 是一个json的数据，调用json模块，使用其中的loads方法(作用;使用这个转换表将s(包含JSON文档的str、字节或字节数组实例)反序列化到Python对象。)。得到结果的字典后，提取出需要的结果</p>
-<p>###注：GET 与 POST<br>get请求仅请求资源，post请求会附带用户的数据</p>
+<p>##注：GET 与 POST<br>get请求仅请求资源，post请求会附带用户的数据</p>
 
       
     </div>
@@ -545,7 +545,7 @@
                   <a href="/archives">
                 
                     <span class="site-state-item-count">4</span>
-                    <span class="site-state-item-name">پست ها</span>
+                    <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
               
@@ -566,7 +566,7 @@
                       
                     
                     <span class="site-state-item-count">1</span>
-                    <span class="site-state-item-name">برجسب ها</span>
+                    <span class="site-state-item-name">schlagwörter</span>
                   </a>
                 </div>
               
@@ -633,7 +633,7 @@
 </div>
 
 
-  <div class="powered-by">قدرت گرفته از <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+  <div class="powered-by">Erstellt mit  <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
 
 
 
@@ -641,7 +641,7 @@
 
 
 
-  <div class="theme-info">پوسته – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.1</div>
+  <div class="theme-info">Design – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.1</div>
 
 
 
