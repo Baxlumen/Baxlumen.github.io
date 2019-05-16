@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="(正则之中最好不要随便加空格) \d     匹配一个数字\w     匹配一个数字或字母或下划线.      匹配任意字符(一个/除了换行符)  任意个字符(包括0个)   至少一个">
+  <meta name="description" content="(正则之中最好不要随便加空格) \d     匹配一个数字\w     匹配一个数字或字母或下划线.      匹配任意字符(一个/除了换行符)、（跟md冲突了，淦）*      任意个字符(包括0个)、（跟md冲突，淦）+     至少一个">
 <meta name="keywords" content="python,爬虫">
 <meta property="og:type" content="article">
 <meta property="og:title" content="爬 虫——正则表达式(re)">
 <meta property="og:url" content="https://github.com/Baxlumen/Baxlumens.github.io.git/2019/05/14/pythonPaC-4/index.html">
 <meta property="og:site_name" content="山渐青">
-<meta property="og:description" content="(正则之中最好不要随便加空格) \d     匹配一个数字\w     匹配一个数字或字母或下划线.      匹配任意字符(一个/除了换行符)  任意个字符(包括0个)   至少一个">
+<meta property="og:description" content="(正则之中最好不要随便加空格) \d     匹配一个数字\w     匹配一个数字或字母或下划线.      匹配任意字符(一个/除了换行符)、（跟md冲突了，淦）*      任意个字符(包括0个)、（跟md冲突，淦）+     至少一个">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-15T03:52:43.925Z">
+<meta property="og:updated_time" content="2019-05-15T05:31:03.960Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="爬 虫——正则表达式(re)">
-<meta name="twitter:description" content="(正则之中最好不要随便加空格) \d     匹配一个数字\w     匹配一个数字或字母或下划线.      匹配任意字符(一个/除了换行符)  任意个字符(包括0个)   至少一个">
+<meta name="twitter:description" content="(正则之中最好不要随便加空格) \d     匹配一个数字\w     匹配一个数字或字母或下划线.      匹配任意字符(一个/除了换行符)、（跟md冲突了，淦）*      任意个字符(包括0个)、（跟md冲突，淦）+     至少一个">
 
 
 
@@ -407,7 +407,7 @@
                 
                   <span class="post-meta-item-text">Bearbeitet am</span>
                 
-                <time title="Geändert am: 2019-05-15 11:52:43" itemprop="dateModified" datetime="2019-05-15T11:52:43+08:00">2019-05-15</time>
+                <time title="Geändert am: 2019-05-15 13:31:03" itemprop="dateModified" datetime="2019-05-15T13:31:03+08:00">2019-05-15</time>
               
             
           </span>
@@ -442,15 +442,8 @@
 
       
         <p>(正则之中最好不要随便加空格)</p>
-<p>\d     匹配一个数字<br>\w     匹配一个数字或字母或下划线<br>.      匹配任意字符(一个/除了换行符)</p>
-<ul>
-<li>任意个字符(包括0个)</li>
-</ul>
-<ul>
-<li>至少一个<a id="more"></a>
-？     0个或1个（加在后面）<br>\      (1)可以将一个普通字符变成一个特殊字符，例如\d表示匹配所有十进制数字<br>(2)接触元字符的特殊功能，例如.表示匹配 . 本身<br>(3)引用序号对应的子组(‘()’所括起来的)所匹配的字符串<br>(4)八进制转义符，即 \ 后加一个八进制数，然后根据ascii码来转义成相应字符<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&apos;&apos;&apos;</span><br><span class="line">这里的\1  \2 等，在反斜杠后加数字n，意思是重复第n个括号内的内容</span><br><span class="line"></span><br><span class="line">var RegExp = /^(123)(456)\2\1$/;</span><br><span class="line">这个正则表达式匹配到的字符串就是</span><br><span class="line">123456456123</span><br><span class="line">创建另外第二正则表达式</span><br><span class="line">var RegExp1 = /^(123)(456)\1$/;</span><br><span class="line">这个正则表达式匹配到的字符串是</span><br><span class="line">123456123</span><br><span class="line">创建另外第三正则表达式</span><br><span class="line">var RegExp1 = /^(123)(456)\2$/;</span><br><span class="line">这个正则表达式匹配到的字符串是</span><br><span class="line">123456456</span><br><span class="line">这个\1 \2...... 都要和正则表达式集合()一起使用</span><br><span class="line">简单的说就是</span><br><span class="line">\1表示重复正则第一个圆括号内匹配到的内容</span><br><span class="line">\2表示重复正则第二个圆括号内匹配到的内容</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">&gt;&gt;&gt; re.search(r&apos;(fish)\060&apos;,&apos;fish0&apos;)</span><br><span class="line">&lt;re.Match object; span=(0, 5), match=&apos;fish0&apos;&gt;</span><br><span class="line">#这里八进制数060所对应的ascii码是&apos;0&apos;(先转化为16进制，然后查表)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+<p>\d     匹配一个数字<br>\w     匹配一个数字或字母或下划线<br>.      匹配任意字符(一个/除了换行符)<br>、（跟md冲突了，淦）*      任意个字符(包括0个)<br>、（跟md冲突，淦）+     至少一个<br><a id="more"></a></p>
+<p>？     0个或1个（加在后面）<br>\      (1)可以将一个普通字符变成一个特殊字符，例如\d表示匹配所有十进制数字<br>       (2)接触元字符的特殊功能，例如.表示匹配 . 本身<br>       (3)引用序号对应的子组(‘()’所括起来的)所匹配的字符串<br>       (4)八进制转义符，即 \ 后加一个八进制数，然后根据ascii码来转义成相应字符<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&apos;&apos;&apos;</span><br><span class="line">这里的\1  \2 等，在反斜杠后加数字n，意思是重复第n个括号内的内容</span><br><span class="line"></span><br><span class="line">var RegExp = /^(123)(456)\2\1$/;</span><br><span class="line">这个正则表达式匹配到的字符串就是</span><br><span class="line">123456456123</span><br><span class="line">创建另外第二正则表达式</span><br><span class="line">var RegExp1 = /^(123)(456)\1$/;</span><br><span class="line">这个正则表达式匹配到的字符串是</span><br><span class="line">123456123</span><br><span class="line">创建另外第三正则表达式</span><br><span class="line">var RegExp1 = /^(123)(456)\2$/;</span><br><span class="line">这个正则表达式匹配到的字符串是</span><br><span class="line">123456456</span><br><span class="line">这个\1 \2...... 都要和正则表达式集合()一起使用</span><br><span class="line">简单的说就是</span><br><span class="line">\1表示重复正则第一个圆括号内匹配到的内容</span><br><span class="line">\2表示重复正则第二个圆括号内匹配到的内容</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">&gt;&gt;&gt; re.search(r&apos;(fish)\060&apos;,&apos;fish0&apos;)</span><br><span class="line">&lt;re.Match object; span=(0, 5), match=&apos;fish0&apos;&gt;</span><br><span class="line">#这里八进制数060所对应的ascii码是&apos;0&apos;(先转化为16进制，然后查表)</span><br></pre></td></tr></table></figure></p>
 <p>{n}    n个(跟在要重复的元素后边)<br>{n,m}  n到每个</p>
 <p>[]   表示范围（只能匹配一个字符）<br>[^abc] 表示出了abc意外的都匹配<br>[0-9a-zA-Z_] 可以匹配数字字母下划线<br>（ \ 在[]里面是转义符，[]里面的内容全部为字符，比如[.]表示匹配一个.）<br>A|B  A或B<br>^      表示行的开头(或者 \A)<br>(当^在[]中且在最前面，表示除了[]之内的才匹配)<br>$      表示行的结束(或者 \Z)<br>^\d    表示必须以数字开头<br>\d$    表示必须以数字结尾<br>\b     匹配一个单词边界，单词定义为字母，数字，下划线<br>例如：<br>re.findall(r’\bfish\b’,’fish.com!fish_com!(fish)’)<br>[‘fish’, ‘fish’]<br>这里的fish_com会被认为是一个单词，所以不会被匹配，会匹配fish.com (fish)中的fish</p>
 <p>\B     与\b 相反，匹配非单词边界，例如 py\B 会匹配 python py3 py2等，但不会匹配<br>       py.  py!等<br>\s     在str模式会匹配空白字符（\t \n \r \f \v ）</p>
@@ -554,6 +547,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/05/16/pythonPaC-5/" rel="prev" title="异 常 处 理">
+                异 常 处 理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -614,7 +611,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
@@ -637,7 +634,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">schlagwörter</span>
                   </a>
                 </div>
