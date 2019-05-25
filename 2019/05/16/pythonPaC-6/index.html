@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="安装 Scrapy说到python爬虫，大牛们都会不约而同的提起Scrapy。因为Scrapy是一个为了爬去网站数据，提取结构性数据而编写的应用框架。可以应用在包括数据挖掘，信息处理或存储历史数据等一系列的程序中。Scrapy最初是为了页面抓取（更准确的说，网络抓取）而设计的，也可以应用在获取API所返回的数据（例如Amazon Associates Web Services）或者通用的网络爬虫">
+  <meta name="description" content="#爬 虫 之  XPATHXPah是一门在XML文档中查找信息的语言，被用于在XML文档中通过元素和属性进行导航，大部分浏览器支持通过XPath来查询节点。XPath既然叫Path，就是以路径表达式的形式来制定元素。">
 <meta name="keywords" content="python,爬虫,Scrapy">
 <meta property="og:type" content="article">
-<meta property="og:title" content="pythonPaC-6">
+<meta property="og:title" content="Scrapy 和 XPath">
 <meta property="og:url" content="https://github.com/Baxlumen/Baxlumens.github.io.git/2019/05/16/pythonPaC-6/index.html">
 <meta property="og:site_name" content="山渐青">
-<meta property="og:description" content="安装 Scrapy说到python爬虫，大牛们都会不约而同的提起Scrapy。因为Scrapy是一个为了爬去网站数据，提取结构性数据而编写的应用框架。可以应用在包括数据挖掘，信息处理或存储历史数据等一系列的程序中。Scrapy最初是为了页面抓取（更准确的说，网络抓取）而设计的，也可以应用在获取API所返回的数据（例如Amazon Associates Web Services）或者通用的网络爬虫">
+<meta property="og:description" content="#爬 虫 之  XPATHXPah是一门在XML文档中查找信息的语言，被用于在XML文档中通过元素和属性进行导航，大部分浏览器支持通过XPath来查询节点。XPath既然叫Path，就是以路径表达式的形式来制定元素。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-16T06:26:37.484Z">
+<meta property="og:updated_time" content="2019-05-17T09:47:08.891Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="pythonPaC-6">
-<meta name="twitter:description" content="安装 Scrapy说到python爬虫，大牛们都会不约而同的提起Scrapy。因为Scrapy是一个为了爬去网站数据，提取结构性数据而编写的应用框架。可以应用在包括数据挖掘，信息处理或存储历史数据等一系列的程序中。Scrapy最初是为了页面抓取（更准确的说，网络抓取）而设计的，也可以应用在获取API所返回的数据（例如Amazon Associates Web Services）或者通用的网络爬虫">
+<meta name="twitter:title" content="Scrapy 和 XPath">
+<meta name="twitter:description" content="#爬 虫 之  XPATHXPah是一门在XML文档中查找信息的语言，被用于在XML文档中通过元素和属性进行导航，大部分浏览器支持通过XPath来查询节点。XPath既然叫Path，就是以路径表达式的形式来制定元素。">
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>pythonPaC-6 | 山渐青</title>
+  <title>Scrapy 和 XPath | 山渐青</title>
   
 
 
@@ -364,7 +364,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">pythonPaC-6
+          <h1 class="post-title" itemprop="name headline">Scrapy 和 XPath
 
               
             
@@ -390,12 +390,24 @@
                 
               
 
-              <time title="Erstellt: 2019-05-16 14:24:52 / Geändert am: 14:26:37" itemprop="dateCreated datePublished" datetime="2019-05-16T14:24:52+08:00">2019-05-16</time>
+              <time title="Erstellt: 2019-05-16 14:24:52" itemprop="dateCreated datePublished" datetime="2019-05-16T14:24:52+08:00">2019-05-16</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Bearbeitet am</span>
+                
+                <time title="Geändert am: 2019-05-17 17:47:08" itemprop="dateModified" datetime="2019-05-17T17:47:08+08:00">2019-05-17</time>
               
             
           </span>
@@ -429,7 +441,11 @@
       
 
       
-        <p>安装 Scrapy<br>说到python爬虫，大牛们都会不约而同的提起Scrapy。因为Scrapy是一个为了爬去网站数据，提取结构性数据而编写的应用框架。可以应用在包括数据挖掘，信息处理或存储历史数据等一系列的程序中。Scrapy最初是为了页面抓取（更准确的说，网络抓取）而设计的，也可以应用在获取API所返回的数据（例如Amazon Associates Web Services）或者通用的网络爬虫<br><a id="more"></a></p>
+        <p>#爬 虫 之  XPATH<br>XPah是一门在XML文档中查找信息的语言，被用于在XML文档中通过元素和属性进行导航，大部分浏览器支持通过XPath来查询节点。<br>XPath既然叫Path，就是以路径表达式的形式来制定元素。<br><a id="more"></a><br>1.XPath节点<br>在XPath中，XML文档是被作为节点树来对待的，有七种类型的节点：元素，属性，文本，命名空间，处理指令，注释以及文档节点</p>
+<p>表达式          描述<br>nodename      选取此节点的所有子节点<br>/             从根节点选取<br>//            选择任意位置的某个节点<br>.             选取当前结点<br>..            选取当前结点的父节点<br>@             选取属性</p>
+<p>谓语，被嵌在方括号[]中，用于筛选，例如：<br>/classroom/student[1]  classroom子元素的第一个student元素<br>还可以用通配符来匹配未知的元素， * 所有，A|B   A和B</p>
+<p>2.XPath轴<br>轴定义了所选节点与当前节点之间的树关系，在爬虫时提取网页中的信息会遇到这种情况：首先提取到一个节点的信息，然后想在这个节点基础上提取它子节点或者父节点，这时候就会用到轴的概念 </p>
+<p>#安装 Scrapy<br>说到python爬虫，大牛们都会不约而同的提起Scrapy。因为Scrapy是一个为了爬去网站数据，提取结构性数据而编写的应用框架。可以应用在包括数据挖掘，信息处理或存储历史数据等一系列的程序中。Scrapy最初是为了页面抓取（更准确的说，网络抓取）而设计的，也可以应用在获取API所返回的数据（例如Amazon Associates Web Services）或者通用的网络爬虫</p>
 <p>目前scrapy已经支持python3，不需要再创建python2环境，通过pip命令下载<br>（目前没有发现错误，网上的教学的需要下载Lxml，Twisted，Scrapy，pywin32,pyOpenSSH）</p>
 <p>使用Scrapy抓取一个网站一共需要4布：<br>-创建一个Scrapy项目<br>-定义Item容器<br>-编写爬虫<br>-存储内容</p>
 <p>Item是保存爬取到的数据的容器，其使用方法和python的字典类似，并且提供了额外的保护机制来避免拼写错误导致的未定义字段错误<br>在item.py定义完之后，就是编写爬虫类Spider，Spider是用户编写用于从网上爬取数据的类。<br>其包含了一个用于下载的初始URL，然后是如何跟进网页中的链接以及如何分析页面的内容，还有提取生成item的方法</p>
@@ -484,6 +500,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/25/PaCExample-1/" rel="prev" title="王者荣耀皮肤爬取">
+                王者荣耀皮肤爬取 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -545,7 +565,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
@@ -570,7 +590,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">schlagwörter</span>
                   </a>
                 </div>
