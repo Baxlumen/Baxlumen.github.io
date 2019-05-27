@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="天地不仁以万物为刍狗  url的一般格式（[]内为可选）：1protocol://hostname[:port]/path/[;parameters][?query]#fragment 第一部分是协议，http，https，ftp，ed2k第二部分是存放资源的服务器的域名系统或IP地址(有时候要包含端口号，各种传输协议都有默认的端口号，如http是80)">
+  <meta name="description" content="有的服务器不喜欢被爬虫来访问，会屏蔽掉，所以我们可以使用python来模拟浏览器访问两种方法：">
 <meta name="keywords" content="python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python爬虫">
-<meta property="og:url" content="https://github.com/Baxlumen/Baxlumens.github.io.git/2019/05/13/pythonPaC/index.html">
+<meta property="og:title" content="爬虫-隐 藏">
+<meta property="og:url" content="https://github.com/Baxlumen/Baxlumens.github.io.git/2019/05/13/pythonPaC-2/index.html">
 <meta property="og:site_name" content="山渐青">
-<meta property="og:description" content="天地不仁以万物为刍狗  url的一般格式（[]内为可选）：1protocol://hostname[:port]/path/[;parameters][?query]#fragment 第一部分是协议，http，https，ftp，ed2k第二部分是存放资源的服务器的域名系统或IP地址(有时候要包含端口号，各种传输协议都有默认的端口号，如http是80)">
+<meta property="og:description" content="有的服务器不喜欢被爬虫来访问，会屏蔽掉，所以我们可以使用python来模拟浏览器访问两种方法：">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-17T09:54:21.518Z">
+<meta property="og:updated_time" content="2019-05-27T03:18:31.608Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python爬虫">
-<meta name="twitter:description" content="天地不仁以万物为刍狗  url的一般格式（[]内为可选）：1protocol://hostname[:port]/path/[;parameters][?query]#fragment 第一部分是协议，http，https，ftp，ed2k第二部分是存放资源的服务器的域名系统或IP地址(有时候要包含端口号，各种传输协议都有默认的端口号，如http是80)">
+<meta name="twitter:title" content="爬虫-隐 藏">
+<meta name="twitter:description" content="有的服务器不喜欢被爬虫来访问，会屏蔽掉，所以我们可以使用python来模拟浏览器访问两种方法：">
 
 
 
@@ -115,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="https://github.com/Baxlumen/Baxlumens.github.io.git/2019/05/13/pythonPaC/">
+  <link rel="canonical" href="https://github.com/Baxlumen/Baxlumens.github.io.git/2019/05/13/pythonPaC-2/">
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>python爬虫 | 山渐青</title>
+  <title>爬虫-隐 藏 | 山渐青</title>
   
 
 
@@ -347,7 +347,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/Baxlumen/Baxlumens.github.io.git/2019/05/13/pythonPaC/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/Baxlumen/Baxlumens.github.io.git/2019/05/13/pythonPaC-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Baxlumen">
@@ -364,7 +364,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">python爬虫
+          <h1 class="post-title" itemprop="name headline">爬虫-隐 藏
 
               
             
@@ -390,7 +390,7 @@
                 
               
 
-              <time title="Erstellt: 2019-05-13 14:51:18" itemprop="dateCreated datePublished" datetime="2019-05-13T14:51:18+08:00">2019-05-13</time>
+              <time title="Erstellt: 2019-05-13 17:24:21" itemprop="dateCreated datePublished" datetime="2019-05-13T17:24:21+08:00">2019-05-13</time>
             
 
             
@@ -407,7 +407,7 @@
                 
                   <span class="post-meta-item-text">Bearbeitet am</span>
                 
-                <time title="Geändert am: 2019-05-17 17:54:21" itemprop="dateModified" datetime="2019-05-17T17:54:21+08:00">2019-05-17</time>
+                <time title="Geändert am: 2019-05-27 11:18:31" itemprop="dateModified" datetime="2019-05-27T11:18:31+08:00">2019-05-27</time>
               
             
           </span>
@@ -441,15 +441,25 @@
       
 
       
-        <blockquote class="blockquote-center">天地不仁以万物为刍狗</blockquote>
-
-<p>url的一般格式（[]内为可选）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">protocol://hostname[:port]/path/[;parameters][?query]#fragment</span><br></pre></td></tr></table></figure></p>
-<p>第一部分是协议，http，https，ftp，ed2k<br>第二部分是存放资源的服务器的域名系统或IP地址(有时候要包含端口号，各种传输协议都有默认的端口号，如http是80)<br><a id="more"></a><br>第三部分是资源的具体地址，如目录或文件名，例如：<br>(注意，urllib2在python3中为urllib.request)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request</span><br><span class="line"></span><br><span class="line">response = urllib.request.urlopen(&apos;http://placekitten.com/g/500/600&apos;)</span><br><span class="line">#上面这段代码实际上是执行了下面的两句，首先实例化一个Request对象，然后将此对象传入urlopen函数</span><br><span class="line">#文档中介绍“ Open the URL url, which can be either a string or a Request object.”</span><br><span class="line">#req = urllib.request.Request(&apos;http://placekitten.com/g/500/600&apos;)</span><br><span class="line">#response = urllib.request.urlopen(req)</span><br><span class="line">#这里得到的response对象是一个类文件对象，除了read()方法，还有geturl(),info(),getcode()等</span><br><span class="line">cat_img = response.read()</span><br><span class="line"></span><br><span class="line">with open(&apos;cat_500_600.jpg&apos;,&apos;wb&apos;) as f:</span><br><span class="line">	f.write(cat_img)</span><br></pre></td></tr></table></figure></p>
-<p>关于urlopen(url, data=None, [timeout, ]*, cafile=None, capath=None, cadefault=False, context=None)<br>第二个参数data，默认为None是GET方式提交，被赋值时POST方式提交</p>
-<p>例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request</span><br><span class="line">import urllib.parse</span><br><span class="line">import json</span><br><span class="line">#这里的url  _o字段删掉就可以运行</span><br><span class="line">content = input(&apos;请输入要翻译的内容：&apos;)</span><br><span class="line">url = &apos;http://fanyi.youdao.com/translate?smartresult=dict&amp;smartresult=rule&apos;</span><br><span class="line">data=&#123;</span><br><span class="line">    &apos;i&apos;:content,</span><br><span class="line">    &apos;from&apos;:&apos;AUTO&apos;,</span><br><span class="line">    &apos;to&apos;:&apos;AUTO&apos;,</span><br><span class="line">	&apos;smartresult&apos;:&apos;dict&apos;,</span><br><span class="line">	&apos;client&apos;:&apos;fanyideskweb&apos;,</span><br><span class="line">	&apos;salt&apos;:&apos;15577280513442&apos;,</span><br><span class="line">	&apos;sign&apos;:&apos;bc30acac02900ec468d0b180dbfd52b4&apos;,</span><br><span class="line">	&apos;ts&apos;:&apos;1557728051344&apos;,</span><br><span class="line">	&apos;bv&apos;:&apos;43e486d853ef63af6932375b449635ab&apos;,</span><br><span class="line">	&apos;doctype&apos;:&apos;json&apos;,</span><br><span class="line">	&apos;version&apos;:&apos;2.1&apos;,</span><br><span class="line">	&apos;keyfrom&apos;:&apos;fanyi.web&apos;,</span><br><span class="line">	&apos;action&apos;:&apos;FY_BY_CLICKBUTTION&apos;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">data = urllib.parse.urlencode(data).encode(&apos;utf-8&apos;)</span><br><span class="line"></span><br><span class="line">r = urllib.request.urlopen(url,data)</span><br><span class="line"></span><br><span class="line">html = r.read().decode(&apos;utf-8&apos;)</span><br><span class="line"></span><br><span class="line">target = json.loads(html)</span><br><span class="line"></span><br><span class="line">print(&apos;翻译结果为:&apos;,target[&apos;translateResult&apos;][0][0][&apos;tgt&apos;])</span><br></pre></td></tr></table></figure></p>
-<p>这里的html返回结果为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;type&quot;:&quot;ZH_CN2EN&quot;,&quot;errorCode&quot;:0,&quot;elapsedTime&quot;:1,&quot;translateResult&quot;:[[&#123;&quot;src&quot;:&quot;我&quot;,&quot;tgt&quot;:&quot;I&quot;&#125;]]&#125;</span><br></pre></td></tr></table></figure></p>
-<p> 是一个json的数据，调用json模块，使用其中的loads方法(作用;使用这个转换表将s(包含JSON文档的str、字节或字节数组实例)反序列化到Python对象。)。得到结果的字典后，提取出需要的结果</p>
-<p>##注：GET 与 POST<br>get请求仅请求资源，post请求会附带用户的数据</p>
+        <p>有的服务器不喜欢被爬虫来访问，会屏蔽掉，所以我们可以使用python来模拟浏览器访问<br>两种方法：<br><a id="more"></a></p>
+<p>##1.通过urllib.request.Request()函数中headers参数修改<br>urllib.request.Request的函数原型为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">urllib.request.Request(url, data=None, headers=&#123;&#125;, origin_req_host=None, unverifiable=False, method=None)</span><br></pre></td></tr></table></figure></p>
+<p> 所以在headers位置添加参数(一个dict)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">head=&#123;</span><br><span class="line">      &apos;User-Agent&apos;:&apos;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36&apos;</span><br><span class="line">      &#125;</span><br><span class="line">```	</span><br><span class="line">然后调用函数</span><br></pre></td></tr></table></figure></p>
+<p>req = urllib.request.Request(url,data,head)<br>r = urllib.request.urlopen(req)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">运行后，此时req(实例化的一个Request对象)的headers属性为head中‘User-Agent’的value</span><br><span class="line"></span><br><span class="line">##2.使用Request.add_header()函数</span><br><span class="line">add_header的函数原型：</span><br></pre></td></tr></table></figure></p>
+<p>Request.add_header(key, val)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">可以得知，此函数是Request对象的一个方法，参数为key和value，因此调用实例化后的add_header方法，实现添加‘User-Agent’</span><br></pre></td></tr></table></figure></p>
+<p>req = urllib.request.Request(url,data)<br>req.add_header(‘User-Agent’,’Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36’)<br>r = urllib.request.urlopen(req)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">然而，即使是伪装成浏览器去访问，但是对服务器的访问频率过高，服务器仍然会采取措施，例如，服务器会设置一个阈值，当某一个IP访问的频率达到这个值时，就会弹出要求输入验证码的页面，从而拦截爬虫程序。应对的方法有两个：延迟提交时间和使用代理</span><br><span class="line"></span><br><span class="line">##3.延迟提交时间</span><br><span class="line">导入time模块，然后再程序中添加time.sleep(5)，让程序休眠5s，实现延迟提交时间</span><br><span class="line">但是降低了效率</span><br><span class="line"></span><br><span class="line">##4.代理</span><br><span class="line">步骤：</span><br><span class="line">###1.参数是一个字典&#123;&apos;类型&apos;：&apos;代理IP：端口号&apos;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>   proxy_support = urllib.request.ProxyHandler({})<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">###2.定制、创建一个opener</span><br></pre></td></tr></table></figure></p>
+<p>opener = urllib.request.build_opener(proxy_support)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">###3.(1)安装opener</span><br></pre></td></tr></table></figure></p>
+<p>urllib.request.install_opener(opener)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">一劳永逸的做法，即每次urlopen是默认使用的opener都是自己设置的这个()</span><br><span class="line">(2)调用opener</span><br></pre></td></tr></table></figure></p>
+<p>opener.open(url)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">实例代码：</span><br></pre></td></tr></table></figure></p>
+<p>import urllib.request<br>import random</p>
+<p>url = ‘<a href="https://whatsmyip.com/&#39;" target="_blank" rel="noopener">https://whatsmyip.com/&#39;</a><br>iplist = [‘106.12.147.81:8080’,’112.50.245.92:8080’]</p>
+<p>#代理，调用Request的ProxyHandler方法<br>proxy_support = urllib.request.ProxyHandler({‘https’:random.choice(iplist)})</p>
+<p>#这里要区分url是http还是https，相应的proxyHandler的参数也要修改成对应的http还是https</p>
+<p>opener = urllib.request.build_opener(proxy_support)<br>opener.addheaders = [(‘User-Agent’,’Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36’)]<br>urllib.request.install_opener(opener)</p>
+<p>response = urllib.request.urlopen(url)</p>
+<p>html = response.read().decode(‘utf-8’)</p>
+<p>print(html)<br><code>`</code></p>
+<p>##注：<br>这里有本机IP和网络IP的区别，本机IP是在局域网之中本机的IP地址，而网络IP是运营商分配的网络地址，在局域网通信中，使用的是本机的IP，例如魔兽，暗黑，红警等的局域网对战；但在网络中IP地址是运营商给的，百度搜索ip就可以看到<br>具体参考计算机网络相关，虽然可能学过，但是不是忘记了，是根本没记住</p>
 
       
     </div>
@@ -486,8 +496,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/07/pythonNote/" rel="next" title="pythonNote">
-                <i class="fa fa-chevron-left"></i> pythonNote
+              <a href="/2019/05/13/pythonPaC/" rel="next" title="python爬虫">
+                <i class="fa fa-chevron-left"></i> python爬虫
               </a>
             
           </div>
@@ -496,8 +506,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/05/13/pythonPaC-2/" rel="prev" title="爬虫-隐 藏">
-                爬虫-隐 藏 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/05/13/pythonPaC-3/" rel="prev" title="煎蛋的扒图小例子">
+                煎蛋的扒图小例子 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
