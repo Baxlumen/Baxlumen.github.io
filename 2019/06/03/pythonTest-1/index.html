@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="#实现虚拟茶话会 ##问题1：关于客户端的问题。在WIN7中，需要手动打开telnet的客户端与服务端。但是在WIN10里，只有telnet的客户端，这是不能使用的，还需要自己安装telnet的服务器才行，安装到网上查找即可（我当然有资源啊，求我啊~）然后再cmd里输入telnet IP PORT即可；第二个方法是下载一个putty，当然前提是你需要有telnet的客户端与服务端。下载后选择tel">
+  <meta name="description" content="#实现虚拟茶话会 ##问题1：关于客户端的问题。在WIN7中，需要手动打开telnet的客户端与服务端。但是在WIN10里，只有telnet的客户端，这是不能使用的，还需要自己安装telnet的服务器才行，安装到网上查找即可（我当然有资源啊，求我啊~）然后再cmd里输入telnet IP PORT即可；">
 <meta name="keywords" content="python,asyncore,asynchat">
 <meta property="og:type" content="article">
 <meta property="og:title" content="虚拟茶话会">
 <meta property="og:url" content="https://github.com/Baxlumen/Baxlumens.github.io.git/2019/06/03/pythonTest-1/index.html">
 <meta property="og:site_name" content="山渐青">
-<meta property="og:description" content="#实现虚拟茶话会 ##问题1：关于客户端的问题。在WIN7中，需要手动打开telnet的客户端与服务端。但是在WIN10里，只有telnet的客户端，这是不能使用的，还需要自己安装telnet的服务器才行，安装到网上查找即可（我当然有资源啊，求我啊~）然后再cmd里输入telnet IP PORT即可；第二个方法是下载一个putty，当然前提是你需要有telnet的客户端与服务端。下载后选择tel">
+<meta property="og:description" content="#实现虚拟茶话会 ##问题1：关于客户端的问题。在WIN7中，需要手动打开telnet的客户端与服务端。但是在WIN10里，只有telnet的客户端，这是不能使用的，还需要自己安装telnet的服务器才行，安装到网上查找即可（我当然有资源啊，求我啊~）然后再cmd里输入telnet IP PORT即可；">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-03T12:08:00.193Z">
+<meta property="og:updated_time" content="2019-06-03T12:09:04.764Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="虚拟茶话会">
-<meta name="twitter:description" content="#实现虚拟茶话会 ##问题1：关于客户端的问题。在WIN7中，需要手动打开telnet的客户端与服务端。但是在WIN10里，只有telnet的客户端，这是不能使用的，还需要自己安装telnet的服务器才行，安装到网上查找即可（我当然有资源啊，求我啊~）然后再cmd里输入telnet IP PORT即可；第二个方法是下载一个putty，当然前提是你需要有telnet的客户端与服务端。下载后选择tel">
+<meta name="twitter:description" content="#实现虚拟茶话会 ##问题1：关于客户端的问题。在WIN7中，需要手动打开telnet的客户端与服务端。但是在WIN10里，只有telnet的客户端，这是不能使用的，还需要自己安装telnet的服务器才行，安装到网上查找即可（我当然有资源啊，求我啊~）然后再cmd里输入telnet IP PORT即可；">
 
 
 
@@ -192,7 +192,7 @@
     </div>
     
       
-        <p class="site-subtitle">一个人的自嗨空间</p>
+        <p class="site-subtitle">这个人很懒，什么也没留下</p>
       
     
     
@@ -390,7 +390,7 @@
                 
               
 
-              <time title="Created: 2019-06-03 20:05:05 / Modified: 20:08:00" itemprop="dateCreated datePublished" datetime="2019-06-03T20:05:05+08:00">2019-06-03</time>
+              <time title="Created: 2019-06-03 20:05:05 / Modified: 20:09:04" itemprop="dateCreated datePublished" datetime="2019-06-03T20:05:05+08:00">2019-06-03</time>
             
 
             
@@ -430,7 +430,7 @@
 
       
         <p>#实现虚拟茶话会</p>
-<p>##问题1：关于客户端的问题。<br>在WIN7中，需要手动打开telnet的客户端与服务端。但是在WIN10里，只有telnet的客户端，这是不能使用的，还需要自己安装telnet的服务器才行，安装到网上查找即可（我当然有资源啊，求我啊~）然后再cmd里输入telnet IP PORT即可；<br>第二个方法是下载一个putty，当然前提是你需要有telnet的客户端与服务端。下载后选择telnet登陆，输入IP与port登入</p>
+<p>##问题1：关于客户端的问题。<br>在WIN7中，需要手动打开telnet的客户端与服务端。但是在WIN10里，只有telnet的客户端，这是不能使用的，还需要自己安装telnet的服务器才行，安装到网上查找即可（我当然有资源啊，求我啊~）然后再cmd里输入telnet IP PORT即可；<br><a id="more"></a><br>第二个方法是下载一个putty，当然前提是你需要有telnet的客户端与服务端。下载后选择telnet登陆，输入IP与port登入</p>
 <p>##问题2：cmd的telnet<br>这里的问题是cmd进入telnet的模式，无法看见输入。百度了下，网上说就是这样的啊(黑人问号)<br>推测原因是cmd里开始是不知道编码的（你在说啥？？？）<br>总之解决的办法就是在连接完成后，也就是在ChatSession初始化的时候(<strong>init</strong>里)push一行字，当然push的内容需要时二进制的，即str.encode(‘utf-8’)这样的，这行字能够正常显示，接下来的字cmd里也就能够显示了</p>
 <p>奇怪的是putty里就不需要这样，它可以正常显示，只不过putty里第一条广播(broadcast)的内容会有些问题</p>
 <p>##问题3：接收到的内容编码问题<br>按道理来说的话，客户端的编码应该是二进制的，就是需要str.encode的那种。代码里是要把接受到的data append到一个list里，然后在经过’’.join(data)处理，再转发。我还没发现这又什么用，但是没有这步会报错的</p>
@@ -486,6 +486,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/06/pythonTest-2/" rel="prev" title="虚拟茶话会_plus">
+                虚拟茶话会_plus <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -547,7 +551,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

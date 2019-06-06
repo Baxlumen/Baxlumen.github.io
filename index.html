@@ -191,7 +191,7 @@
     </div>
     
       
-        <p class="site-subtitle">一个人的自嗨空间</p>
+        <p class="site-subtitle">这个人很懒，什么也没留下</p>
       
     
     
@@ -346,6 +346,156 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/Baxlumen/Baxlumens.github.io.git/2019/06/06/pythonTest-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Baxlumen">
+      <meta itemprop="description" content="半醒半醉日复日，无风无雨年复年">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="山渐青">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/06/06/pythonTest-2/" class="post-title-link" itemprop="url">虚拟茶话会_plus</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-06-06 19:10:31 / Modified: 19:14:51" itemprop="dateCreated datePublished" datetime="2019-06-06T19:10:31+08:00">2019-06-06</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>关于聊天室程序的一些总结</p>
+<p>ChatSession 是针对每个客户端的类，可以在这里定义每一个客户端的name，终止符等，然后再这个类里定义接收字符串，定义接收后的处理，以及当关闭这个客户端时要执行的操作<br>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/06/06/pythonTest-2/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </p></div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://github.com/Baxlumen/Baxlumens.github.io.git/2019/06/03/pythonTest-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -391,7 +541,7 @@
                 
               
 
-              <time title="Created: 2019-06-03 20:05:05 / Modified: 20:08:00" itemprop="dateCreated datePublished" datetime="2019-06-03T20:05:05+08:00">2019-06-03</time>
+              <time title="Created: 2019-06-03 20:05:05 / Modified: 20:09:04" itemprop="dateCreated datePublished" datetime="2019-06-03T20:05:05+08:00">2019-06-03</time>
             
 
             
@@ -431,20 +581,20 @@
 
       
         
+          <p>#实现虚拟茶话会</p>
+<p>##问题1：关于客户端的问题。<br>在WIN7中，需要手动打开telnet的客户端与服务端。但是在WIN10里，只有telnet的客户端，这是不能使用的，还需要自己安装telnet的服务器才行，安装到网上查找即可（我当然有资源啊，求我啊~）然后再cmd里输入telnet IP PORT即可；<br>
+          <!--noindex-->
           
-            <p>#实现虚拟茶话会</p>
-<p>##问题1：关于客户端的问题。<br>在WIN7中，需要手动打开telnet的客户端与服务端。但是在WIN10里，只有telnet的客户端，这是不能使用的，还需要自己安装telnet的服务器才行，安装到网上查找即可（我当然有资源啊，求我啊~）然后再cmd里输入telnet IP PORT即可；<br>第二个方法是下载一个putty，当然前提是你需要有telnet的客户端与服务端。下载后选择telnet登陆，输入IP与port登入</p>
-<p>##问题2：cmd的telnet<br>这里的问题是cmd进入telnet的模式，无法看见输入。百度了下，网上说就是这样的啊(黑人问号)<br>推测原因是cmd里开始是不知道编码的（你在说啥？？？）<br>总之解决的办法就是在连接完成后，也就是在ChatSession初始化的时候(<strong>init</strong>里)push一行字，当然push的内容需要时二进制的，即str.encode(‘utf-8’)这样的，这行字能够正常显示，接下来的字cmd里也就能够显示了</p>
-<p>奇怪的是putty里就不需要这样，它可以正常显示，只不过putty里第一条广播(broadcast)的内容会有些问题</p>
-<p>##问题3：接收到的内容编码问题<br>按道理来说的话，客户端的编码应该是二进制的，就是需要str.encode的那种。代码里是要把接受到的data append到一个list里，然后在经过’’.join(data)处理，再转发。我还没发现这又什么用，但是没有这步会报错的</p>
-<p>桥豆麻袋！<br>collect_incoming_data函数里，使用一个list来接受data的，’’.join(data)是把list变成了一个str，所以就需要把接收到的data decode，问题来了，如果是decode(‘utf-8’)的话会报错。根据我这几天的经验，我虎躯一震，菊发一紧，想到了使用chardet模块，然后把utf-8 替换为 chardet.detect(data)[‘encoding’]，这样就可以了 √</p>
-<p>那么对于这个简易的虚拟茶话会，现存的问题就是为什么使用putty跟cmd broadcast的第一条内容会有所不同，就是putty里会多一些内容，而且编码未知，用chatdet出来是乱码</p>
-<p>来人，上代码！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">from asyncore import dispatcher</span><br><span class="line">from asynchat import async_chat</span><br><span class="line">import asyncore,socket</span><br><span class="line">import chardet</span><br><span class="line">#asyncore模块提供了以异步的方式写入套接字服务的客户端和服务器的基础结构</span><br><span class="line">#dispatcher类 - 一个底层套接字对象的简单封装。这个类有少数由异步循环调用的，用来事件处理的函数</span><br><span class="line">PORT=5005</span><br><span class="line">NAME=&apos;TestChat&apos;</span><br><span class="line"></span><br><span class="line">class ChatSession(async_chat):</span><br><span class="line">	&apos;&apos;&apos;</span><br><span class="line">	一个负责处理服务器与单个用户间连接的类</span><br><span class="line">	&apos;&apos;&apos;</span><br><span class="line">	def __init__(self,server,sock):</span><br><span class="line">		async_chat.__init__(self,sock)</span><br><span class="line">		self.server = server</span><br><span class="line">		self.set_terminator(b&apos;\r\n&apos;)</span><br><span class="line">		self.data=[]</span><br><span class="line">		self.push(&apos;Welcome to %s\r\n&apos;.encode(&apos;utf-8&apos;)%self.server.name.encode(&apos;utf-8&apos;))</span><br><span class="line"></span><br><span class="line">	def collect_incoming_data(self,data):</span><br><span class="line">		#type(data)   bytes</span><br><span class="line">		#str(data)    b&apos;data&apos;</span><br><span class="line"></span><br><span class="line">		self.data.append(data.decode(chardet.detect(data)[&apos;encoding&apos;]))</span><br><span class="line">		</span><br><span class="line"></span><br><span class="line">	def found_terminator(self):</span><br><span class="line">		&apos;&apos;&apos;</span><br><span class="line">		遇到结束符，就意味着读取了一整行。</span><br><span class="line">		将这行内容广播给每个人</span><br><span class="line">		&apos;&apos;&apos;</span><br><span class="line">		line = &apos;&apos;.join(self.data)</span><br><span class="line"></span><br><span class="line">		self.data=[]</span><br><span class="line">		#使用line做些事		</span><br><span class="line">		self.server.broadcast(line.encode(&apos;utf-8&apos;))</span><br><span class="line"></span><br><span class="line">	def handle_close(self):</span><br><span class="line">		async_chat.handle_close(self)</span><br><span class="line">		self.server.disconnect(self)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class ChatServer(dispatcher):</span><br><span class="line">	&apos;&apos;&apos;</span><br><span class="line">	一个接受连接并创建会话的类，还负责向这些会话广播</span><br><span class="line">	&apos;&apos;&apos;</span><br><span class="line">	def  __init__(self,port,name):</span><br><span class="line">		dispatcher.__init__(self)</span><br><span class="line">		#创建套接字</span><br><span class="line">		self.create_socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">		#重用原来的地址，如果不调用，可能需要等待一段时间才能重启服务器</span><br><span class="line">		self.set_reuse_addr()</span><br><span class="line">		#建立监听</span><br><span class="line">		self.bind((&apos;&apos;,port))#IP为空意味着localhost</span><br><span class="line">		self.listen(5)</span><br><span class="line">		self.name=name</span><br><span class="line">		self.sessions=[]</span><br><span class="line"></span><br><span class="line">	def disconnect(self,session):</span><br><span class="line">		self.sessions.remove(session)</span><br><span class="line"></span><br><span class="line">	def broadcast(self,line):</span><br><span class="line">		for session in self.sessions:</span><br><span class="line">			session.push(b&apos;B:&apos;+line+b&apos;\r\n&apos;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	#重写handle_accept方法，让它在服务器接受客户端连接时做点事</span><br><span class="line">	def handle_accept(self):</span><br><span class="line">		print(&apos;客户端连接&apos;)</span><br><span class="line">		conn,addr = self.accept()</span><br><span class="line">		self.sessions.append(ChatSession(self,conn))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:	</span><br><span class="line">	#实例化</span><br><span class="line">	s = ChatServer(PORT,NAME)</span><br><span class="line">	try:asyncore.loop()</span><br><span class="line">	except KeyboardInterrupt: print()	</span><br><span class="line">	#asyncore.loop用于循环监听网络事件。loop()函数负责检测一个字典，字典中保存dispatcher的实例</span><br></pre></td></tr></table></figure></p>
-
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/06/03/pythonTest-1/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
           
+          <!--/noindex-->
         
       
-    </div>
+    </p></div>
 
     
 
@@ -788,148 +938,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/Baxlumen/Baxlumens.github.io.git/2019/05/25/PaCExample-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Baxlumen">
-      <meta itemprop="description" content="半醒半醉日复日，无风无雨年复年">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="山渐青">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/25/PaCExample-1/" class="post-title-link" itemprop="url">王者荣耀皮肤爬取</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-05-25 15:42:21 / Modified: 15:43:40" itemprop="dateCreated datePublished" datetime="2019-05-25T15:42:21+08:00">2019-05-25</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">#@Time:2019-5-25</span><br><span class="line">#@File:WZRYskin.py</span><br><span class="line"></span><br><span class="line">import re</span><br><span class="line">import os</span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#1.目标URL</span><br><span class="line">url=&apos;https://pvp.qq.com/web201605/js/herolist.json&apos;</span><br><span class="line">#2.发送请求</span><br><span class="line">html = requests.get(url)</span><br><span class="line">#print(html.text)</span><br><span class="line">#获取到的数据类型是json格式，并不是字典，也不是普通的str</span><br><span class="line">html = html.json()#把响应解析为json对象</span><br><span class="line">#3.解析网页</span><br><span class="line">heroname = list(map(lambda x:x[&apos;cname&apos;],html))</span><br><span class="line">heronumber = list(map(lambda x:x[&apos;ename&apos;],html))</span><br><span class="line"># print(heroname)</span><br><span class="line"># print(heronumber)</span><br><span class="line"></span><br><span class="line">#下载保存图片</span><br><span class="line">#4.数据保存</span><br><span class="line">def main(heroname,heronumber):</span><br><span class="line">	ii = 0</span><br><span class="line">	for v in heronumber:</span><br><span class="line">		os.mkdir(&apos;D:\\blog\\pythonTest\\WZRY\\&apos;+heroname[ii])</span><br><span class="line">		os.chdir(&apos;D:\\blog\\pythonTest\\WZRY\\&apos;+heroname[ii])</span><br><span class="line">		ii+=1</span><br><span class="line">		for u in range(12):</span><br><span class="line">			hero_link = &apos;http://game.gtimg.cn/images/yxzj/img201606/skin/hero-info/%s/%s-bigskin-%s.jpg&apos;%(v,v,u)</span><br><span class="line">			im = requests.get(hero_link)</span><br><span class="line">			if im.status_code==200:</span><br><span class="line">				with open(str(u)+&apos;.jpg&apos;,&apos;wb&apos;) as f:</span><br><span class="line">					f.write(im.content)</span><br><span class="line"></span><br><span class="line">main(heroname,heronumber)</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://github.com/Baxlumen/Baxlumens.github.io.git/2019/05/25/PaCExample-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1031,6 +1039,148 @@
             <p>这里存在一个问题，在移动端的微博中，使用链接<br>‘<a href="https://m.weibo.cn/comments/hotflow?id={id}&amp;mid={id}&amp;max_id_type=0’" target="_blank" rel="noopener">https://m.weibo.cn/comments/hotflow?id={id}&amp;mid={id}&amp;max_id_type=0’</a><br>这种形式的链接来爬取某一个微博的评论时，只能获得前20条，当时用show?…<br>这种的形式时，只能获得前三页，而且评论data是按照时间顺序来存储在这个json里的。<br>所以目前推测的解决方法是先模拟登陆，然后再去爬取。因为当继续爬取时链接会重定向到登陆界面。<br>通过网上查，然后自己试了试，先自己在电脑商登陆，然后再构造headers，里面包括<br>Referer和User-Agent，这样依然不能获得。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">import json</span><br><span class="line">import pprint</span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line">url = &apos;https://m.weibo.cn/api/container/getIndex?containerid=2304136593871464_-_WEIBO_SECOND_PROFILE_WEIBO&amp;page_type=03&amp;page=&#123;&#125;&apos;</span><br><span class="line">#爬取10页</span><br><span class="line">for i in range(2):</span><br><span class="line">	response = requests.get(url.format(i))</span><br><span class="line">	#转化为json格式</span><br><span class="line">	data = response.json()</span><br><span class="line">	mids = data[&apos;data&apos;][&apos;cards&apos;][1:]</span><br><span class="line">	for i in mids:</span><br><span class="line">		mid=i[&apos;mblog&apos;][&apos;mid&apos;]</span><br><span class="line">		url=&apos;https://m.weibo.cn/comments/hotflow?id=&#123;id&#125;&amp;mid=&#123;id&#125;&amp;max_id_type=0&apos;.format(id=mid)</span><br><span class="line">		response = requests.get(url)</span><br><span class="line">		data = json.loads(response.text)</span><br><span class="line">		users = data[&apos;data&apos;][&apos;data&apos;]</span><br><span class="line">		for user in users:</span><br><span class="line">			print(user[&apos;text&apos;])</span><br></pre></td></tr></table></figure></p>
 <p>对于整个程序来说，最难的部分是分析网页的部分，其他的部分大多是在json中查找相关数据</p>
 
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/Baxlumen/Baxlumens.github.io.git/2019/05/25/PaCExample-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Baxlumen">
+      <meta itemprop="description" content="半醒半醉日复日，无风无雨年复年">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="山渐青">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/25/PaCExample-1/" class="post-title-link" itemprop="url">王者荣耀皮肤爬取</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-25 15:42:21 / Modified: 15:43:40" itemprop="dateCreated datePublished" datetime="2019-05-25T15:42:21+08:00">2019-05-25</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">#@Time:2019-5-25</span><br><span class="line">#@File:WZRYskin.py</span><br><span class="line"></span><br><span class="line">import re</span><br><span class="line">import os</span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#1.目标URL</span><br><span class="line">url=&apos;https://pvp.qq.com/web201605/js/herolist.json&apos;</span><br><span class="line">#2.发送请求</span><br><span class="line">html = requests.get(url)</span><br><span class="line">#print(html.text)</span><br><span class="line">#获取到的数据类型是json格式，并不是字典，也不是普通的str</span><br><span class="line">html = html.json()#把响应解析为json对象</span><br><span class="line">#3.解析网页</span><br><span class="line">heroname = list(map(lambda x:x[&apos;cname&apos;],html))</span><br><span class="line">heronumber = list(map(lambda x:x[&apos;ename&apos;],html))</span><br><span class="line"># print(heroname)</span><br><span class="line"># print(heronumber)</span><br><span class="line"></span><br><span class="line">#下载保存图片</span><br><span class="line">#4.数据保存</span><br><span class="line">def main(heroname,heronumber):</span><br><span class="line">	ii = 0</span><br><span class="line">	for v in heronumber:</span><br><span class="line">		os.mkdir(&apos;D:\\blog\\pythonTest\\WZRY\\&apos;+heroname[ii])</span><br><span class="line">		os.chdir(&apos;D:\\blog\\pythonTest\\WZRY\\&apos;+heroname[ii])</span><br><span class="line">		ii+=1</span><br><span class="line">		for u in range(12):</span><br><span class="line">			hero_link = &apos;http://game.gtimg.cn/images/yxzj/img201606/skin/hero-info/%s/%s-bigskin-%s.jpg&apos;%(v,v,u)</span><br><span class="line">			im = requests.get(hero_link)</span><br><span class="line">			if im.status_code==200:</span><br><span class="line">				with open(str(u)+&apos;.jpg&apos;,&apos;wb&apos;) as f:</span><br><span class="line">					f.write(im.content)</span><br><span class="line"></span><br><span class="line">main(heroname,heronumber)</span><br></pre></td></tr></table></figure>
           
         
       
@@ -1697,167 +1847,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/Baxlumen/Baxlumens.github.io.git/2019/05/13/pythonPaC-2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Baxlumen">
-      <meta itemprop="description" content="半醒半醉日复日，无风无雨年复年">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="山渐青">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/13/pythonPaC-2/" class="post-title-link" itemprop="url">爬虫-隐 藏</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-05-13 17:24:21" itemprop="dateCreated datePublished" datetime="2019-05-13T17:24:21+08:00">2019-05-13</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-05-27 11:18:31" itemprop="dateModified" datetime="2019-05-27T11:18:31+08:00">2019-05-27</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>有的服务器不喜欢被爬虫来访问，会屏蔽掉，所以我们可以使用python来模拟浏览器访问<br>两种方法：<br>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/05/13/pythonPaC-2/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </p></div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1906,7 +1895,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
