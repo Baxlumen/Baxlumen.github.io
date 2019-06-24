@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="#一、算数函数 ##1.加减乘除add() subtract(),multiply(),divide()需要注意的是数组必须具有相同的形状或符合数组广播的规则 ##2.倒数numpy.reciprocal(),返回参数逐元素的倒数 ##3.幂numpy.power(ndarray,a),将数组中的元素作为底数，计算它与输入数组中相应元素的幂 ##4.取余numpy.mod()计算输入数组中相应元素">
+  <meta name="description" content="一、算数函数1.加减乘除add() subtract(),multiply(),divide()需要注意的是数组必须具有相同的形状或符合数组广播的规则">
 <meta name="keywords" content="numpy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="numpy相关_3">
 <meta property="og:url" content="https://github.com/Baxlumen/Baxlumens.github.io.git/2019/06/24/numpy-3/index.html">
 <meta property="og:site_name" content="山渐青">
-<meta property="og:description" content="#一、算数函数 ##1.加减乘除add() subtract(),multiply(),divide()需要注意的是数组必须具有相同的形状或符合数组广播的规则 ##2.倒数numpy.reciprocal(),返回参数逐元素的倒数 ##3.幂numpy.power(ndarray,a),将数组中的元素作为底数，计算它与输入数组中相应元素的幂 ##4.取余numpy.mod()计算输入数组中相应元素">
+<meta property="og:description" content="一、算数函数1.加减乘除add() subtract(),multiply(),divide()需要注意的是数组必须具有相同的形状或符合数组广播的规则">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-24T03:59:55.358Z">
+<meta property="og:updated_time" content="2019-06-24T05:22:20.836Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="numpy相关_3">
-<meta name="twitter:description" content="#一、算数函数 ##1.加减乘除add() subtract(),multiply(),divide()需要注意的是数组必须具有相同的形状或符合数组广播的规则 ##2.倒数numpy.reciprocal(),返回参数逐元素的倒数 ##3.幂numpy.power(ndarray,a),将数组中的元素作为底数，计算它与输入数组中相应元素的幂 ##4.取余numpy.mod()计算输入数组中相应元素">
+<meta name="twitter:description" content="一、算数函数1.加减乘除add() subtract(),multiply(),divide()需要注意的是数组必须具有相同的形状或符合数组广播的规则">
 
 
 
@@ -390,7 +390,7 @@
                 
               
 
-              <time title="Erstellt: 2019-06-24 11:57:19 / Geändert am: 11:59:55" itemprop="dateCreated datePublished" datetime="2019-06-24T11:57:19+08:00">2019-06-24</time>
+              <time title="Erstellt: 2019-06-24 11:57:19 / Geändert am: 13:22:20" itemprop="dateCreated datePublished" datetime="2019-06-24T11:57:19+08:00">2019-06-24</time>
             
 
             
@@ -429,36 +429,32 @@
       
 
       
-        <p>#一、算数函数</p>
-<p>##1.加减乘除<br>add() subtract(),multiply(),divide()<br>需要注意的是数组必须具有相同的形状或符合数组广播的规则</p>
-<p>##2.倒数<br>numpy.reciprocal(),返回参数逐元素的倒数</p>
-<p>##3.幂<br>numpy.power(ndarray,a),将数组中的元素作为底数，计算它与输入数组中相应元素的幂</p>
-<p>##4.取余<br>numpy.mod()计算输入数组中相应元素相除后的余数</p>
-<p>#二、统计函数</p>
-<p>##1.最值<br>numpy.amin() 用于计算数组中的元素沿指定轴的最小值<br>numpy.amax() 用于计算数组中的元素沿指定轴的最大值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = np.array([[3,7,5],[8,4,3],[2,4,9]])</span><br><span class="line">&gt;&gt;&gt; print(np.amin(a,1))</span><br><span class="line">[3 3 2]</span><br><span class="line">&gt;&gt;&gt; print(np.amax(a,0))</span><br><span class="line">[8 7 9]</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">array([[3, 7, 5],</span><br><span class="line">       [8, 4, 3],</span><br><span class="line">       [2, 4, 9]])</span><br></pre></td></tr></table></figure></p>
-<p>##2.最大值与最小值之差<br>numpy.ptp() 计算数组元素中最大值与最小值之差，有axis参数时就是沿着指定轴来计算。没有的话就是整个数组的所有元素的最大值最小值之差<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a</span><br><span class="line">array([[3, 7, 5],</span><br><span class="line">       [8, 4, 3],</span><br><span class="line">       [2, 4, 9]])</span><br><span class="line">&gt;&gt;&gt; print(np.ptp(a))</span><br><span class="line">7</span><br><span class="line">&gt;&gt;&gt; print(np.ptp(a,axis=0))</span><br><span class="line">[6 3 6]</span><br><span class="line">&gt;&gt;&gt; print(np.ptp(a,axis=1))</span><br><span class="line">[4 5 7]</span><br></pre></td></tr></table></figure></p>
-<p>##3.百分位数<br>numpy.percentile(a,q,axis) 第p个百分位数是指至少有p%的数据项小于等于这个值，且至少有（100-p）%的数据项大于或等于这个值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">求50%的分位数，也就是a中所有元素排序后的中位数</span><br><span class="line">&gt;&gt;&gt; a = np.array([[10,7,4],[3,2,1]])</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">array([[10,  7,  4],</span><br><span class="line">       [ 3,  2,  1]])</span><br><span class="line">&gt;&gt;&gt; print(np.percentile(a,50))</span><br><span class="line">3.5</span><br><span class="line">在axis=0即在纵列上求</span><br><span class="line">&gt;&gt;&gt; print(np.percentile(a,50,axis=0))</span><br><span class="line">[6.5 4.5 2.5]</span><br></pre></td></tr></table></figure></p>
-<p>##4.中位数<br>numpy.median() 用于求数组a中元素的中位数<br>中位数是指一组数据排序后中间位置的值，如果有偶数个，中位数为中间两个值的平均值</p>
-<p>##5.算术平均值<br>numpy.mean() 返回数组中元素的算术平均值。如果提供了轴，则沿轴计算。算术平均值是沿着轴元素的总和除以元素数量</p>
-<p>##6.加权平均值<br>numpy.average() 函数根据在另一个数组中给出的各自的权值计算数组中元素的加权平均值。<br>该函数可以接受一个轴参数，如果没有指定轴，数组展开。<br>加权平均值，即将各数值乘以相应的权值，然后加总求和得到总体值，再除以总的单位数</p>
+        <h1 id="一、算数函数"><a href="#一、算数函数" class="headerlink" title="一、算数函数"></a>一、算数函数</h1><h2 id="1-加减乘除"><a href="#1-加减乘除" class="headerlink" title="1.加减乘除"></a>1.加减乘除</h2><p>add() subtract(),multiply(),divide()<br>需要注意的是数组必须具有相同的形状或符合数组广播的规则<br><a id="more"></a></p>
+<h2 id="2-倒数"><a href="#2-倒数" class="headerlink" title="2.倒数"></a>2.倒数</h2><p>numpy.reciprocal(),返回参数逐元素的倒数</p>
+<h2 id="3-幂"><a href="#3-幂" class="headerlink" title="3.幂"></a>3.幂</h2><p>numpy.power(ndarray,a),将数组中的元素作为底数，计算它与输入数组中相应元素的幂</p>
+<h2 id="4-取余"><a href="#4-取余" class="headerlink" title="4.取余"></a>4.取余</h2><p>numpy.mod()计算输入数组中相应元素相除后的余数</p>
+<h1 id="二、统计函数"><a href="#二、统计函数" class="headerlink" title="二、统计函数"></a>二、统计函数</h1><h2 id="1-最值"><a href="#1-最值" class="headerlink" title="1.最值"></a>1.最值</h2><p>numpy.amin() 用于计算数组中的元素沿指定轴的最小值<br>numpy.amax() 用于计算数组中的元素沿指定轴的最大值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = np.array([[3,7,5],[8,4,3],[2,4,9]])</span><br><span class="line">&gt;&gt;&gt; print(np.amin(a,1))</span><br><span class="line">[3 3 2]</span><br><span class="line">&gt;&gt;&gt; print(np.amax(a,0))</span><br><span class="line">[8 7 9]</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">array([[3, 7, 5],</span><br><span class="line">       [8, 4, 3],</span><br><span class="line">       [2, 4, 9]])</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-最大值与最小值之差"><a href="#2-最大值与最小值之差" class="headerlink" title="2.最大值与最小值之差"></a>2.最大值与最小值之差</h2><p>numpy.ptp() 计算数组元素中最大值与最小值之差，有axis参数时就是沿着指定轴来计算。没有的话就是整个数组的所有元素的最大值最小值之差<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a</span><br><span class="line">array([[3, 7, 5],</span><br><span class="line">       [8, 4, 3],</span><br><span class="line">       [2, 4, 9]])</span><br><span class="line">&gt;&gt;&gt; print(np.ptp(a))</span><br><span class="line">7</span><br><span class="line">&gt;&gt;&gt; print(np.ptp(a,axis=0))</span><br><span class="line">[6 3 6]</span><br><span class="line">&gt;&gt;&gt; print(np.ptp(a,axis=1))</span><br><span class="line">[4 5 7]</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-百分位数"><a href="#3-百分位数" class="headerlink" title="3.百分位数"></a>3.百分位数</h2><p>numpy.percentile(a,q,axis) 第p个百分位数是指至少有p%的数据项小于等于这个值，且至少有（100-p）%的数据项大于或等于这个值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">求50%的分位数，也就是a中所有元素排序后的中位数</span><br><span class="line">&gt;&gt;&gt; a = np.array([[10,7,4],[3,2,1]])</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">array([[10,  7,  4],</span><br><span class="line">       [ 3,  2,  1]])</span><br><span class="line">&gt;&gt;&gt; print(np.percentile(a,50))</span><br><span class="line">3.5</span><br><span class="line">在axis=0即在纵列上求</span><br><span class="line">&gt;&gt;&gt; print(np.percentile(a,50,axis=0))</span><br><span class="line">[6.5 4.5 2.5]</span><br></pre></td></tr></table></figure></p>
+<h2 id="4-中位数"><a href="#4-中位数" class="headerlink" title="4.中位数"></a>4.中位数</h2><p>numpy.median() 用于求数组a中元素的中位数<br>中位数是指一组数据排序后中间位置的值，如果有偶数个，中位数为中间两个值的平均值</p>
+<h2 id="5-算术平均值"><a href="#5-算术平均值" class="headerlink" title="5.算术平均值"></a>5.算术平均值</h2><p>numpy.mean() 返回数组中元素的算术平均值。如果提供了轴，则沿轴计算。算术平均值是沿着轴元素的总和除以元素数量</p>
+<h2 id="6-加权平均值"><a href="#6-加权平均值" class="headerlink" title="6.加权平均值"></a>6.加权平均值</h2><p>numpy.average() 函数根据在另一个数组中给出的各自的权值计算数组中元素的加权平均值。<br>该函数可以接受一个轴参数，如果没有指定轴，数组展开。<br>加权平均值，即将各数值乘以相应的权值，然后加总求和得到总体值，再除以总的单位数</p>
 <p>函数不指定权值时相当于mean函数， numpy.average(a,weights = wts,axis=0),指定wts为权值的数组，轴为0</p>
-<p>##7.标准差与方差<br>numpy.std()标准差   numpy.var() 方差</p>
-<p>#三、排序、条件刷选函数<br>排序算法有很多种类，每种都有各自的最适应的情况<br>   种类                  速度              最坏情况           工作空间    稳定性<br>‘quicksort’（快速排序）    1                O(n^2)               0    否<br>‘mergesort’（归并排序）    2              O(n<em>log(n))         ~n/2    是<br>‘heapsort’（堆排序）        3              O(n</em>log(n))           0    否</p>
+<h2 id="7-标准差与方差"><a href="#7-标准差与方差" class="headerlink" title="7.标准差与方差"></a>7.标准差与方差</h2><p>numpy.std()标准差   numpy.var() 方差</p>
+<h1 id="三、排序、条件刷选函数"><a href="#三、排序、条件刷选函数" class="headerlink" title="三、排序、条件刷选函数"></a>三、排序、条件刷选函数</h1><p>排序算法有很多种类，每种都有各自的最适应的情况<br>   种类                  速度              最坏情况           工作空间    稳定性<br>‘quicksort’（快速排序）    1                O(n^2)               0    否<br>‘mergesort’（归并排序）    2              O(n<em>log(n))         ~n/2    是<br>‘heapsort’（堆排序）        3              O(n</em>log(n))           0    否</p>
 <p>其实还有很多排序算法，例如插入排序等，根据数据结构这本书，可以知道快速排序是适应性最强的，不管什么，就算快速排序不是最好的，那肯定也不是最坏的</p>
-<p>##1.numpy.sort()<br>函数格式为numpy.sort(a,axis,kind,order),axis为轴，没有的话则数组展开；kind默认为’quicksort’；如果数组包含字段，order为排序字段</p>
-<p>##2.numpy.argsort()<br>函数返回数组值从大到小的索引值</p>
-<p>##3.numpy.lexsort()<br>函数用于对多个序列进行排序，例如：某场考试，重点班按照总成绩进行录取，总成绩相同时，数学成绩高的优先，数学成绩再相同时，英语成绩高的优先….<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#这是一个间接排序，先对后面的数组排序，当有一样的再使用前面的排序，最后返回一组索引</span><br><span class="line">&gt;&gt;&gt; a = np.array([1,2,3,4,5])</span><br><span class="line">&gt;&gt;&gt; b = np.array([40,40,30,20,10])</span><br><span class="line">&gt;&gt;&gt; c = np.lexsort((a,b))</span><br><span class="line">&gt;&gt;&gt; print(list(zip(a[c],b[c])))</span><br><span class="line">[(5, 10), (4, 20), (3, 30), (1, 40), (2, 40)]</span><br></pre></td></tr></table></figure></p>
-<p>##4.msort、sort_complex、partition、argpartition</p>
-<p>msort(a)                                    数组按第一个轴排序，返回排序后的数组副本。np.msort(a) 相等于 np.sort(a, axis=0)。<br>sort_complex(a)                                对复数按照先实部后虚部的顺序进行排序。<br>partition(a, kth[, axis, kind, order])        指定一个数，对数组进行分区<br>argpartition(a, kth[, axis, kind, order])    可以通过关键字 kind 指定算法沿着指定轴对数组进行分区</p>
+<h2 id="1-numpy-sort"><a href="#1-numpy-sort" class="headerlink" title="1.numpy.sort()"></a>1.numpy.sort()</h2><p>函数格式为numpy.sort(a,axis,kind,order),axis为轴，没有的话则数组展开；kind默认为’quicksort’；如果数组包含字段，order为排序字段</p>
+<h2 id="2-numpy-argsort"><a href="#2-numpy-argsort" class="headerlink" title="2.numpy.argsort()"></a>2.numpy.argsort()</h2><p>函数返回数组值从大到小的索引值</p>
+<h2 id="3-numpy-lexsort"><a href="#3-numpy-lexsort" class="headerlink" title="3.numpy.lexsort()"></a>3.numpy.lexsort()</h2><p>函数用于对多个序列进行排序，例如：某场考试，重点班按照总成绩进行录取，总成绩相同时，数学成绩高的优先，数学成绩再相同时，英语成绩高的优先….<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#这是一个间接排序，先对后面的数组排序，当有一样的再使用前面的排序，最后返回一组索引</span><br><span class="line">&gt;&gt;&gt; a = np.array([1,2,3,4,5])</span><br><span class="line">&gt;&gt;&gt; b = np.array([40,40,30,20,10])</span><br><span class="line">&gt;&gt;&gt; c = np.lexsort((a,b))</span><br><span class="line">&gt;&gt;&gt; print(list(zip(a[c],b[c])))</span><br><span class="line">[(5, 10), (4, 20), (3, 30), (1, 40), (2, 40)]</span><br></pre></td></tr></table></figure></p>
+<h2 id="4-msort、sort-complex、partition、argpartition"><a href="#4-msort、sort-complex、partition、argpartition" class="headerlink" title="4.msort、sort_complex、partition、argpartition"></a>4.msort、sort_complex、partition、argpartition</h2><p>msort(a)                                    数组按第一个轴排序，返回排序后的数组副本。np.msort(a) 相等于 np.sort(a, axis=0)。<br>sort_complex(a)                                对复数按照先实部后虚部的顺序进行排序。<br>partition(a, kth[, axis, kind, order])        指定一个数，对数组进行分区<br>argpartition(a, kth[, axis, kind, order])    可以通过关键字 kind 指定算法沿着指定轴对数组进行分区</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = np.array([3,4,2,1])</span><br><span class="line">#将a数组中的元素，比第3小的元素放前面，大的放后面(类比希尔排序)(第0小的是最小的)</span><br><span class="line">&gt;&gt;&gt; np.partition(a,3)</span><br><span class="line">array([2, 1, 3, 4])</span><br><span class="line">&gt;&gt;&gt; np.partition(a,(1,3))</span><br><span class="line">array([1, 2, 3, 4])</span><br></pre></td></tr></table></figure>
-<p>##5.numpy.argmax() numpy.argmin()<br>两个函数分别沿着指定轴返回最大和最小的元素的索引</p>
-<p>##6.numpy.nonzero()<br>返回非0元素的索引</p>
-<p>##7.numpy.where()<br>返回输入数组中满足条件的索引<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a</span><br><span class="line">array([ 9,  3,  6,  1, 12])</span><br><span class="line">&gt;&gt;&gt; np.where(a&gt;2)</span><br><span class="line">(array([0, 1, 2, 4], dtype=int64),)</span><br><span class="line">&gt;&gt;&gt; y=np.where(a&gt;2)</span><br><span class="line">&gt;&gt;&gt; a[y]</span><br><span class="line">array([ 9,  3,  6, 12])</span><br></pre></td></tr></table></figure></p>
-<p>##8.numpy.extract()<br>函数根据条件从数组中抽取元素，返回满足条件的元素<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a</span><br><span class="line">array([[1, 2, 3],</span><br><span class="line">       [4, 5, 6],</span><br><span class="line">       [7, 8, 9]])</span><br><span class="line">&gt;&gt;&gt; condition = np.mod(a,2) ==0</span><br><span class="line">&gt;&gt;&gt; condition</span><br><span class="line">array([[False,  True, False],</span><br><span class="line">       [ True, False,  True],</span><br><span class="line">       [False,  True, False]])</span><br><span class="line">&gt;&gt;&gt; np.extract(condition,a)</span><br><span class="line">array([2, 4, 6, 8])</span><br></pre></td></tr></table></figure></p>
-<p>#五、字节交换</p>
-<p>大端模式：数据的高字节保存在内存的低地址中，这样的存储模式有点类似于把数据当作字符串顺序来处理：地址由小到大增加，而数据由高位往低位放，与阅读习惯一致</p>
+<h2 id="5-numpy-argmax-numpy-argmin"><a href="#5-numpy-argmax-numpy-argmin" class="headerlink" title="5.numpy.argmax() numpy.argmin()"></a>5.numpy.argmax() numpy.argmin()</h2><p>两个函数分别沿着指定轴返回最大和最小的元素的索引</p>
+<h2 id="6-numpy-nonzero"><a href="#6-numpy-nonzero" class="headerlink" title="6.numpy.nonzero()"></a>6.numpy.nonzero()</h2><p>返回非0元素的索引</p>
+<h2 id="7-numpy-where"><a href="#7-numpy-where" class="headerlink" title="7.numpy.where()"></a>7.numpy.where()</h2><p>返回输入数组中满足条件的索引<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a</span><br><span class="line">array([ 9,  3,  6,  1, 12])</span><br><span class="line">&gt;&gt;&gt; np.where(a&gt;2)</span><br><span class="line">(array([0, 1, 2, 4], dtype=int64),)</span><br><span class="line">&gt;&gt;&gt; y=np.where(a&gt;2)</span><br><span class="line">&gt;&gt;&gt; a[y]</span><br><span class="line">array([ 9,  3,  6, 12])</span><br></pre></td></tr></table></figure></p>
+<h2 id="8-numpy-extract"><a href="#8-numpy-extract" class="headerlink" title="8.numpy.extract()"></a>8.numpy.extract()</h2><p>函数根据条件从数组中抽取元素，返回满足条件的元素<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a</span><br><span class="line">array([[1, 2, 3],</span><br><span class="line">       [4, 5, 6],</span><br><span class="line">       [7, 8, 9]])</span><br><span class="line">&gt;&gt;&gt; condition = np.mod(a,2) ==0</span><br><span class="line">&gt;&gt;&gt; condition</span><br><span class="line">array([[False,  True, False],</span><br><span class="line">       [ True, False,  True],</span><br><span class="line">       [False,  True, False]])</span><br><span class="line">&gt;&gt;&gt; np.extract(condition,a)</span><br><span class="line">array([2, 4, 6, 8])</span><br></pre></td></tr></table></figure></p>
+<h1 id="五、字节交换"><a href="#五、字节交换" class="headerlink" title="五、字节交换"></a>五、字节交换</h1><p>大端模式：数据的高字节保存在内存的低地址中，这样的存储模式有点类似于把数据当作字符串顺序来处理：地址由小到大增加，而数据由高位往低位放，与阅读习惯一致</p>
 <p>小端模式：数据的高位字节保存在内存的高地址中，这种存储模式将地址的高低和数据位权有效的结合起来，高地址部分权值高，低地址权值低</p>
-<p>##numpy.ndarray.byteswap()<br> 函数将ndarray数组中的每个元素中的字节进行大小端转换</p>
+<h2 id="numpy-ndarray-byteswap"><a href="#numpy-ndarray-byteswap" class="headerlink" title="numpy.ndarray.byteswap()"></a>numpy.ndarray.byteswap()</h2><p> 函数将ndarray数组中的每个元素中的字节进行大小端转换</p>
 
       
     </div>
@@ -551,8 +547,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -645,6 +650,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、算数函数"><span class="nav-number">1.</span> <span class="nav-text">一、算数函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-加减乘除"><span class="nav-number">1.1.</span> <span class="nav-text">1.加减乘除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-倒数"><span class="nav-number">1.2.</span> <span class="nav-text">2.倒数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-幂"><span class="nav-number">1.3.</span> <span class="nav-text">3.幂</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-取余"><span class="nav-number">1.4.</span> <span class="nav-text">4.取余</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、统计函数"><span class="nav-number">2.</span> <span class="nav-text">二、统计函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-最值"><span class="nav-number">2.1.</span> <span class="nav-text">1.最值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-最大值与最小值之差"><span class="nav-number">2.2.</span> <span class="nav-text">2.最大值与最小值之差</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-百分位数"><span class="nav-number">2.3.</span> <span class="nav-text">3.百分位数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-中位数"><span class="nav-number">2.4.</span> <span class="nav-text">4.中位数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-算术平均值"><span class="nav-number">2.5.</span> <span class="nav-text">5.算术平均值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-加权平均值"><span class="nav-number">2.6.</span> <span class="nav-text">6.加权平均值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-标准差与方差"><span class="nav-number">2.7.</span> <span class="nav-text">7.标准差与方差</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、排序、条件刷选函数"><span class="nav-number">3.</span> <span class="nav-text">三、排序、条件刷选函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-numpy-sort"><span class="nav-number">3.1.</span> <span class="nav-text">1.numpy.sort()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-numpy-argsort"><span class="nav-number">3.2.</span> <span class="nav-text">2.numpy.argsort()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-numpy-lexsort"><span class="nav-number">3.3.</span> <span class="nav-text">3.numpy.lexsort()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-msort、sort-complex、partition、argpartition"><span class="nav-number">3.4.</span> <span class="nav-text">4.msort、sort_complex、partition、argpartition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-numpy-argmax-numpy-argmin"><span class="nav-number">3.5.</span> <span class="nav-text">5.numpy.argmax() numpy.argmin()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-numpy-nonzero"><span class="nav-number">3.6.</span> <span class="nav-text">6.numpy.nonzero()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-numpy-where"><span class="nav-number">3.7.</span> <span class="nav-text">7.numpy.where()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-numpy-extract"><span class="nav-number">3.8.</span> <span class="nav-text">8.numpy.extract()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、字节交换"><span class="nav-number">4.</span> <span class="nav-text">五、字节交换</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#numpy-ndarray-byteswap"><span class="nav-number">4.1.</span> <span class="nav-text">numpy.ndarray.byteswap()</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       

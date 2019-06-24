@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="#一、numpy广播(broadcast)广播是numpy对于不同形状的数组进行数值计算的方式，对数组的算术运算通常在相应的元素上进行。但，如果两个数组ab的形状相同，那么a*b的结果就是a与b数组对应位相乘，这要求维数相同，且各维度的长度也相同1234&amp;gt;&amp;gt;&amp;gt; a = np.array([1,2,3,4])&amp;gt;&amp;gt;&amp;gt; b = np.array([10,20,30,4">
+  <meta name="description" content="一、numpy广播(broadcast)广播是numpy对于不同形状的数组进行数值计算的方式，对数组的算术运算通常在相应的元素上进行。但，如果两个数组ab的形状相同，那么a*b的结果就是a与b数组对应位相乘，这要求维数相同，且各维度的长度也相同">
 <meta name="keywords" content="numpy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Numpy相关_2">
 <meta property="og:url" content="https://github.com/Baxlumen/Baxlumens.github.io.git/2019/06/24/numpy-2/index.html">
 <meta property="og:site_name" content="山渐青">
-<meta property="og:description" content="#一、numpy广播(broadcast)广播是numpy对于不同形状的数组进行数值计算的方式，对数组的算术运算通常在相应的元素上进行。但，如果两个数组ab的形状相同，那么a*b的结果就是a与b数组对应位相乘，这要求维数相同，且各维度的长度也相同1234&amp;gt;&amp;gt;&amp;gt; a = np.array([1,2,3,4])&amp;gt;&amp;gt;&amp;gt; b = np.array([10,20,30,4">
+<meta property="og:description" content="一、numpy广播(broadcast)广播是numpy对于不同形状的数组进行数值计算的方式，对数组的算术运算通常在相应的元素上进行。但，如果两个数组ab的形状相同，那么a*b的结果就是a与b数组对应位相乘，这要求维数相同，且各维度的长度也相同">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-24T04:58:22.208Z">
+<meta property="og:updated_time" content="2019-06-24T05:22:11.755Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Numpy相关_2">
-<meta name="twitter:description" content="#一、numpy广播(broadcast)广播是numpy对于不同形状的数组进行数值计算的方式，对数组的算术运算通常在相应的元素上进行。但，如果两个数组ab的形状相同，那么a*b的结果就是a与b数组对应位相乘，这要求维数相同，且各维度的长度也相同1234&amp;gt;&amp;gt;&amp;gt; a = np.array([1,2,3,4])&amp;gt;&amp;gt;&amp;gt; b = np.array([10,20,30,4">
+<meta name="twitter:description" content="一、numpy广播(broadcast)广播是numpy对于不同形状的数组进行数值计算的方式，对数组的算术运算通常在相应的元素上进行。但，如果两个数组ab的形状相同，那么a*b的结果就是a与b数组对应位相乘，这要求维数相同，且各维度的长度也相同">
 
 
 
@@ -390,7 +390,7 @@
                 
               
 
-              <time title="Erstellt: 2019-06-24 11:57:12 / Geändert am: 12:58:22" itemprop="dateCreated datePublished" datetime="2019-06-24T11:57:12+08:00">2019-06-24</time>
+              <time title="Erstellt: 2019-06-24 11:57:12 / Geändert am: 13:22:11" itemprop="dateCreated datePublished" datetime="2019-06-24T11:57:12+08:00">2019-06-24</time>
             
 
             
@@ -429,44 +429,42 @@
       
 
       
-        <p>#一、numpy广播(broadcast)<br>广播是numpy对于不同形状的数组进行数值计算的方式，对数组的算术运算通常在相应的元素上进行。但，如果两个数组ab的形状相同，那么a*b的结果就是a与b数组对应位相乘，这要求维数相同，且各维度的长度也相同<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = np.array([1,2,3,4])</span><br><span class="line">&gt;&gt;&gt; b = np.array([10,20,30,40])</span><br><span class="line">&gt;&gt;&gt; a*b</span><br><span class="line">array([ 10,  40,  90, 160])</span><br></pre></td></tr></table></figure></p>
+        <h1 id="一、numpy广播-broadcast"><a href="#一、numpy广播-broadcast" class="headerlink" title="一、numpy广播(broadcast)"></a>一、numpy广播(broadcast)</h1><p>广播是numpy对于不同形状的数组进行数值计算的方式，对数组的算术运算通常在相应的元素上进行。但，如果两个数组ab的形状相同，那么a*b的结果就是a与b数组对应位相乘，这要求维数相同，且各维度的长度也相同<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = np.array([1,2,3,4])</span><br><span class="line">&gt;&gt;&gt; b = np.array([10,20,30,40])</span><br><span class="line">&gt;&gt;&gt; a*b</span><br><span class="line">array([ 10,  40,  90, 160])</span><br></pre></td></tr></table></figure></p>
 <p>当两个数组维度不同的情况下，numpy将自动触发广播机制：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = np.array([[0,0,0],[10,10,10],[20,20,20]])</span><br><span class="line">&gt;&gt;&gt; b = np.array([1,2,3])</span><br><span class="line">&gt;&gt;&gt; a+b </span><br><span class="line">array([[ 1,  2,  3],</span><br><span class="line">       [11, 12, 13],</span><br><span class="line">       [21, 22, 23]])</span><br></pre></td></tr></table></figure></p>
 <p>目前的了解：维度和长度小的那个需要补齐</p>
-<p>#二、numpy迭代数组<br>numpy迭代器对象numpy.nditer</p>
-<p>##1.order<br>提供了一种灵活访问一个或者多个数组元素的方式，迭代器最基本的任务是可以完成对数组元素的访问，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = np.arange(6).reshape(2,3)</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">array([[0, 1, 2],</span><br><span class="line">       [3, 4, 5]])</span><br><span class="line">&gt;&gt;&gt; for x in np.nditer(a):</span><br><span class="line">     print(x,end=&apos;,&apos;) </span><br><span class="line">0,1,2,3,4,5,</span><br></pre></td></tr></table></figure></p>
+<h1 id="二、numpy迭代数组"><a href="#二、numpy迭代数组" class="headerlink" title="二、numpy迭代数组"></a>二、numpy迭代数组</h1><p>numpy迭代器对象numpy.nditer</p>
+<h2 id="1-order"><a href="#1-order" class="headerlink" title="1.order"></a>1.order</h2><p>提供了一种灵活访问一个或者多个数组元素的方式，迭代器最基本的任务是可以完成对数组元素的访问，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = np.arange(6).reshape(2,3)</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">array([[0, 1, 2],</span><br><span class="line">       [3, 4, 5]])</span><br><span class="line">&gt;&gt;&gt; for x in np.nditer(a):</span><br><span class="line">     print(x,end=&apos;,&apos;) </span><br><span class="line">0,1,2,3,4,5,</span><br></pre></td></tr></table></figure></p>
 <p>选择顺序默认是行序优先 ，for x in np.nditer(a, order=’F’):Fortran order，即是列序优先；for x in np.nditer(a.T, order=’C’):C order，即是行序优先；例如:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; b </span><br><span class="line">array([[0, 3],</span><br><span class="line">       [1, 4],</span><br><span class="line">       [2, 5]])</span><br><span class="line">&gt;&gt;&gt; for x in np.nditer(b.copy(order=&apos;C&apos;)):</span><br><span class="line">     print(x)</span><br><span class="line"> </span><br><span class="line">0</span><br><span class="line">3</span><br><span class="line">1</span><br><span class="line">4</span><br><span class="line">2</span><br><span class="line">5</span><br></pre></td></tr></table></figure>
 <p>也可以显式的设置，在for语句中设置，例如：for x in np.nditer(a,order=’F’)</p>
-<p>##2.修改数组中元素的值 op_flags<br>在默认情况下，nditer将视迭代遍历的数组为只读对象(read-only)，为了在遍历数组的同时实现对数组元素值得修改，必须指定read-write或者write-only的模式，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = np.arange(0,60,5)</span><br><span class="line">&gt;&gt;&gt; a = a.reshape(3,4)</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">array([[ 0,  5, 10, 15],</span><br><span class="line">       [20, 25, 30, 35],</span><br><span class="line">       [40, 45, 50, 55]])</span><br><span class="line">&gt;&gt;&gt; for x in np.nditer(a,op_flags=[&apos;readwrite&apos;]):</span><br><span class="line">     x[...] = 2*x   #注意这里的写法 </span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">array([[  0,  10,  20,  30],</span><br><span class="line">       [ 40,  50,  60,  70],</span><br><span class="line">       [ 80,  90, 100, 110]])</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-修改数组中元素的值-op-flags"><a href="#2-修改数组中元素的值-op-flags" class="headerlink" title="2.修改数组中元素的值 op_flags"></a>2.修改数组中元素的值 op_flags</h2><p>在默认情况下，nditer将视迭代遍历的数组为只读对象(read-only)，为了在遍历数组的同时实现对数组元素值得修改，必须指定read-write或者write-only的模式，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = np.arange(0,60,5)</span><br><span class="line">&gt;&gt;&gt; a = a.reshape(3,4)</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">array([[ 0,  5, 10, 15],</span><br><span class="line">       [20, 25, 30, 35],</span><br><span class="line">       [40, 45, 50, 55]])</span><br><span class="line">&gt;&gt;&gt; for x in np.nditer(a,op_flags=[&apos;readwrite&apos;]):</span><br><span class="line">     x[...] = 2*x   #注意这里的写法 </span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">array([[  0,  10,  20,  30],</span><br><span class="line">       [ 40,  50,  60,  70],</span><br><span class="line">       [ 80,  90, 100, 110]])</span><br></pre></td></tr></table></figure></p>
 <p>其中的flags还有其他的参数：<br>c_index            可以跟踪 C 顺序的索引<br>f_index            可以跟踪 Fortran 顺序的索引<br>multi-index        每次迭代可以跟踪一种索引类型<br>external_loop    给出的值是具有多个值的一维数组，而不是零维数组</p>
 <p>例如对于external_loop的使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = np.arange(0,60,5).reshape(3,4)</span><br><span class="line">&gt;&gt;&gt; for x in np.nditer(a,flags=[&apos;external_loop&apos;],order=&apos;F&apos;):</span><br><span class="line">     print(x,end=&apos;,&apos;)</span><br><span class="line"> </span><br><span class="line">[ 0 20 40],[ 5 25 45],[10 30 50],[15 35 55],</span><br><span class="line">本来是输出一个个的数字，但是flags设置后，就按F(列)形成一个个一维数组</span><br></pre></td></tr></table></figure></p>
-<p>##3.广播迭代<br>如果两个数组是可广播的，nditer组合对象能够同时迭代他们，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = np.arange(0,60,5).reshape(3,4)</span><br><span class="line">&gt;&gt;&gt; b = np.array([1,2,3,4],dtype=int )</span><br><span class="line">&gt;&gt;&gt; for x,y in np.nditer([a,b]):</span><br><span class="line">     print(&apos;%d:%d&apos;%(x,y),end=&apos;,&apos;)</span><br><span class="line"> </span><br><span class="line">0:1,5:2,10:3,15:4,20:1,25:2,30:3,35:4,40:1,45:2,50:3,55:4,</span><br></pre></td></tr></table></figure></p>
-<p>#三、数组操作<br>numpy中包含了几种数组操作，大概可以分为：修改数组形状、翻转数组、修改维度、连接数组、分割数组、数组元素的添加和删除</p>
-<p>##1.修改数组形状：<br>reshape         不改变数据的条件下修改形状（默认按行）<br>flat         数组元素迭代器(例如一个2x2的数组，普通的迭代时以行为单位，一行一行的，a.flat是以元素为单位)<br>flatten         返回一份数组拷贝，对拷贝所做的修改不会影响原始数组<br>ravel         返回展开数组(变成一维)</p>
-<p>##2.翻转数组<br>transpose     对换数组的维度<br>ndarray.T     和 self.transpose() 相同<br>rollaxis     向后滚动指定的轴，其他轴相对位置不变<br>swapaxes     对换数组的两个轴</p>
+<h2 id="3-广播迭代"><a href="#3-广播迭代" class="headerlink" title="3.广播迭代"></a>3.广播迭代</h2><p>如果两个数组是可广播的，nditer组合对象能够同时迭代他们，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = np.arange(0,60,5).reshape(3,4)</span><br><span class="line">&gt;&gt;&gt; b = np.array([1,2,3,4],dtype=int )</span><br><span class="line">&gt;&gt;&gt; for x,y in np.nditer([a,b]):</span><br><span class="line">     print(&apos;%d:%d&apos;%(x,y),end=&apos;,&apos;)</span><br><span class="line"> </span><br><span class="line">0:1,5:2,10:3,15:4,20:1,25:2,30:3,35:4,40:1,45:2,50:3,55:4,</span><br></pre></td></tr></table></figure></p>
+<h1 id="三、数组操作"><a href="#三、数组操作" class="headerlink" title="三、数组操作"></a>三、数组操作</h1><p>numpy中包含了几种数组操作，大概可以分为：修改数组形状、翻转数组、修改维度、连接数组、分割数组、数组元素的添加和删除</p>
+<h2 id="1-修改数组形状："><a href="#1-修改数组形状：" class="headerlink" title="1.修改数组形状："></a>1.修改数组形状：</h2><p>reshape         不改变数据的条件下修改形状（默认按行）<br>flat         数组元素迭代器(例如一个2x2的数组，普通的迭代时以行为单位，一行一行的，a.flat是以元素为单位)<br>flatten         返回一份数组拷贝，对拷贝所做的修改不会影响原始数组<br>ravel         返回展开数组(变成一维)</p>
+<h2 id="2-翻转数组"><a href="#2-翻转数组" class="headerlink" title="2.翻转数组"></a>2.翻转数组</h2><p>transpose     对换数组的维度<br>ndarray.T     和 self.transpose() 相同<br>rollaxis     向后滚动指定的轴，其他轴相对位置不变<br>swapaxes     对换数组的两个轴</p>
 <p>注：(1)这里的transpose()，里面参数可以是一个整数列表，对应维度的变化，例如transpose(1,0,2),原来是0，1，2，现在是1，0，2，也就是说3维数组的下标前两位交换位置，但是对数组a调用numpy.transpose(a)，这就相当于是a.T了<br>(2)关于rollaxis()，原型为rollaxis(arr,axis,start),其中，arr为数组，axis为要向后滚动的轴，start默认为0，表示完整的滚动。指定滚动到的位置<br>(3)关于swapaxes(arr,axis1,axis2)这个函数与rollaxis的区别，前者是直接调换，相对位置都会变动，后者是滚动，其他元素的相对位置不会变</p>
-<p>##3.修改数组的维度<br>broadcast        产生模仿广播的对象<br>broadcast_to    将数组广播到新形状<br>expand_dims        扩展数组的形状<br>squeeze            从数组的形状中删除一维条目</p>
-<p>##4.连接数组<br>concatenate       连接沿现有轴的数组序列<br>stack           沿着新的轴加入一系列数组。<br>hstack           水平堆叠序列中的数组（列方向）<br>vstack           竖直堆叠序列中的数组（行方向）</p>
-<p>##5.分割数组<br>split    将一个数组分割为多个子数组<br>hsplit    将一个数组水平分割为多个子数组（按列）<br>vsplit    将一个数组垂直分割为多个子数组（按行）</p>
-<p>##6.数组元素的添加和删除<br>resize     返回指定形状的新数组<br>append     将值添加到数组末尾<br>insert     沿指定轴将值插入到指定下标之前<br>delete     删掉某个轴的子数组，并返回删除后的新数组<br>unique     查找数组内的唯一元素</p>
-<p>#四、字符串函数</p>
-<p>##1.numpy.char.add()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print(np.char.add([&apos;hello&apos;,&apos;hi&apos;],[&apos; abc&apos;,&apos; xyz&apos;]))</span><br><span class="line">[&apos;hello abc&apos; &apos;hi xyz&apos;]</span><br></pre></td></tr></table></figure></p>
-<p>##2.numpy.char.multiply() 多重连接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print(np.char.multiply(&apos;Runoob&apos;,3))</span><br><span class="line">RunoobRunoobRunoob</span><br></pre></td></tr></table></figure></p>
-<p>##3.numpy.char.center()<br>用于将字符串居中，并使用指定字符在左侧或右侧进行填充<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print(np.char.center(&apos;Runoob &apos;,20,fillchar=&apos;*&apos;))</span><br><span class="line">******Runoob *******</span><br></pre></td></tr></table></figure></p>
-<p>##4.numpy.char.capitalize()<br>将字符串的第一个字母转化为大写</p>
-<p>##5.numpy.char.title()<br>将字符串的每个单词的首字母转化为大写</p>
-<p>##6.numpy.char.lower()<br>对数组的每个元素转化为小写</p>
-<p>##7.numpy.char.upper()<br>对数组的每个元素转化为大写</p>
-<p>##8.numpy.char.split()<br>通过指定分隔符对字符串进行分割，并返回数组，默认分隔符为空格</p>
-<p>##9.numpy.char.splitlines()<br>以换行符作为分隔符来分割字符，并返回数组<br>（\n \r \r\n  都可以视为换行符）</p>
-<p>##10.numpy.char.strip()<br>函数用于移除开头或结尾处的特定字符</p>
-<p>##11.numpy.char.join()<br>通过指定分隔符来连接</p>
-<p>##12.numpy.char.replace()<br>函数使用新字符串替换字符串中所有子字符串</p>
-<p>##13. numpy.char.encode()/decode()<br>对元素进行编码/解码</p>
-<p>#五、数学函数</p>
-<p>##1.三角函数<br>在使用三角函数时首先要将数组中元素转化为弧度值(乘 pi/180)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = np.array([0,30,45,60,90])</span><br><span class="line">&gt;&gt;&gt; print(np.sin(a*np.pi/180))</span><br><span class="line">[0.         0.5        0.70710678 0.8660254  1.        ]</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-修改数组的维度"><a href="#3-修改数组的维度" class="headerlink" title="3.修改数组的维度"></a>3.修改数组的维度</h2><p>broadcast        产生模仿广播的对象<br>broadcast_to    将数组广播到新形状<br>expand_dims        扩展数组的形状<br>squeeze            从数组的形状中删除一维条目</p>
+<h2 id="4-连接数组"><a href="#4-连接数组" class="headerlink" title="4.连接数组"></a>4.连接数组</h2><p>concatenate       连接沿现有轴的数组序列<br>stack           沿着新的轴加入一系列数组。<br>hstack           水平堆叠序列中的数组（列方向）<br>vstack           竖直堆叠序列中的数组（行方向）</p>
+<h2 id="5-分割数组"><a href="#5-分割数组" class="headerlink" title="5.分割数组"></a>5.分割数组</h2><p>split    将一个数组分割为多个子数组<br>hsplit    将一个数组水平分割为多个子数组（按列）<br>vsplit    将一个数组垂直分割为多个子数组（按行）</p>
+<h2 id="6-数组元素的添加和删除"><a href="#6-数组元素的添加和删除" class="headerlink" title="6.数组元素的添加和删除"></a>6.数组元素的添加和删除</h2><p>resize     返回指定形状的新数组<br>append     将值添加到数组末尾<br>insert     沿指定轴将值插入到指定下标之前<br>delete     删掉某个轴的子数组，并返回删除后的新数组<br>unique     查找数组内的唯一元素</p>
+<h1 id="四、字符串函数"><a href="#四、字符串函数" class="headerlink" title="四、字符串函数"></a>四、字符串函数</h1><h2 id="1-numpy-char-add"><a href="#1-numpy-char-add" class="headerlink" title="1.numpy.char.add()"></a>1.numpy.char.add()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print(np.char.add([&apos;hello&apos;,&apos;hi&apos;],[&apos; abc&apos;,&apos; xyz&apos;]))</span><br><span class="line">[&apos;hello abc&apos; &apos;hi xyz&apos;]</span><br></pre></td></tr></table></figure>
+<h2 id="2-numpy-char-multiply-多重连接"><a href="#2-numpy-char-multiply-多重连接" class="headerlink" title="2.numpy.char.multiply() 多重连接"></a>2.numpy.char.multiply() 多重连接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print(np.char.multiply(&apos;Runoob&apos;,3))</span><br><span class="line">RunoobRunoobRunoob</span><br></pre></td></tr></table></figure>
+<h2 id="3-numpy-char-center"><a href="#3-numpy-char-center" class="headerlink" title="3.numpy.char.center()"></a>3.numpy.char.center()</h2><p>用于将字符串居中，并使用指定字符在左侧或右侧进行填充<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print(np.char.center(&apos;Runoob &apos;,20,fillchar=&apos;*&apos;))</span><br><span class="line">******Runoob *******</span><br></pre></td></tr></table></figure></p>
+<h2 id="4-numpy-char-capitalize"><a href="#4-numpy-char-capitalize" class="headerlink" title="4.numpy.char.capitalize()"></a>4.numpy.char.capitalize()</h2><p>将字符串的第一个字母转化为大写</p>
+<h2 id="5-numpy-char-title"><a href="#5-numpy-char-title" class="headerlink" title="5.numpy.char.title()"></a>5.numpy.char.title()</h2><p>将字符串的每个单词的首字母转化为大写</p>
+<h2 id="6-numpy-char-lower"><a href="#6-numpy-char-lower" class="headerlink" title="6.numpy.char.lower()"></a>6.numpy.char.lower()</h2><p>对数组的每个元素转化为小写</p>
+<h2 id="7-numpy-char-upper"><a href="#7-numpy-char-upper" class="headerlink" title="7.numpy.char.upper()"></a>7.numpy.char.upper()</h2><p>对数组的每个元素转化为大写</p>
+<h2 id="8-numpy-char-split"><a href="#8-numpy-char-split" class="headerlink" title="8.numpy.char.split()"></a>8.numpy.char.split()</h2><p>通过指定分隔符对字符串进行分割，并返回数组，默认分隔符为空格</p>
+<h2 id="9-numpy-char-splitlines"><a href="#9-numpy-char-splitlines" class="headerlink" title="9.numpy.char.splitlines()"></a>9.numpy.char.splitlines()</h2><p>以换行符作为分隔符来分割字符，并返回数组<br>（\n \r \r\n  都可以视为换行符）</p>
+<h2 id="10-numpy-char-strip"><a href="#10-numpy-char-strip" class="headerlink" title="10.numpy.char.strip()"></a>10.numpy.char.strip()</h2><p>函数用于移除开头或结尾处的特定字符</p>
+<h2 id="11-numpy-char-join"><a href="#11-numpy-char-join" class="headerlink" title="11.numpy.char.join()"></a>11.numpy.char.join()</h2><p>通过指定分隔符来连接</p>
+<h2 id="12-numpy-char-replace"><a href="#12-numpy-char-replace" class="headerlink" title="12.numpy.char.replace()"></a>12.numpy.char.replace()</h2><p>函数使用新字符串替换字符串中所有子字符串</p>
+<h2 id="13-numpy-char-encode-decode"><a href="#13-numpy-char-encode-decode" class="headerlink" title="13. numpy.char.encode()/decode()"></a>13. numpy.char.encode()/decode()</h2><p>对元素进行编码/解码</p>
+<h1 id="五、数学函数"><a href="#五、数学函数" class="headerlink" title="五、数学函数"></a>五、数学函数</h1><h2 id="1-三角函数"><a href="#1-三角函数" class="headerlink" title="1.三角函数"></a>1.三角函数</h2><p>在使用三角函数时首先要将数组中元素转化为弧度值(乘 pi/180)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = np.array([0,30,45,60,90])</span><br><span class="line">&gt;&gt;&gt; print(np.sin(a*np.pi/180))</span><br><span class="line">[0.         0.5        0.70710678 0.8660254  1.        ]</span><br></pre></td></tr></table></figure></p>
 <p>同样也有反三角的函数计算 arcsin，arccos，arctan，这些函数的计算结果可以使用函数numpy.degreess()将结果的弧度转化为角度</p>
-<p>##2.舍入函数<br>numpy.around(a,decimals),decimals 舍入的小数位数，默认值为0，若为负，对小数点左侧的数进行四舍五入</p>
+<h2 id="2-舍入函数"><a href="#2-舍入函数" class="headerlink" title="2.舍入函数"></a>2.舍入函数</h2><p>numpy.around(a,decimals),decimals 舍入的小数位数，默认值为0，若为负，对小数点左侧的数进行四舍五入</p>
 <p>numpy.floor() 向下取整</p>
 <p>numpy.ceil() 向上取整</p>
 
@@ -561,8 +559,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -655,6 +662,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、numpy广播-broadcast"><span class="nav-number">1.</span> <span class="nav-text">一、numpy广播(broadcast)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、numpy迭代数组"><span class="nav-number">2.</span> <span class="nav-text">二、numpy迭代数组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-order"><span class="nav-number">2.1.</span> <span class="nav-text">1.order</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-修改数组中元素的值-op-flags"><span class="nav-number">2.2.</span> <span class="nav-text">2.修改数组中元素的值 op_flags</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-广播迭代"><span class="nav-number">2.3.</span> <span class="nav-text">3.广播迭代</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、数组操作"><span class="nav-number">3.</span> <span class="nav-text">三、数组操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-修改数组形状："><span class="nav-number">3.1.</span> <span class="nav-text">1.修改数组形状：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-翻转数组"><span class="nav-number">3.2.</span> <span class="nav-text">2.翻转数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-修改数组的维度"><span class="nav-number">3.3.</span> <span class="nav-text">3.修改数组的维度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-连接数组"><span class="nav-number">3.4.</span> <span class="nav-text">4.连接数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-分割数组"><span class="nav-number">3.5.</span> <span class="nav-text">5.分割数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-数组元素的添加和删除"><span class="nav-number">3.6.</span> <span class="nav-text">6.数组元素的添加和删除</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、字符串函数"><span class="nav-number">4.</span> <span class="nav-text">四、字符串函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-numpy-char-add"><span class="nav-number">4.1.</span> <span class="nav-text">1.numpy.char.add()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-numpy-char-multiply-多重连接"><span class="nav-number">4.2.</span> <span class="nav-text">2.numpy.char.multiply() 多重连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-numpy-char-center"><span class="nav-number">4.3.</span> <span class="nav-text">3.numpy.char.center()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-numpy-char-capitalize"><span class="nav-number">4.4.</span> <span class="nav-text">4.numpy.char.capitalize()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-numpy-char-title"><span class="nav-number">4.5.</span> <span class="nav-text">5.numpy.char.title()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-numpy-char-lower"><span class="nav-number">4.6.</span> <span class="nav-text">6.numpy.char.lower()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-numpy-char-upper"><span class="nav-number">4.7.</span> <span class="nav-text">7.numpy.char.upper()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-numpy-char-split"><span class="nav-number">4.8.</span> <span class="nav-text">8.numpy.char.split()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-numpy-char-splitlines"><span class="nav-number">4.9.</span> <span class="nav-text">9.numpy.char.splitlines()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-numpy-char-strip"><span class="nav-number">4.10.</span> <span class="nav-text">10.numpy.char.strip()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-numpy-char-join"><span class="nav-number">4.11.</span> <span class="nav-text">11.numpy.char.join()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-numpy-char-replace"><span class="nav-number">4.12.</span> <span class="nav-text">12.numpy.char.replace()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-numpy-char-encode-decode"><span class="nav-number">4.13.</span> <span class="nav-text">13. numpy.char.encode()/decode()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、数学函数"><span class="nav-number">5.</span> <span class="nav-text">五、数学函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-三角函数"><span class="nav-number">5.1.</span> <span class="nav-text">1.三角函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-舍入函数"><span class="nav-number">5.2.</span> <span class="nav-text">2.舍入函数</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
