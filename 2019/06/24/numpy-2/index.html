@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="#一、numpy广播(broadcast)广播是numpy对于不同形状的数组进行数值计算的方式，对数组的算术运算通常在相应的元素上进行。但，如果两个数组ab的形状相同，那么a*b的结果就是a与b数组对应位相乘，这要求维数相同，且各维度的长度也相同1234&amp;gt;&amp;gt;&amp;gt; a = np.array([1,2,3,4])&amp;gt;&amp;gt;&amp;gt; b = np.array([10,20,30,4">
+<meta name="keywords" content="numpy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Numpy相关_2">
+<meta property="og:url" content="https://github.com/Baxlumen/Baxlumens.github.io.git/2019/06/24/numpy-2/index.html">
+<meta property="og:site_name" content="山渐青">
+<meta property="og:description" content="#一、numpy广播(broadcast)广播是numpy对于不同形状的数组进行数值计算的方式，对数组的算术运算通常在相应的元素上进行。但，如果两个数组ab的形状相同，那么a*b的结果就是a与b数组对应位相乘，这要求维数相同，且各维度的长度也相同1234&amp;gt;&amp;gt;&amp;gt; a = np.array([1,2,3,4])&amp;gt;&amp;gt;&amp;gt; b = np.array([10,20,30,4">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-24T03:59:54.514Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Numpy相关_2">
+<meta name="twitter:description" content="#一、numpy广播(broadcast)广播是numpy对于不同形状的数组进行数值计算的方式，对数组的算术运算通常在相应的元素上进行。但，如果两个数组ab的形状相同，那么a*b的结果就是a与b数组对应位相乘，这要求维数相同，且各维度的长度也相同1234&amp;gt;&amp;gt;&amp;gt; a = np.array([1,2,3,4])&amp;gt;&amp;gt;&amp;gt; b = np.array([10,20,30,4">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://github.com/Baxlumen/Baxlumens.github.io.git/2019/06/24/numpy-2/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Numpy相关_2 | 山渐青</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/Baxlumen" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">山渐青</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">这个人很懒，什么也没留下</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Navigationsleiste an/ausschalten">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-首页">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-关于">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-标签">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-成就">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>成就</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-angellist"></i> <br>Commonweal 404</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/Baxlumen/Baxlumens.github.io.git/2019/06/24/numpy-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Baxlumen">
+      <meta itemprop="description" content="半醒半醉日复日，无风无雨年复年">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="山渐青">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Numpy相关_2
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Erstellt: 2019-06-24 11:57:12 / Geändert am: 11:59:54" itemprop="dateCreated datePublished" datetime="2019-06-24T11:57:12+08:00">2019-06-24</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>#一、numpy广播(broadcast)<br>广播是numpy对于不同形状的数组进行数值计算的方式，对数组的算术运算通常在相应的元素上进行。但，如果两个数组ab的形状相同，那么a*b的结果就是a与b数组对应位相乘，这要求维数相同，且各维度的长度也相同<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = np.array([1,2,3,4])</span><br><span class="line">&gt;&gt;&gt; b = np.array([10,20,30,40])</span><br><span class="line">&gt;&gt;&gt; a*b</span><br><span class="line">array([ 10,  40,  90, 160])</span><br></pre></td></tr></table></figure></p>
+<p>当两个数组维度不同的情况下，numpy将自动触发广播机制：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = np.array([[0,0,0],[10,10,10],[20,20,20]])</span><br><span class="line">&gt;&gt;&gt; b = np.array([1,2,3])</span><br><span class="line">&gt;&gt;&gt; a+b </span><br><span class="line">array([[ 1,  2,  3],</span><br><span class="line">       [11, 12, 13],</span><br><span class="line">       [21, 22, 23]])</span><br></pre></td></tr></table></figure></p>
+<p>目前的了解：维度和长度小的那个需要补齐</p>
+<p>#二、numpy迭代数组<br>numpy迭代器对象numpy.nditer</p>
+<p>##1.order<br>提供了一种灵活访问一个或者多个数组元素的方式，迭代器最基本的任务是可以完成对数组元素的访问，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = np.arange(6).reshape(2,3)</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">array([[0, 1, 2],</span><br><span class="line">       [3, 4, 5]])</span><br><span class="line">&gt;&gt;&gt; for x in np.nditer(a):</span><br><span class="line">     print(x,end=&apos;,&apos;) </span><br><span class="line">0,1,2,3,4,5,</span><br></pre></td></tr></table></figure></p>
+<p>选择顺序默认是行序优先 ，for x in np.nditer(a, order=’F’):Fortran order，即是列序优先；for x in np.nditer(a.T, order=’C’):C order，即是行序优先；例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; b </span><br><span class="line">array([[0, 3],</span><br><span class="line">       [1, 4],</span><br><span class="line">       [2, 5]])</span><br><span class="line">&gt;&gt;&gt; for x in np.nditer(b.copy(order=&apos;C&apos;)):</span><br><span class="line">     print(x)</span><br><span class="line"> </span><br><span class="line">0</span><br><span class="line">3</span><br><span class="line">1</span><br><span class="line">4</span><br><span class="line">2</span><br><span class="line">5</span><br></pre></td></tr></table></figure>
+<p>也可以显式的设置，在for语句中设置，例如：for x in np.nditer(a,order=’F’)</p>
+<p>##2.修改数组中元素的值 op_flags<br>在默认情况下，nditer将视迭代遍历的数组为只读对象(read-only)，为了在遍历数组的同时实现对数组元素值得修改，必须指定read-write或者write-only的模式，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = np.arange(0,60,5)</span><br><span class="line">&gt;&gt;&gt; a = a.reshape(3,4)</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">array([[ 0,  5, 10, 15],</span><br><span class="line">       [20, 25, 30, 35],</span><br><span class="line">       [40, 45, 50, 55]])</span><br><span class="line">&gt;&gt;&gt; for x in np.nditer(a,op_flags=[&apos;readwrite&apos;]):</span><br><span class="line">     x[...] = 2*x   #注意这里的写法 </span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">array([[  0,  10,  20,  30],</span><br><span class="line">       [ 40,  50,  60,  70],</span><br><span class="line">       [ 80,  90, 100, 110]])</span><br></pre></td></tr></table></figure></p>
+<p>其中的flags还有其他的参数：<br>c_index            可以跟踪 C 顺序的索引<br>f_index            可以跟踪 Fortran 顺序的索引<br>multi-index        每次迭代可以跟踪一种索引类型<br>external_loop    给出的值是具有多个值的一维数组，而不是零维数组</p>
+<p>例如对于external_loop的使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = np.arange(0,60,5).reshape(3,4)</span><br><span class="line">&gt;&gt;&gt; for x in np.nditer(a,flags=[&apos;external_loop&apos;],order=&apos;F&apos;):</span><br><span class="line">     print(x,end=&apos;,&apos;)</span><br><span class="line"> </span><br><span class="line">[ 0 20 40],[ 5 25 45],[10 30 50],[15 35 55],</span><br><span class="line">本来是输出一个个的数字，但是flags设置后，就按F(列)形成一个个一维数组</span><br></pre></td></tr></table></figure></p>
+<p>##3.广播迭代<br>如果两个数组是可广播的，nditer组合对象能够同时迭代他们，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = np.arange(0,60,5).reshape(3,4)</span><br><span class="line">&gt;&gt;&gt; b = np.array([1,2,3,4],dtype=int )</span><br><span class="line">&gt;&gt;&gt; for x,y in np.nditer([a,b]):</span><br><span class="line">     print(&apos;%d:%d&apos;%(x,y),end=&apos;,&apos;)</span><br><span class="line"> </span><br><span class="line">0:1,5:2,10:3,15:4,20:1,25:2,30:3,35:4,40:1,45:2,50:3,55:4,</span><br></pre></td></tr></table></figure></p>
+<p>#三、数组操作<br>numpy中包含了几种数组操作，大概可以分为：修改数组形状、翻转数组、修改维度、连接数组、分割数组、数组元素的添加和删除</p>
+<p>##1.修改数组形状：<br>reshape         不改变数据的条件下修改形状（默认按行）<br>flat         数组元素迭代器(例如一个2x2的数组，普通的迭代时以行为单位，一行一行的，a.flat是以元素为单位)<br>flatten         返回一份数组拷贝，对拷贝所做的修改不会影响原始数组<br>ravel         返回展开数组(变成一维)</p>
+<p>##2.翻转数组<br>transpose     对换数组的维度<br>ndarray.T     和 self.transpose() 相同<br>rollaxis     向后滚动指定的轴，其他轴相对位置不变<br>swapaxes     对换数组的两个轴</p>
+<p>注：(1)这里的transpose()，里面参数可以是一个整数列表，对应维度的变化，例如transpose(1,0,2),原来是0，1，2，现在是1，0，2，也就是说3维数组的下标前两位交换位置，但是对数组a调用numpy.transpose(a)，这就相当于是a.T了<br>(2)关于rollaxis()，原型为rollaxis(arr,axis,start),其中，arr为数组，axis为要向后滚动的轴，start默认为0，表示完整的滚动。指定滚动到的位置<br>(3)关于swapaxes(arr,axis1,axis2)这个函数与rollaxis的区别，前者是直接调换，相对位置都会变动，后者是滚动，其他元素的相对位置不会变</p>
+<p>##3.修改数组的维度<br>broadcast        产生模仿广播的对象<br>broadcast_to    将数组广播到新形状<br>expand_dims        扩展数组的形状<br>squeeze            从数组的形状中删除一维条目</p>
+<p>##4.连接数组<br>concatenate       连接沿现有轴的数组序列<br>stack           沿着新的轴加入一系列数组。<br>hstack           水平堆叠序列中的数组（列方向）<br>vstack           竖直堆叠序列中的数组（行方向）</p>
+<p>##5.分割数组<br>split    将一个数组分割为多个子数组<br>hsplit    将一个数组水平分割为多个子数组（按列）<br>vsplit    将一个数组垂直分割为多个子数组（按行）</p>
+<p>##6.数组元素的添加和删除<br>resize     返回指定形状的新数组<br>append     将值添加到数组末尾<br>insert     沿指定轴将值插入到指定下标之前<br>delete     删掉某个轴的子数组，并返回删除后的新数组<br>unique     查找数组内的唯一元素</p>
+<p>#四、字符串函数</p>
+<p>##1.numpy.char.add()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print(np.char.add([&apos;hello&apos;,&apos;hi&apos;],[&apos; abc&apos;,&apos; xyz&apos;]))</span><br><span class="line">[&apos;hello abc&apos; &apos;hi xyz&apos;]</span><br></pre></td></tr></table></figure></p>
+<p>##2.numpy.char.multiply() 多重连接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print(np.char.multiply(&apos;Runoob&apos;,3))</span><br><span class="line">RunoobRunoobRunoob</span><br></pre></td></tr></table></figure></p>
+<p>##3.numpy.char.center()<br>用于将字符串居中，并使用指定字符在左侧或右侧进行填充<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; print(np.char.center(&apos;Runoob &apos;,20,fillchar=&apos;*&apos;))</span><br><span class="line">******Runoob *******</span><br></pre></td></tr></table></figure></p>
+<p>##4.numpy.char.capitalize()<br>将字符串的第一个字母转化为大写</p>
+<p>##5.numpy.char.title()<br>将字符串的每个单词的首字母转化为大写</p>
+<p>##6.numpy.char.lower()<br>对数组的每个元素转化为小写</p>
+<p>##7.numpy.char.upper()<br>对数组的每个元素转化为大写</p>
+<p>##8.numpy.char.split()<br>通过指定分隔符对字符串进行分割，并返回数组，默认分隔符为空格</p>
+<p>##9.numpy.char.splitlines()<br>以换行符作为分隔符来分割字符，并返回数组<br>（\n \r \r\n  都可以视为换行符）</p>
+<p>##10.numpy.char.strip()<br>函数用于移除开头或结尾处的特定字符</p>
+<p>##11.numpy.char.join()<br>通过指定分隔符来连接</p>
+<p>##12.numpy.char.replace()<br>函数使用新字符串替换字符串中所有子字符串</p>
+<p>##13. numpy.char.encode()/decode()<br>对元素进行编码/解码</p>
+<p>#五、数学函数</p>
+<p>##1.三角函数<br>在使用三角函数时首先要将数组中元素转化为弧度值(乘 pi/180)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = np.array([0,30,45,60,90])</span><br><span class="line">&gt;&gt;&gt; print(np.sin(a*np.pi/180))</span><br><span class="line">[0.         0.5        0.70710678 0.8660254  1.        ]</span><br></pre></td></tr></table></figure></p>
+<p>同样也有反三角的函数计算 arcsin，arccos，arctan，这些函数的计算结果可以使用函数numpy.degreess()将结果的弧度转化为角度</p>
+<p>##2.舍入函数<br>numpy.around(a,decimals),decimals 舍入的小数位数，默认值为0，若为负，对小数点左侧的数进行四舍五入</p>
+<p>numpy.floor() 向下取整</p>
+<p>numpy.ceil() 向上取整</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/numpy/" rel="tag"># numpy</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/24/numpy-1/" rel="next" title="Numpy相关_1">
+                <i class="fa fa-chevron-left"></i> Numpy相关_1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/24/numpy-3/" rel="prev" title="numpy相关_3">
+                numpy相关_3 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Baxlumen">
+            
+              <p class="site-author-name" itemprop="name">Baxlumen</p>
+              <div class="site-description motion-element" itemprop="description">半醒半醉日复日，无风无雨年复年</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-name">Artikel</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">schlagwörter</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/Baxlumen" title="GitHub &rarr; https://github.com/Baxlumen"><i class="fa fa-fw fa-globe"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="298" height="52" src="//music.163.com/outchain/player?type=0&id=2021488376&auto=0&height=32"></iframe>
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Baxlumen</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Design – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+ <script src="/live2d-widget/autoload.js"></script>
+</body>
+</html>
