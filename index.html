@@ -346,6 +346,340 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/Baxlumen/Baxlumens.github.io.git/2019/08/31/CUDA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Baxlumen">
+      <meta itemprop="description" content="半醒半醉日复日，无风无雨年复年">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="山渐青">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/31/CUDA/" class="post-title-link" itemprop="url">High Performance Computing with GPU</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Erstellt: 2019-08-31 16:19:59 / Geändert am: 16:28:31" itemprop="dateCreated datePublished" datetime="2019-08-31T16:19:59+08:00">2019-08-31</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>High Performance Computing with GPU</p>
+<h1 id="Part-I-Introduction-to-GPU"><a href="#Part-I-Introduction-to-GPU" class="headerlink" title="Part I Introduction to GPU"></a>Part I Introduction to GPU</h1><h2 id="1、GPU的发展"><a href="#1、GPU的发展" class="headerlink" title="1、GPU的发展"></a>1、GPU的发展</h2><h3 id="1-1-GPU与GPGPU"><a href="#1-1-GPU与GPGPU" class="headerlink" title="1.1 GPU与GPGPU"></a>1.1 GPU与GPGPU</h3><p>GPU，图形处理器，发展速度超过CPU，不仅具有高质量和高性能的图形处理能力，还可以用于通用计算。<br>用于通用计算的GPU，即GPGPU</p>
+<h3 id="1-2、GPU的发展阶段"><a href="#1-2、GPU的发展阶段" class="headerlink" title="1.2、GPU的发展阶段"></a>1.2、GPU的发展阶段</h3><p>略</p>
+<h2 id="2、GPU与CPU的比较"><a href="#2、GPU与CPU的比较" class="headerlink" title="2、GPU与CPU的比较"></a>2、GPU与CPU的比较</h2><h3 id="2-1、单核时代的摩尔定律"><a href="#2-1、单核时代的摩尔定律" class="headerlink" title="2.1、单核时代的摩尔定律"></a>2.1、单核时代的摩尔定律</h3><p>CPU的时钟频率每18个月翻一番；CPU的制造工艺逐渐接近物理极限；功耗和发热成为巨大的障碍</p>
+<h3 id="2-2、GPU是多核技术的代表之一"><a href="#2-2、GPU是多核技术的代表之一" class="headerlink" title="2.2、GPU是多核技术的代表之一"></a>2.2、GPU是多核技术的代表之一</h3><p>在每一块芯片上集成多个较低功耗的核心；单个核芯频率基本不变(一般在1-3GHz)；设计中心转向到多核的集成技术；GPU是一种特殊的多核处理器</p>
+<h3 id="2-3、GPGPU的优势"><a href="#2-3、GPGPU的优势" class="headerlink" title="2.3、GPGPU的优势"></a>2.3、GPGPU的优势</h3><p>CPU：更多的资源用于缓存和逻辑控制<br>GPU：更多的资源用于计算，适用于高并行性、大规模数据密集型、可预测的计算模式<br>(相比于CPU，GPU内有多个ALU 逻辑运算单元)</p>
+<h1 id="Part-II-GPU-Architecture"><a href="#Part-II-GPU-Architecture" class="headerlink" title="Part II GPU Architecture"></a>Part II GPU Architecture</h1><h2 id="1、已有的两类GPU结构"><a href="#1、已有的两类GPU结构" class="headerlink" title="1、已有的两类GPU结构"></a>1、已有的两类GPU结构</h2><h3 id="1-1、支持通用计算的两类GPU结构"><a href="#1-1、支持通用计算的两类GPU结构" class="headerlink" title="1.1、支持通用计算的两类GPU结构"></a>1.1、支持通用计算的两类GPU结构</h3><p>基于流处理器阵列的主流GPU结构，基于通用计算核心的GPU结构。前者相对于后者具有更高的聚合计算性能，后者在可编程性上具有巨大优势</p>
+<h2 id="2、存储器层次结构"><a href="#2、存储器层次结构" class="headerlink" title="2、存储器层次结构"></a>2、存储器层次结构</h2><h2 id="3、线程组织结构"><a href="#3、线程组织结构" class="headerlink" title="3、线程组织结构"></a>3、线程组织结构</h2><h3 id="3-1-CUDA中的线程层次"><a href="#3-1-CUDA中的线程层次" class="headerlink" title="3.1 CUDA中的线程层次"></a>3.1 CUDA中的线程层次</h3><p>(CUDA是NVIDIA推出的运算平台，通用并行计算架构，该架构使GPU能够解决复杂的计算问题，它包含了CUDA指令集架构以及GPU内部的并行计算引擎)<br>线程：CUDA中的基本执行单元；硬件支持，开销很小；所有线程执行相同的代码(STMD)<br>线程块：若干线程组成线程块(block,每个块至多512个线程)；线程块可以呈一维、二维或者三维结构；每个线程块分为若干组(称为warp)，每个warp包含32个线程，物理上以SIMD方式并行。<br>线程网络：若干线程块可以组成网络(grid);Grid可以是一维或二维结构。</p>
+<h3 id="3-2线程块ID和线程ID"><a href="#3-2线程块ID和线程ID" class="headerlink" title="3.2线程块ID和线程ID"></a>3.2线程块ID和线程ID</h3><p>线程ID：a)local id：线程ID在一个block里   b)global id:线程id在一个grid里<br>每一个线程使用ID来决定要处理的数据</p>
+<h3 id="3-3线程块中的线程合作"><a href="#3-3线程块中的线程合作" class="headerlink" title="3.3线程块中的线程合作"></a>3.3线程块中的线程合作</h3><p>线程是通过共享内存在block中协作的，而在不同的block中是不能狗协作的</p>
+<h2 id="4、同步"><a href="#4、同步" class="headerlink" title="4、同步"></a>4、同步</h2><h3 id="4-1、CPU与GPU之间的同步"><a href="#4-1、CPU与GPU之间的同步" class="headerlink" title="4.1、CPU与GPU之间的同步"></a>4.1、CPU与GPU之间的同步</h3><p>CPU的启动内核kernel是异步的，即当CPU启动GPU执行kernel时，CPU并不等待GPU完成就立即返回，继续执行后面的代码。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kernel &lt;&lt;&lt;gridDim,blockDim&gt;&gt;&gt;(arg1,arg2);</span><br><span class="line">c=a+b</span><br></pre></td></tr></table></figure></p>
+<p>CPU在调用kernel后，就接着执行后面的a+b，而GPU在执行kernel函数，此时CPU与GPU是完全的并行工作。如果CPU在接下来的操作中需要用到GPU的计算结果，则CPU必须阻塞等待GPU执行完毕，可在kernel后添加一条同步语句实现。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kernel&lt;&lt;&lt;gridDim,blockDim&gt;&gt;&gt;(arg1,arg2)</span><br><span class="line">cudaThreadSynchronize(); //实现CPU与GPU之间的同步</span><br><span class="line">c=a+b</span><br></pre></td></tr></table></figure></p>
+<h3 id="4-2、同一个block内的同步"><a href="#4-2、同一个block内的同步" class="headerlink" title="4.2、同一个block内的同步"></a>4.2、同一个block内的同步</h3><p>前面提到，同一个block内的线程可以通过    shared memory共享数据。此外，同一个block内的线程还可以快速同步<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">__global__ void kernel(arg1,arg2)</span><br><span class="line">&#123;</span><br><span class="line">	int tid=threadldx.x;</span><br><span class="line">	...</span><br><span class="line">	__syncthreads();  //此函数用于实现同一个人块内的线程</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>只有当块内的所有线程都到达函数 syncthreads()时才会继续向下进行</p>
+<h3 id="4-3、不同的block之间的同步"><a href="#4-3、不同的block之间的同步" class="headerlink" title="4.3、不同的block之间的同步"></a>4.3、不同的block之间的同步</h3><p>同一个grid中的不同block之间不能同步，即CUDA运行时库中没有提供此类函数，但是可以通过终止一个kernel来实现同步。</p>
+<h1 id="PartIII-CUDA-Programming"><a href="#PartIII-CUDA-Programming" class="headerlink" title="PartIII CUDA Programming"></a>PartIII CUDA Programming</h1><h2 id="1-CUDA软件架构"><a href="#1-CUDA软件架构" class="headerlink" title="1.CUDA软件架构"></a>1.CUDA软件架构</h2><p>三个部分：(1)开发库(CUDA Library)，目前包括两个标准的数学运算库CUFFT和CUBLAS<br>         (2)运行时环境(CUDA Runtime)，提供开发接口和运行时的组件，包括基本数据类型的定义和各类计算、内存管理、设备访问和执行调度等函数。<br>         (3)驱动(CUDA Driver)，提供了GPU抽象级的访问接口，是的同一个CUDA应用可以    正确运行在所有支持CUDA的不同硬件上</p>
+<h2 id="2-CUDA编程语言"><a href="#2-CUDA编程语言" class="headerlink" title="2.CUDA编程语言"></a>2.CUDA编程语言</h2><p>以C语言为主，增加了若干定义和指令</p>
+<h3 id="2-1、函数限定符"><a href="#2-1、函数限定符" class="headerlink" title="2.1、函数限定符"></a>2.1、函数限定符</h3><p>函数类型限定符需要指定函数的执行位置(主机或设备)和函数调用者(通过主机或通过设备)；在设备上执行的函数受到一些限制，如函数参数的数目固定，无法声明静态变量，不支持递归调用等等；用<em>global</em>限定符定义的函数是从主机上调用设备函数的唯一方式，其调用是异步的，即立即返回。<br>函数限定符    在何处执行    从何处调用     特性<br><em>device</em>        设备          设备      函数地址无法获取<br><em>global</em>        设备          主机      返回类型必须为空<br><em>host</em>          主机          主机      等同于不使用任何限定符</p>
+<h3 id="2-3、变量限定符"><a href="#2-3、变量限定符" class="headerlink" title="2.3、变量限定符"></a>2.3、变量限定符</h3><p>shared 限定符声明的变量只有在线程同步执行之后，才能保证共享变量对其他线程的正确性。<br>不带限定符的变量通常位于寄存器中。若寄存器不足，则置于本地存储器中。<br>限定符     位于何处        可以访问的线程            主机访问<br><em>device</em>   全局存储器  线程网格内的所有线程      通过运行时库访问<br><em>constant</em> 固定存储器  线程网格内的所有线程      通过运行时库访问<br><em>shared</em>   共享存储器  线程块内的所有线程        不可从主机访问</p>
+<p>主机可以访问的变量：全局存储器，常量存储器<br>主机不可以访问的变量：寄存器、共享存储器、本地存储器</p>
+<h3 id="2-3、内置的向量类型"><a href="#2-3、内置的向量类型" class="headerlink" title="2.3、内置的向量类型"></a>2.3、内置的向量类型</h3><p>内置的向量类型都是结构体，用(u)+基本数据结构类型+数字1-4组成，例如char2,uint3,ulong4等。<br>特殊类型dim3，基本等同于uint3，区别只在与定义变量dim3变量时，未指定的分量都自动初始化为1。一般用于定义线程块和线程网格的大小。</p>
+<h3 id="2-4、常用的内置变量"><a href="#2-4、常用的内置变量" class="headerlink" title="2.4、常用的内置变量"></a>2.4、常用的内置变量</h3><p>内置变量   类型        含义<br>gridDim   dim3    线程网格的维度<br>blockDim  dim3    线程块的维度<br>blockldx  uint3   线程网格内块的索引<br>threadldx uint3   线程块内线程的索引<br>warpSize  int     一个warp块内包含的线程数</p>
+<h2 id="3、内核函数"><a href="#3、内核函数" class="headerlink" title="3、内核函数"></a>3、内核函数</h2><h3 id="3-1、内核函数-Kernel"><a href="#3-1、内核函数-Kernel" class="headerlink" title="3.1、内核函数(Kernel)"></a>3.1、内核函数(Kernel)</h3><p>内核函数是特殊的一种函数，是从主机调用设备代码唯一的接口，相当于显卡环境中的主函数。<br>内核函数的参数被通过共享存储器传递，从而造成可用的共享存储器空间减少(一般减少100字节以内)。<br>内核函数使用<em>global</em>函数限定符声明，返回值为空<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">_global_ void KernelDemo(float*a.float*b,float*c)</span><br><span class="line">&#123;</span><br><span class="line">	int i =threadldx.x</span><br><span class="line">	c[i] = a[i] + b[i]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-2、内核函数-kernel-的调用"><a href="#3-2、内核函数-kernel-的调用" class="headerlink" title="3.2、内核函数(kernel)的调用"></a>3.2、内核函数(kernel)的调用</h3><p>调用内核函数需要使用KernelName&lt;&lt;&lt;&gt;&gt;&gt;()的方式。<br>&lt;&lt;&lt;&gt;&gt;&gt;  内的参数用于指定执行内核函数的配置，包括线程网络，线程块的维度，以及需求的共享内存大小，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;DimGrid,DimBlock,MenSize&gt;&gt;&gt;</span><br><span class="line">//DimGrid(dim3类型)，用于指定网络的两个维度，第三维被忽略</span><br><span class="line">//DimBlock(dim3类型)，指定线程块的三个维度</span><br><span class="line">//MemSize(size_t类型)，指定为此内核调用需要动态分配的共享存储器大小</span><br></pre></td></tr></table></figure></p>
+<p>若当前硬件无法满足用户指定的配置，则内核函数不会被执行，直接返回错误信息。</p>
+<h3 id="3-3、内核调用实例"><a href="#3-3、内核调用实例" class="headerlink" title="3.3、内核调用实例"></a>3.3、内核调用实例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">_global_ void KernelDemo(float*a,float*b,float*c) //内核定义</span><br><span class="line">&#123;</span><br><span class="line">	int i = threadldx.x;</span><br><span class="line">	c[i] = a[i] + b[i];</span><br><span class="line">&#125;</span><br><span class="line">int main()//主函数</span><br><span class="line">&#123;</span><br><span class="line">	dim3 dimGrid(1,1,1);</span><br><span class="line">	dim3 dimBlock(100,1,1);</span><br><span class="line">	KernelDemo&lt;&lt;&lt;dimGrid,dimBlock,1024&gt;&gt;&gt;(a,b,c); //调用内核</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4、运行时API"><a href="#4、运行时API" class="headerlink" title="4、运行时API"></a>4、运行时API</h2><h3 id="4-1-运行时API"><a href="#4-1-运行时API" class="headerlink" title="4.1 运行时API"></a>4.1 运行时API</h3><p>设备管理：<br>·cudaGetDeviceCount():获得可用GPU设备的数目<br>·cudaGetDeviceProperties():得到相关的硬件属性<br>·使用cudaSetDevice():选择本次计算使用的设备<br>·默认使用第一个可用的GPU设备，即device 0</p>
+<p>内存管理：<br>·cudaMalloc()：分配线性存储空间<br>·cudaFree():释放分配的空间<br>·cudaMemcpy():内存拷贝<br>·cudaMallocPitch():分配二维数组空间并自动对齐<br>·cudaMemcpyToSymbol():将主机上的一块数据复制到GPU上的固定存储器</p>
+<h3 id="4-2、内存拷贝cudaMemcpy"><a href="#4-2、内存拷贝cudaMemcpy" class="headerlink" title="4.2、内存拷贝cudaMemcpy()"></a>4.2、内存拷贝cudaMemcpy()</h3><p>由于主机内存和设备内存是完全不同的两个内存空间，因此必须严格指定数据所在的位置。<br>四种不同的传输方式：<br>·主机到主机(Host To Host)<br>·主机到设备(Host To Device)<br>·设备到主机<br>·设备到设备<br>其中主机到设备和设备到主机的传输需要经过主板上的PCI-E总线接口，一般带宽在1-2GB/s左右。而设备到设备的带宽可达40GB/s以上</p>
+<h3 id="4-3、计时函数"><a href="#4-3、计时函数" class="headerlink" title="4.3、计时函数"></a>4.3、计时函数</h3><p>CUDA自带一个精确的计时函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">unsigned int timer = 0;</span><br><span class="line">CUT_SAFE_CALL(cutCreateTimer(&amp;timer));//定义计时器</span><br><span class="line">cudaThreadSynchronize;// CPU与GPU的同步</span><br><span class="line">CUT_SAFE_CALL(cutStartTimer(timer));//计时器启动</span><br><span class="line"></span><br><span class="line">CudaKernel&lt;&lt;&lt;dimGrid,dimBlock,memsize&gt;&gt;&gt;();//GPU计算</span><br><span class="line"></span><br><span class="line">cudaThreadSynchronize(); //等待计算完成</span><br><span class="line">CUT_SAFE_CALL(cutStopTimer(timer));计时器停止</span><br><span class="line">float timecost=cutGetAverageTimerValue(timer);//获得计时结果</span><br><span class="line">printf(&quot;CUDA time %.3fms\n&quot;,timecost);</span><br></pre></td></tr></table></figure></p>
+<h2 id="5、CUDA的程序结构"><a href="#5、CUDA的程序结构" class="headerlink" title="5、CUDA的程序结构"></a>5、CUDA的程序结构</h2><p>(大概含义)一些连续的或者相对简单的部分在host上；复杂的部分在device上。</p>
+<h3 id="5-1、CUDA程序生命周期"><a href="#5-1、CUDA程序生命周期" class="headerlink" title="5.1、CUDA程序生命周期"></a>5.1、CUDA程序生命周期</h3><p>(1)主机代码执行<br>(2)传输数据到GPU<br>(3)GPU执行<br>(4)传输数据回CPU<br>(5)继续主机代码执行<br>(6)结束<br>如果有多个内核函数，需要重复2-4步</p>
+<h3 id="5-2、一个典型的CUDA程序"><a href="#5-2、一个典型的CUDA程序" class="headerlink" title="5.2、一个典型的CUDA程序"></a>5.2、一个典型的CUDA程序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Main()&#123; //主函数</span><br><span class="line">float*Md;</span><br><span class="line">cudaMalloc((void**)&amp;Md,size);//在GPU上分配空间</span><br><span class="line">//从CPU复制数据到GPU</span><br><span class="line">cudaMemcpy(Md,M,size,cudaMemcpyHostToDevice);</span><br><span class="line"></span><br><span class="line">//调用内核函数</span><br><span class="line">kernel&lt;&lt;&lt;dimGrid,dimBlock&gt;&gt;&gt;(arguments);</span><br><span class="line"></span><br><span class="line">//从GPU将结果复制回CPU</span><br><span class="line">CopyFromDeviceMatrix(M,Md);</span><br><span class="line">FreeDeviceMatrix(Md);//释放GPU上分配的空间</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/Baxlumen/Baxlumens.github.io.git/2019/08/16/MachineLearning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Baxlumen">
+      <meta itemprop="description" content="半醒半醉日复日，无风无雨年复年">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="山渐青">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/16/MachineLearning/" class="post-title-link" itemprop="url">MachineLearning笔记-1</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Erstellt: 2019-08-16 16:31:23" itemprop="dateCreated datePublished" datetime="2019-08-16T16:31:23+08:00">2019-08-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Bearbeitet am</span>
+                
+                <time title="Geändert am: 2019-08-23 18:16:26" itemprop="dateModified" datetime="2019-08-23T18:16:26+08:00">2019-08-23</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="一、引言-Introduction"><a href="#一、引言-Introduction" class="headerlink" title="一、引言(Introduction)"></a>一、引言(Introduction)</h1><h2 id="1、什么是MachineLearning"><a href="#1、什么是MachineLearning" class="headerlink" title="1、什么是MachineLearning"></a>1、什么是MachineLearning</h2><p> ·Arthur Samuel(1959). Macine Learning:Field of study that gives computers the ability to learn without being explicitly programmed</p>
+<p> ·另一个人对于其定义是：一个程序被认为是从经验E中学习，解决任务T，达到性能度量值P，当且仅当有了经验E后，经过P评判，程序在处理T时的性能有所提升。</p>
+<p>对于机器学习有许多算法，大致分为两类：监督学习(supervised learning)与非监督学习。监督学习是指我们主动去教计算机如何完成任务；非监督学习是我们打算让计算机自己去学习如何解决任务</p>
+<h2 id="2、监督学习-Supervised-Learning"><a href="#2、监督学习-Supervised-Learning" class="headerlink" title="2、监督学习 Supervised Learning"></a>2、监督学习 Supervised Learning</h2><p>监督学习是指：利用一组已知类别的样本调整分类器的参数，使其达到所要求性能的过程，也成为监督训练或教师学习。大致可分为：回归问题，分类问题。<br>(根据已知的数据集去预测)</p>
+<h2 id="3、无监督学习-Unsupervised-Learning"><a href="#3、无监督学习-Unsupervised-Learning" class="headerlink" title="3、无监督学习 Unsupervised Learning"></a>3、无监督学习 Unsupervised Learning</h2><p>如果说监督学习是已知一个数据集，对于其中的每个数据都知道它的”标签”(比如肿瘤是良性还是恶性)。但是对于无监督学习，已知一个数据集，但是没有任何标签或<br>者都是相同的标签(也就是无法分辨)。无监督学习能够判断出数据集有两个不同的聚集簇(聚类算法)</p>
+<p>举例 鸡尾酒会问题：<br>一个环境中有两个人，两个麦克风，每个麦克风与两个人的距离不同。两人同时发出声音，麦克风会收录进两个人的声音。通过非监督学习的算法，将这两个人的声音给区别出来。<br>(也就是相当于给出一个数据集，通过非监督学习来分类)<br>可以用的代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[W,s,v] = svd((repmat(sum(x.*x,1),size(x,1),1).*x)*x&apos;); %svd 奇异值分解</span><br></pre></td></tr></table></figure></p>
+<h1 id="二、单变量线性回归-Linear-regression-with-One-Variable"><a href="#二、单变量线性回归-Linear-regression-with-One-Variable" class="headerlink" title="二、单变量线性回归(Linear regression with One Variable)"></a>二、单变量线性回归(Linear regression with One Variable)</h1><h2 id="1、模型表示"><a href="#1、模型表示" class="headerlink" title="1、模型表示"></a>1、模型表示</h2>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://github.com/Baxlumen/Baxlumens.github.io.git/2019/06/24/numpy-4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -391,7 +725,7 @@
                 
               
 
-              <time title="Erstellt: 2019-06-24 11:57:23 / Geändert am: 13:19:11" itemprop="dateCreated datePublished" datetime="2019-06-24T11:57:23+08:00">2019-06-24</time>
+              <time title="Erstellt: 2019-06-24 11:57:23 / Geändert am: 14:58:03" itemprop="dateCreated datePublished" datetime="2019-06-24T11:57:23+08:00">2019-06-24</time>
             
 
             
@@ -540,7 +874,7 @@
                 
               
 
-              <time title="Erstellt: 2019-06-24 11:57:19 / Geändert am: 13:22:20" itemprop="dateCreated datePublished" datetime="2019-06-24T11:57:19+08:00">2019-06-24</time>
+              <time title="Erstellt: 2019-06-24 11:57:19 / Geändert am: 20:02:04" itemprop="dateCreated datePublished" datetime="2019-06-24T11:57:19+08:00">2019-06-24</time>
             
 
             
@@ -838,7 +1172,7 @@
                 
               
 
-              <time title="Erstellt: 2019-06-24 11:55:10 / Geändert am: 13:19:58" itemprop="dateCreated datePublished" datetime="2019-06-24T11:55:10+08:00">2019-06-24</time>
+              <time title="Erstellt: 2019-06-24 11:55:10 / Geändert am: 13:22:46" itemprop="dateCreated datePublished" datetime="2019-06-24T11:55:10+08:00">2019-06-24</time>
             
 
             
@@ -878,7 +1212,7 @@
 
       
         
-          <h1 id="一、numpy的ndarray对象"><a href="#一、numpy的ndarray对象" class="headerlink" title="一、numpy的ndarray对象"></a>一、numpy的ndarray对象</h1><p>numpy最重要的一个特点是其N维数组对象ndarray，他是乙烯类同类型数据的集合，以0下标为开始进行集合中元素的索引。<br>ndarray对象是用于存放同类型元素的多维数组，每个元素在内存中都有相同存储大小的区域，内容组成包括：<br>1.一个指向数据(内存或内存映射文件中的一块数据)的指针<br></p>
+          <h1 id="一、numpy的ndarray对象"><a href="#一、numpy的ndarray对象" class="headerlink" title="一、numpy的ndarray对象"></a>一、numpy的ndarray对象</h1><p>numpy最重要的一个特点是其N维数组对象ndarray，他是乙烯类同类型数据的集合，以0下标为开始进行集合中元素的索引。<br></p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -1286,12 +1620,24 @@
                 
               
 
-              <time title="Erstellt: 2019-06-03 20:05:05 / Geändert am: 20:09:04" itemprop="dateCreated datePublished" datetime="2019-06-03T20:05:05+08:00">2019-06-03</time>
+              <time title="Erstellt: 2019-06-03 20:05:05" itemprop="dateCreated datePublished" datetime="2019-06-03T20:05:05+08:00">2019-06-03</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Bearbeitet am</span>
+                
+                <time title="Geändert am: 2019-08-31 16:28:27" itemprop="dateModified" datetime="2019-08-31T16:28:27+08:00">2019-08-31</time>
               
             
           </span>
@@ -1326,8 +1672,7 @@
 
       
         
-          <p>#实现虚拟茶话会</p>
-<p>##问题1：关于客户端的问题。<br>在WIN7中，需要手动打开telnet的客户端与服务端。但是在WIN10里，只有telnet的客户端，这是不能使用的，还需要自己安装telnet的服务器才行，安装到网上查找即可（我当然有资源啊，求我啊~）然后再cmd里输入telnet IP PORT即可；<br></p>
+          <h1 id="实现虚拟茶话会"><a href="#实现虚拟茶话会" class="headerlink" title="实现虚拟茶话会"></a>实现虚拟茶话会</h1><h2 id="问题1：关于客户端的问题。"><a href="#问题1：关于客户端的问题。" class="headerlink" title="问题1：关于客户端的问题。"></a>问题1：关于客户端的问题。</h2><p>在WIN7中，需要手动打开telnet的客户端与服务端。但是在WIN10里，只有telnet的客户端，这是不能使用的，还需要自己安装telnet的服务器才行，安装到网上查找即可（我当然有资源啊，求我啊~）然后再cmd里输入telnet IP PORT即可；<br></p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -1436,12 +1781,24 @@
                 
               
 
-              <time title="Erstellt: 2019-05-28 22:27:05 / Geändert am: 22:29:57" itemprop="dateCreated datePublished" datetime="2019-05-28T22:27:05+08:00">2019-05-28</time>
+              <time title="Erstellt: 2019-05-28 22:27:05" itemprop="dateCreated datePublished" datetime="2019-05-28T22:27:05+08:00">2019-05-28</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Bearbeitet am</span>
+                
+                <time title="Geändert am: 2019-08-31 16:28:29" itemprop="dateModified" datetime="2019-08-31T16:28:29+08:00">2019-08-31</time>
               
             
           </span>
@@ -1476,7 +1833,7 @@
 
       
         
-          <p>#问题1<br>使用selenium模块来爬取贴吧的一些图片，首先得问题是需要获取到图片元素，但是，要想获取元素，必须要等待get函数执行完毕；get函数要想执行完毕，就需要输入账户密码，否则会<br></p>
+          <h1 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h1><p>使用selenium模块来爬取贴吧的一些图片，首先得问题是需要获取到图片元素，但是，要想获取元素，必须要等待get函数执行完毕；get函数要想执行完毕，就需要输入账户密码，否则会<br></p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -1525,296 +1882,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/Baxlumen/Baxlumens.github.io.git/2019/05/27/PaCExample-3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Baxlumen">
-      <meta itemprop="description" content="半醒半醉日复日，无风无雨年复年">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="山渐青">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/27/PaCExample-3/" class="post-title-link" itemprop="url">爬取某个网站的小视频</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Erstellt: 2019-05-27 11:05:59 / Geändert am: 11:18:01" itemprop="dateCreated datePublished" datetime="2019-05-27T11:05:59+08:00">2019-05-27</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>爬取了某个网站的一些小视频，主要使用的是selenium模块，然后模拟人去访问网站，通过xpath来获取元素，获得视频的href，最后使用requests模块来下载<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">from selenium import webdriver</span><br><span class="line">import os</span><br><span class="line">import requests</span><br><span class="line">import time</span><br><span class="line">#用它控制浏览器</span><br><span class="line">driver = webdriver.Chrome()</span><br><span class="line">#打开一个网页</span><br><span class="line">driver.get(&apos;某个url&apos;)</span><br><span class="line">time.sleep(3)</span><br><span class="line">#元素定位</span><br><span class="line">hrefs=driver.find_elements_by_xpath(&quot;//div[@class=&apos;fileText&apos;]/a&quot;)</span><br><span class="line">os.chdir(&apos;video&apos;)</span><br><span class="line">v_list=[]</span><br><span class="line">for href in hrefs:</span><br><span class="line">    v_list.append(href.get_attribute(&apos;href&apos;))</span><br><span class="line">print(v_list)</span><br><span class="line">for v in v_list:</span><br><span class="line">    filename = v.split(&apos;/&apos;)[-1]</span><br><span class="line">    re = requests.get(v)</span><br><span class="line">    with open(filename,&apos;wb&apos;) as f:</span><br><span class="line">        f.write(re.content)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#driver.find_element_by_id(&apos;su&apos;).click()</span><br><span class="line">#获取数据(得到 百度一下  这四个字)</span><br><span class="line">#driver.find_element_by_id(&apos;su&apos;).get_attribute(&apos;value&apos;)</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/Baxlumen/Baxlumens.github.io.git/2019/05/25/PaCExample-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Baxlumen">
-      <meta itemprop="description" content="半醒半醉日复日，无风无雨年复年">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="山渐青">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/25/PaCExample-1/" class="post-title-link" itemprop="url">王者荣耀皮肤爬取</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Erstellt: 2019-05-25 15:42:21 / Geändert am: 15:43:40" itemprop="dateCreated datePublished" datetime="2019-05-25T15:42:21+08:00">2019-05-25</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">#@Time:2019-5-25</span><br><span class="line">#@File:WZRYskin.py</span><br><span class="line"></span><br><span class="line">import re</span><br><span class="line">import os</span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#1.目标URL</span><br><span class="line">url=&apos;https://pvp.qq.com/web201605/js/herolist.json&apos;</span><br><span class="line">#2.发送请求</span><br><span class="line">html = requests.get(url)</span><br><span class="line">#print(html.text)</span><br><span class="line">#获取到的数据类型是json格式，并不是字典，也不是普通的str</span><br><span class="line">html = html.json()#把响应解析为json对象</span><br><span class="line">#3.解析网页</span><br><span class="line">heroname = list(map(lambda x:x[&apos;cname&apos;],html))</span><br><span class="line">heronumber = list(map(lambda x:x[&apos;ename&apos;],html))</span><br><span class="line"># print(heroname)</span><br><span class="line"># print(heronumber)</span><br><span class="line"></span><br><span class="line">#下载保存图片</span><br><span class="line">#4.数据保存</span><br><span class="line">def main(heroname,heronumber):</span><br><span class="line">	ii = 0</span><br><span class="line">	for v in heronumber:</span><br><span class="line">		os.mkdir(&apos;D:\\blog\\pythonTest\\WZRY\\&apos;+heroname[ii])</span><br><span class="line">		os.chdir(&apos;D:\\blog\\pythonTest\\WZRY\\&apos;+heroname[ii])</span><br><span class="line">		ii+=1</span><br><span class="line">		for u in range(12):</span><br><span class="line">			hero_link = &apos;http://game.gtimg.cn/images/yxzj/img201606/skin/hero-info/%s/%s-bigskin-%s.jpg&apos;%(v,v,u)</span><br><span class="line">			im = requests.get(hero_link)</span><br><span class="line">			if im.status_code==200:</span><br><span class="line">				with open(str(u)+&apos;.jpg&apos;,&apos;wb&apos;) as f:</span><br><span class="line">					f.write(im.content)</span><br><span class="line"></span><br><span class="line">main(heroname,heronumber)</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Nächste Seite"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Nächste Seite"></i></a>
   </nav>
 
 
@@ -1858,7 +1930,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
@@ -1893,7 +1965,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">schlagwörter</span>
                   </a>
                 </div>

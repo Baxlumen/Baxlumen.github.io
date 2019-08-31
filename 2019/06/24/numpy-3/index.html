@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="山渐青">
 <meta property="og:description" content="一、算数函数1.加减乘除add() subtract(),multiply(),divide()需要注意的是数组必须具有相同的形状或符合数组广播的规则">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-24T05:22:20.836Z">
+<meta property="og:updated_time" content="2019-06-24T12:02:04.178Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="numpy相关_3">
 <meta name="twitter:description" content="一、算数函数1.加减乘除add() subtract(),multiply(),divide()需要注意的是数组必须具有相同的形状或符合数组广播的规则">
@@ -390,7 +390,7 @@
                 
               
 
-              <time title="Erstellt: 2019-06-24 11:57:19 / Geändert am: 13:22:20" itemprop="dateCreated datePublished" datetime="2019-06-24T11:57:19+08:00">2019-06-24</time>
+              <time title="Erstellt: 2019-06-24 11:57:19 / Geändert am: 20:02:04" itemprop="dateCreated datePublished" datetime="2019-06-24T11:57:19+08:00">2019-06-24</time>
             
 
             
@@ -450,7 +450,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = np.array([3,4,2,1])</span><br><span class="line">#将a数组中的元素，比第3小的元素放前面，大的放后面(类比希尔排序)(第0小的是最小的)</span><br><span class="line">&gt;&gt;&gt; np.partition(a,3)</span><br><span class="line">array([2, 1, 3, 4])</span><br><span class="line">&gt;&gt;&gt; np.partition(a,(1,3))</span><br><span class="line">array([1, 2, 3, 4])</span><br></pre></td></tr></table></figure>
 <h2 id="5-numpy-argmax-numpy-argmin"><a href="#5-numpy-argmax-numpy-argmin" class="headerlink" title="5.numpy.argmax() numpy.argmin()"></a>5.numpy.argmax() numpy.argmin()</h2><p>两个函数分别沿着指定轴返回最大和最小的元素的索引</p>
 <h2 id="6-numpy-nonzero"><a href="#6-numpy-nonzero" class="headerlink" title="6.numpy.nonzero()"></a>6.numpy.nonzero()</h2><p>返回非0元素的索引</p>
-<h2 id="7-numpy-where"><a href="#7-numpy-where" class="headerlink" title="7.numpy.where()"></a>7.numpy.where()</h2><p>返回输入数组中满足条件的索引<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a</span><br><span class="line">array([ 9,  3,  6,  1, 12])</span><br><span class="line">&gt;&gt;&gt; np.where(a&gt;2)</span><br><span class="line">(array([0, 1, 2, 4], dtype=int64),)</span><br><span class="line">&gt;&gt;&gt; y=np.where(a&gt;2)</span><br><span class="line">&gt;&gt;&gt; a[y]</span><br><span class="line">array([ 9,  3,  6, 12])</span><br></pre></td></tr></table></figure></p>
+<h2 id="7-numpy-where"><a href="#7-numpy-where" class="headerlink" title="7.numpy.where()"></a>7.numpy.where()</h2><p>返回输入数组中满足条件的索引，函数格式为 ndarray.where(condition,x,y),满足条件输出x,不满足输出y<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a</span><br><span class="line">array([ 9,  3,  6,  1, 12])</span><br><span class="line">&gt;&gt;&gt; np.where(a&gt;2)</span><br><span class="line">(array([0, 1, 2, 4], dtype=int64),)</span><br><span class="line">&gt;&gt;&gt; y=np.where(a&gt;2)</span><br><span class="line">&gt;&gt;&gt; a[y]</span><br><span class="line">array([ 9,  3,  6, 12])</span><br></pre></td></tr></table></figure></p>
 <h2 id="8-numpy-extract"><a href="#8-numpy-extract" class="headerlink" title="8.numpy.extract()"></a>8.numpy.extract()</h2><p>函数根据条件从数组中抽取元素，返回满足条件的元素<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a</span><br><span class="line">array([[1, 2, 3],</span><br><span class="line">       [4, 5, 6],</span><br><span class="line">       [7, 8, 9]])</span><br><span class="line">&gt;&gt;&gt; condition = np.mod(a,2) ==0</span><br><span class="line">&gt;&gt;&gt; condition</span><br><span class="line">array([[False,  True, False],</span><br><span class="line">       [ True, False,  True],</span><br><span class="line">       [False,  True, False]])</span><br><span class="line">&gt;&gt;&gt; np.extract(condition,a)</span><br><span class="line">array([2, 4, 6, 8])</span><br></pre></td></tr></table></figure></p>
 <h1 id="五、字节交换"><a href="#五、字节交换" class="headerlink" title="五、字节交换"></a>五、字节交换</h1><p>大端模式：数据的高字节保存在内存的低地址中，这样的存储模式有点类似于把数据当作字符串顺序来处理：地址由小到大增加，而数据由高位往低位放，与阅读习惯一致</p>
 <p>小端模式：数据的高位字节保存在内存的高地址中，这种存储模式将地址的高低和数据位权有效的结合起来，高地址部分权值高，低地址权值低</p>
@@ -574,7 +574,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
@@ -609,7 +609,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">schlagwörter</span>
                   </a>
                 </div>
