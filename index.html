@@ -408,7 +408,7 @@
                 
                   <span class="post-meta-item-text">Bearbeitet am</span>
                 
-                <time title="Geändert am: 2019-09-07 16:40:44" itemprop="dateModified" datetime="2019-09-07T16:40:44+08:00">2019-09-07</time>
+                <time title="Geändert am: 2019-09-07 20:45:24" itemprop="dateModified" datetime="2019-09-07T20:45:24+08:00">2019-09-07</time>
               
             
           </span>
@@ -476,7 +476,8 @@
 <p>内存管理：<br>·cudaMalloc()：分配线性存储空间<br>·cudaFree():释放分配的空间<br>·cudaMemcpy():内存拷贝<br>·cudaMallocPitch():分配二维数组空间并自动对齐<br>·cudaMemcpyToSymbol():将主机上的一块数据复制到GPU上的固定存储器</p>
 <h3 id="4-2、内存拷贝cudaMemcpy"><a href="#4-2、内存拷贝cudaMemcpy" class="headerlink" title="4.2、内存拷贝cudaMemcpy()"></a>4.2、内存拷贝cudaMemcpy()</h3><p>由于主机内存和设备内存是完全不同的两个内存空间，因此必须严格指定数据所在的位置。<br>四种不同的传输方式：<br>·主机到主机(Host To Host)<br>·主机到设备(Host To Device)<br>·设备到主机<br>·设备到设备<br>其中主机到设备和设备到主机的传输需要经过主板上的PCI-E总线接口，一般带宽在1-2GB/s左右。而设备到设备的带宽可达40GB/s以上</p>
 <h3 id="4-3、计时函数"><a href="#4-3、计时函数" class="headerlink" title="4.3、计时函数"></a>4.3、计时函数</h3><p>CUDA自带一个精确的计时函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">unsigned int timer = 0;</span><br><span class="line">CUT_SAFE_CALL(cutCreateTimer(&amp;timer));//定义计时器</span><br><span class="line">cudaThreadSynchronize;// CPU与GPU的同步</span><br><span class="line">CUT_SAFE_CALL(cutStartTimer(timer));//计时器启动</span><br><span class="line"></span><br><span class="line">CudaKernel&lt;&lt;&lt;dimGrid,dimBlock,memsize&gt;&gt;&gt;();//GPU计算</span><br><span class="line"></span><br><span class="line">cudaThreadSynchronize(); //等待计算完成</span><br><span class="line">CUT_SAFE_CALL(cutStopTimer(timer));计时器停止</span><br><span class="line">float timecost=cutGetAverageTimerValue(timer);//获得计时结果</span><br><span class="line">printf(&quot;CUDA time %.3fms\n&quot;,timecost);</span><br></pre></td></tr></table></figure></p>
-<h2 id="5、CUDA的程序结构"><a href="#5、CUDA的程序结构" class="headerlink" title="5、CUDA的程序结构"></a>5、CUDA的程序结构</h2><p>(大概含义)一些连续的或者相对简单的部分在host上；复杂的部分在device上。</p>
+<h2 id="5、CUDA的程序结构"><a href="#5、CUDA的程序结构" class="headerlink" title="5、CUDA的程序结构"></a>5、CUDA的程序结构</h2><h3 id="5-1、-CUDA编程七步曲"><a href="#5-1、-CUDA编程七步曲" class="headerlink" title="5.1、 CUDA编程七步曲"></a>5.1、 CUDA编程七步曲</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cudaSetDevice(0);//获取设备；只有一个GPU时或默认使用0号GPU时可以省略</span><br><span class="line">cudaMalloc((void**) &amp;d_a,sizeof(float)*n);//分配显存</span><br><span class="line">cudaMemcpy(d_a,a,sizeof(float)*n,cudaMemcpyHostToDevice);//数据传输，H2D</span><br><span class="line">gpu_kernel&lt;&lt;&lt;blocks,threads&gt;&gt;&gt;(***);//kernel函数</span><br><span class="line">cudaMemcpy(a,d_a,sizeof(float)*n,cudaMemcpyDeviceToHost);//数据传输，D2H</span><br><span class="line">cudaFree(d_a); //释放显存空间</span><br><span class="line">cudaDeviceReset();//重置设备；可以省略</span><br></pre></td></tr></table></figure>
+<p>(大概含义)一些连续的或者相对简单的部分在host上；复杂的部分在device上。</p>
 <h3 id="5-1、CUDA程序生命周期"><a href="#5-1、CUDA程序生命周期" class="headerlink" title="5.1、CUDA程序生命周期"></a>5.1、CUDA程序生命周期</h3><p>(1)主机代码执行<br>(2)传输数据到GPU<br>(3)GPU执行<br>(4)传输数据回CPU<br>(5)继续主机代码执行<br>(6)结束<br>如果有多个内核函数，需要重复2-4步</p>
 <h3 id="5-2、一个典型的CUDA程序"><a href="#5-2、一个典型的CUDA程序" class="headerlink" title="5.2、一个典型的CUDA程序"></a>5.2、一个典型的CUDA程序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Main()&#123; //主函数</span><br><span class="line">float*Md;</span><br><span class="line">cudaMalloc((void**)&amp;Md,size);//在GPU上分配空间</span><br><span class="line">//从CPU复制数据到GPU</span><br><span class="line">cudaMemcpy(Md,M,size,cudaMemcpyHostToDevice);</span><br><span class="line"></span><br><span class="line">//调用内核函数</span><br><span class="line">kernel&lt;&lt;&lt;dimGrid,dimBlock&gt;&gt;&gt;(arguments);</span><br><span class="line"></span><br><span class="line">//从GPU将结果复制回CPU</span><br><span class="line">CopyFromDeviceMatrix(M,Md);</span><br><span class="line">FreeDeviceMatrix(Md);//释放GPU上分配的空间</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
@@ -596,7 +597,7 @@
                 
                   <span class="post-meta-item-text">Bearbeitet am</span>
                 
-                <time title="Geändert am: 2019-09-06 21:00:40" itemprop="dateModified" datetime="2019-09-06T21:00:40+08:00">2019-09-06</time>
+                <time title="Geändert am: 2019-09-07 19:41:07" itemprop="dateModified" datetime="2019-09-07T19:41:07+08:00">2019-09-07</time>
               
             
           </span>
@@ -644,6 +645,7 @@
 <h2 id="2-代价函数"><a href="#2-代价函数" class="headerlink" title="2.代价函数"></a>2.代价函数</h2><p>(弄清楚最有可能的直线与数据相拟合)<br>在  h=a+bx中，参数a，b叫模型参数。a,b的不同，h(x)也就不同。那么就需要找到h(x)与y最相近的一组a,b。</p>
 <p>最小化问题，也就是找到一组a,b，使得训练集中每一个x的函数值h(x)与实际值y  两者之差的平方，再相加，最后除以2m(m是训练集中样本数目)，使得这个最小。这里也就是所谓的代价函数。【这里贴图】。代价函数也被称为平方误差函数或平方误差代价函数。</p>
 <p>当代价函数最小时，也就是选取的两个参数最好，即h=a+bx这条曲线能够拟合的最好。</p>
+<h2 id="3、梯度下降"><a href="#3、梯度下降" class="headerlink" title="3、梯度下降"></a>3、梯度下降</h2><p>这里指的是batch梯度下降。</p>
 
           
         
