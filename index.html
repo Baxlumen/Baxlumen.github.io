@@ -391,12 +391,24 @@
                 
               
 
-              <time title="Erstellt: 2019-08-31 16:19:59 / Geändert am: 16:28:31" itemprop="dateCreated datePublished" datetime="2019-08-31T16:19:59+08:00">2019-08-31</time>
+              <time title="Erstellt: 2019-08-31 16:19:59" itemprop="dateCreated datePublished" datetime="2019-08-31T16:19:59+08:00">2019-08-31</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Bearbeitet am</span>
+                
+                <time title="Geändert am: 2019-09-07 16:40:44" itemprop="dateModified" datetime="2019-09-07T16:40:44+08:00">2019-09-07</time>
               
             
           </span>
@@ -432,12 +444,14 @@
       
         
           
-            <p>High Performance Computing with GPU</p>
-<h1 id="Part-I-Introduction-to-GPU"><a href="#Part-I-Introduction-to-GPU" class="headerlink" title="Part I Introduction to GPU"></a>Part I Introduction to GPU</h1><h2 id="1、GPU的发展"><a href="#1、GPU的发展" class="headerlink" title="1、GPU的发展"></a>1、GPU的发展</h2><h3 id="1-1-GPU与GPGPU"><a href="#1-1-GPU与GPGPU" class="headerlink" title="1.1 GPU与GPGPU"></a>1.1 GPU与GPGPU</h3><p>GPU，图形处理器，发展速度超过CPU，不仅具有高质量和高性能的图形处理能力，还可以用于通用计算。<br>用于通用计算的GPU，即GPGPU</p>
+            <h1 id="Part-I-Introduction-to-GPU"><a href="#Part-I-Introduction-to-GPU" class="headerlink" title="Part I Introduction to GPU"></a>Part I Introduction to GPU</h1><h2 id="1、GPU的发展"><a href="#1、GPU的发展" class="headerlink" title="1、GPU的发展"></a>1、GPU的发展</h2><h3 id="1-1-GPU与GPGPU"><a href="#1-1-GPU与GPGPU" class="headerlink" title="1.1 GPU与GPGPU"></a>1.1 GPU与GPGPU</h3><p>GPU，图形处理器，发展速度超过CPU，不仅具有高质量和高性能的图形处理能力，还可以用于通用计算。<br>用于通用计算的GPU，即GPGPU</p>
 <h3 id="1-2、GPU的发展阶段"><a href="#1-2、GPU的发展阶段" class="headerlink" title="1.2、GPU的发展阶段"></a>1.2、GPU的发展阶段</h3><p>略</p>
 <h2 id="2、GPU与CPU的比较"><a href="#2、GPU与CPU的比较" class="headerlink" title="2、GPU与CPU的比较"></a>2、GPU与CPU的比较</h2><h3 id="2-1、单核时代的摩尔定律"><a href="#2-1、单核时代的摩尔定律" class="headerlink" title="2.1、单核时代的摩尔定律"></a>2.1、单核时代的摩尔定律</h3><p>CPU的时钟频率每18个月翻一番；CPU的制造工艺逐渐接近物理极限；功耗和发热成为巨大的障碍</p>
 <h3 id="2-2、GPU是多核技术的代表之一"><a href="#2-2、GPU是多核技术的代表之一" class="headerlink" title="2.2、GPU是多核技术的代表之一"></a>2.2、GPU是多核技术的代表之一</h3><p>在每一块芯片上集成多个较低功耗的核心；单个核芯频率基本不变(一般在1-3GHz)；设计中心转向到多核的集成技术；GPU是一种特殊的多核处理器</p>
 <h3 id="2-3、GPGPU的优势"><a href="#2-3、GPGPU的优势" class="headerlink" title="2.3、GPGPU的优势"></a>2.3、GPGPU的优势</h3><p>CPU：更多的资源用于缓存和逻辑控制<br>GPU：更多的资源用于计算，适用于高并行性、大规模数据密集型、可预测的计算模式<br>(相比于CPU，GPU内有多个ALU 逻辑运算单元)</p>
+<h3 id="2-4、GPU的设计目的"><a href="#2-4、GPU的设计目的" class="headerlink" title="2.4、GPU的设计目的"></a>2.4、GPU的设计目的</h3><p>GPU必须在有限的面积上实现超强的运算能力和极高的存储器带宽，因此需要大量执行单元来运行更多相对简单的线程，在当前线程等待数据时切换到另一个处于就绪状态等待计算的线程。</p>
+<p>从本质上说，CPU属于向量机，GPU属于阵列机。</p>
+<h3 id="2-5-CPU-GPU异构系统"><a href="#2-5-CPU-GPU异构系统" class="headerlink" title="2.5 CPU/GPU异构系统"></a>2.5 CPU/GPU异构系统</h3><p>GPU与CPU经北桥通过AGP或PCI-E总线连接，各自有独立的外部存储器，分别是主存(HostMemory)和显存(DeviceMemory)。其中，CPU负责逻辑性强的事物处理，GPU负责高密度的浮点计算。在使用GPU前，CPU必须通过北桥将数据传输到GPU的显存中；在GPU完成计算后，GPU再将结果数据返回给主机内存。两者之间的通信时必不可少的，由于接口PCI-E的通信限制，优化数据通信的开销是必不可少的。</p>
 <h1 id="Part-II-GPU-Architecture"><a href="#Part-II-GPU-Architecture" class="headerlink" title="Part II GPU Architecture"></a>Part II GPU Architecture</h1><h2 id="1、已有的两类GPU结构"><a href="#1、已有的两类GPU结构" class="headerlink" title="1、已有的两类GPU结构"></a>1、已有的两类GPU结构</h2><h3 id="1-1、支持通用计算的两类GPU结构"><a href="#1-1、支持通用计算的两类GPU结构" class="headerlink" title="1.1、支持通用计算的两类GPU结构"></a>1.1、支持通用计算的两类GPU结构</h3><p>基于流处理器阵列的主流GPU结构，基于通用计算核心的GPU结构。前者相对于后者具有更高的聚合计算性能，后者在可编程性上具有巨大优势</p>
 <h2 id="2、存储器层次结构"><a href="#2、存储器层次结构" class="headerlink" title="2、存储器层次结构"></a>2、存储器层次结构</h2><h2 id="3、线程组织结构"><a href="#3、线程组织结构" class="headerlink" title="3、线程组织结构"></a>3、线程组织结构</h2><h3 id="3-1-CUDA中的线程层次"><a href="#3-1-CUDA中的线程层次" class="headerlink" title="3.1 CUDA中的线程层次"></a>3.1 CUDA中的线程层次</h3><p>(CUDA是NVIDIA推出的运算平台，通用并行计算架构，该架构使GPU能够解决复杂的计算问题，它包含了CUDA指令集架构以及GPU内部的并行计算引擎)<br>线程：CUDA中的基本执行单元；硬件支持，开销很小；所有线程执行相同的代码(STMD)<br>线程块：若干线程组成线程块(block,每个块至多512个线程)；线程块可以呈一维、二维或者三维结构；每个线程块分为若干组(称为warp)，每个warp包含32个线程，物理上以SIMD方式并行。<br>线程网络：若干线程块可以组成网络(grid);Grid可以是一维或二维结构。</p>
 <h3 id="3-2线程块ID和线程ID"><a href="#3-2线程块ID和线程ID" class="headerlink" title="3.2线程块ID和线程ID"></a>3.2线程块ID和线程ID</h3><p>线程ID：a)local id：线程ID在一个block里   b)global id:线程id在一个grid里<br>每一个线程使用ID来决定要处理的数据</p>
@@ -582,7 +596,7 @@
                 
                   <span class="post-meta-item-text">Bearbeitet am</span>
                 
-                <time title="Geändert am: 2019-08-23 18:16:26" itemprop="dateModified" datetime="2019-08-23T18:16:26+08:00">2019-08-23</time>
+                <time title="Geändert am: 2019-09-06 21:00:40" itemprop="dateModified" datetime="2019-09-06T21:00:40+08:00">2019-09-06</time>
               
             
           </span>
@@ -624,7 +638,13 @@
 <h2 id="2、监督学习-Supervised-Learning"><a href="#2、监督学习-Supervised-Learning" class="headerlink" title="2、监督学习 Supervised Learning"></a>2、监督学习 Supervised Learning</h2><p>监督学习是指：利用一组已知类别的样本调整分类器的参数，使其达到所要求性能的过程，也成为监督训练或教师学习。大致可分为：回归问题，分类问题。<br>(根据已知的数据集去预测)</p>
 <h2 id="3、无监督学习-Unsupervised-Learning"><a href="#3、无监督学习-Unsupervised-Learning" class="headerlink" title="3、无监督学习 Unsupervised Learning"></a>3、无监督学习 Unsupervised Learning</h2><p>如果说监督学习是已知一个数据集，对于其中的每个数据都知道它的”标签”(比如肿瘤是良性还是恶性)。但是对于无监督学习，已知一个数据集，但是没有任何标签或<br>者都是相同的标签(也就是无法分辨)。无监督学习能够判断出数据集有两个不同的聚集簇(聚类算法)</p>
 <p>举例 鸡尾酒会问题：<br>一个环境中有两个人，两个麦克风，每个麦克风与两个人的距离不同。两人同时发出声音，麦克风会收录进两个人的声音。通过非监督学习的算法，将这两个人的声音给区别出来。<br>(也就是相当于给出一个数据集，通过非监督学习来分类)<br>可以用的代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[W,s,v] = svd((repmat(sum(x.*x,1),size(x,1),1).*x)*x&apos;); %svd 奇异值分解</span><br></pre></td></tr></table></figure></p>
-<h1 id="二、单变量线性回归-Linear-regression-with-One-Variable"><a href="#二、单变量线性回归-Linear-regression-with-One-Variable" class="headerlink" title="二、单变量线性回归(Linear regression with One Variable)"></a>二、单变量线性回归(Linear regression with One Variable)</h1><h2 id="1、模型表示"><a href="#1、模型表示" class="headerlink" title="1、模型表示"></a>1、模型表示</h2>
+<h1 id="二、单变量线性回归-Linear-regression-with-One-Variable"><a href="#二、单变量线性回归-Linear-regression-with-One-Variable" class="headerlink" title="二、单变量线性回归(Linear regression with One Variable)"></a>二、单变量线性回归(Linear regression with One Variable)</h1><h2 id="1、模型表示"><a href="#1、模型表示" class="headerlink" title="1、模型表示"></a>1、模型表示</h2><p>回归问题：回归一词是指，我们根据之前的数据预测出一个准确的输出值。同时，还有一种最常见的监督学习的方式，成为分类问题，例如预测肿瘤是良性还是恶性。。更进一步来说，在监督学习中我们有一个数据集，这个数据集被称为训练集。</p>
+<p>符号规定<br>m=训练集中样本的数目<br>x=代表特征/输入变量<br>y=代表目标变量/输出变量<br>(x,y)=代表训练集中的实例<br>(x(i),y(i))=代表第i个观察实例 (这里是上角标)<br>h 代表学习算法的解决方案或函数，也成为假设(hypothesis)。<br>也就是h代表一个函数，假设，输入(x)是房屋尺寸的大小，输出(y)书对应房子的价格，因此，h就是y关于x的一个函数。但是这个函数并不是准确的反应两者之间的关系，所以成为hypothesis。</p>
+<p>一种可能的表达 h=a+bx，也就是线性函数，因为只含有一个特征/输入变量，因此这样的问题也叫做单变量线性回归问题。</p>
+<h2 id="2-代价函数"><a href="#2-代价函数" class="headerlink" title="2.代价函数"></a>2.代价函数</h2><p>(弄清楚最有可能的直线与数据相拟合)<br>在  h=a+bx中，参数a，b叫模型参数。a,b的不同，h(x)也就不同。那么就需要找到h(x)与y最相近的一组a,b。</p>
+<p>最小化问题，也就是找到一组a,b，使得训练集中每一个x的函数值h(x)与实际值y  两者之差的平方，再相加，最后除以2m(m是训练集中样本数目)，使得这个最小。这里也就是所谓的代价函数。【这里贴图】。代价函数也被称为平方误差函数或平方误差代价函数。</p>
+<p>当代价函数最小时，也就是选取的两个参数最好，即h=a+bx这条曲线能够拟合的最好。</p>
+
           
         
       
