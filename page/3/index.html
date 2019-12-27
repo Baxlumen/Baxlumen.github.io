@@ -198,7 +198,7 @@
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="Navigationsleiste an/ausschalten">
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -346,7 +346,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/Baxlumen/Baxlumens.github.io.git/2019/05/07/pythonNote2/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/Baxlumen/Baxlumens.github.io.git/2019/05/13/pythonPaC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Baxlumen">
@@ -366,7 +366,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/05/07/pythonNote2/" class="post-title-link" itemprop="url">pythonNote——列表和元组</a>
+                <a href="/2019/05/13/pythonPaC/" class="post-title-link" itemprop="url">python爬虫</a>
               
             
           </h1>
@@ -384,14 +384,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Erstellt: 2019-05-07 21:48:49" itemprop="dateCreated datePublished" datetime="2019-05-07T21:48:49+08:00">2019-05-07</time>
+              <time title="Created: 2019-05-13 14:51:18" itemprop="dateCreated datePublished" datetime="2019-05-13T14:51:18+08:00">2019-05-13</time>
             
 
             
@@ -406,9 +406,9 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Bearbeitet am</span>
+                  <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Geändert am: 2019-05-13 14:55:35" itemprop="dateModified" datetime="2019-05-13T14:55:35+08:00">2019-05-13</time>
+                <time title="Modified: 2019-05-17 17:54:21" itemprop="dateModified" datetime="2019-05-17T17:54:21+08:00">2019-05-17</time>
               
             
           </span>
@@ -443,13 +443,15 @@
 
       
         
-          <p>首先列表list和元组tuple最大的区别是：列表是可修改的，元组不可修改<br>一般情况，都可以用列表来代替元组，但是当元组用作字典键时，列表不可以代替，因为字典键不允许修改</p>
-<h1 id="一、序列操作：索引，切片，相加，相乘，成员资格检查"><a href="#一、序列操作：索引，切片，相加，相乘，成员资格检查" class="headerlink" title="一、序列操作：索引，切片，相加，相乘，成员资格检查"></a>一、序列操作：索引，切片，相加，相乘，成员资格检查</h1><h2 id="1、索引"><a href="#1、索引" class="headerlink" title="1、索引"></a>1、索引</h2><p>从0开始递增（字符串可以看作是字符组成的序列）<br>当用负数索引时，从右往左数，-1是最后一个元素的位置<br>如果函数返回一个序列，可直接对其执行索引操作<br></p>
+          <blockquote class="blockquote-center">天地不仁以万物为刍狗</blockquote>
+
+<p>url的一般格式（[]内为可选）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">protocol://hostname[:port]/path/[;parameters][?query]#fragment</span><br></pre></td></tr></table></figure></p>
+<p>第一部分是协议，http，https，ftp，ed2k<br>第二部分是存放资源的服务器的域名系统或IP地址(有时候要包含端口号，各种传输协议都有默认的端口号，如http是80)<br></p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2019/05/07/pythonNote2/#more" rel="contents">
-                Weiterlesen &raquo;
+              <a class="btn" href="/2019/05/13/pythonPaC/#more" rel="contents">
+                Read more &raquo;
               </a>
             </div>
           
@@ -546,14 +548,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Erstellt: 2019-05-07 21:48:49" itemprop="dateCreated datePublished" datetime="2019-05-07T21:48:49+08:00">2019-05-07</time>
+              <time title="Created: 2019-05-07 21:48:49" itemprop="dateCreated datePublished" datetime="2019-05-07T21:48:49+08:00">2019-05-07</time>
             
 
             
@@ -568,9 +570,9 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Bearbeitet am</span>
+                  <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Geändert am: 2019-05-08 22:10:58" itemprop="dateModified" datetime="2019-05-08T22:10:58+08:00">2019-05-08</time>
+                <time title="Modified: 2019-05-08 22:10:58" itemprop="dateModified" datetime="2019-05-08T22:10:58+08:00">2019-05-08</time>
               
             
           </span>
@@ -615,7 +617,169 @@
           
             <div class="post-button text-center">
               <a class="btn" href="/2019/05/07/pythonNote/#more" rel="contents">
-                Weiterlesen &raquo;
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/Baxlumen/Baxlumens.github.io.git/2019/05/07/pythonNote2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Baxlumen">
+      <meta itemprop="description" content="半醒半醉日复日，无风无雨年复年">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="山渐青">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/07/pythonNote2/" class="post-title-link" itemprop="url">pythonNote——列表和元组</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-07 21:48:49" itemprop="dateCreated datePublished" datetime="2019-05-07T21:48:49+08:00">2019-05-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-13 14:55:35" itemprop="dateModified" datetime="2019-05-13T14:55:35+08:00">2019-05-13</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>首先列表list和元组tuple最大的区别是：列表是可修改的，元组不可修改<br>一般情况，都可以用列表来代替元组，但是当元组用作字典键时，列表不可以代替，因为字典键不允许修改</p>
+<h1 id="一、序列操作：索引，切片，相加，相乘，成员资格检查"><a href="#一、序列操作：索引，切片，相加，相乘，成员资格检查" class="headerlink" title="一、序列操作：索引，切片，相加，相乘，成员资格检查"></a>一、序列操作：索引，切片，相加，相乘，成员资格检查</h1><h2 id="1、索引"><a href="#1、索引" class="headerlink" title="1、索引"></a>1、索引</h2><p>从0开始递增（字符串可以看作是字符组成的序列）<br>当用负数索引时，从右往左数，-1是最后一个元素的位置<br>如果函数返回一个序列，可直接对其执行索引操作<br></p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/05/07/pythonNote2/#more" rel="contents">
+                Read more &raquo;
               </a>
             </div>
           
@@ -712,14 +876,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Erstellt: 2019-05-01 18:34:20" itemprop="dateCreated datePublished" datetime="2019-05-01T18:34:20+08:00">2019-05-01</time>
+              <time title="Created: 2019-05-01 18:34:20" itemprop="dateCreated datePublished" datetime="2019-05-01T18:34:20+08:00">2019-05-01</time>
             
 
             
@@ -734,9 +898,9 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Bearbeitet am</span>
+                  <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Geändert am: 2019-05-08 22:11:01" itemprop="dateModified" datetime="2019-05-08T22:11:01+08:00">2019-05-08</time>
+                <time title="Modified: 2019-05-08 22:11:01" itemprop="dateModified" datetime="2019-05-08T22:11:01+08:00">2019-05-08</time>
               
             
           </span>
@@ -826,7 +990,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Vorherige Seite"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
   </nav>
 
 
@@ -870,8 +1034,8 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">23</span>
-                    <span class="site-state-item-name">Artikel</span>
+                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
               
@@ -911,8 +1075,10 @@
                     
                       
                     
-                    <span class="site-state-item-count">11</span>
-                    <span class="site-state-item-name">schlagwörter</span>
+                      
+                    
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
               
@@ -979,7 +1145,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
 
 
 
@@ -987,7 +1153,7 @@
 
 
 
-  <div class="theme-info">Design – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.1</div>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.1</div>
 
 
 

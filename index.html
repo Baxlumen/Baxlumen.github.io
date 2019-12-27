@@ -198,7 +198,7 @@
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="Navigationsleiste an/ausschalten">
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -346,6 +346,210 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/Baxlumen/Baxlumens.github.io.git/2019/12/27/Tensornetwork/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Baxlumen">
+      <meta itemprop="description" content="半醒半醉日复日，无风无雨年复年">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="山渐青">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/12/27/Tensornetwork/" class="post-title-link" itemprop="url">Tensornetwork_1</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-12-27 13:23:50 / Modified: 13:26:09" itemprop="dateCreated datePublished" datetime="2019-12-27T13:23:50+08:00">2019-12-27</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在本节中，我们将介绍基本的线性代数运算以及如何使用张量网络创建它们。虽然一开始使用张量网络似乎比手工操作更复杂，但我们将使用本节中开发的技能开始构建和收缩非常复杂的张量网络，否则很难做到这一点。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np </span><br><span class="line"><span class="keyword">import</span> tensornetwork <span class="keyword">as</span> tn</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Next, we add the nodes containing our vectors.</span></span><br><span class="line">a = tn.Node(np.ones(<span class="number">10</span>))</span><br><span class="line"><span class="comment"># Either tensorflow tensors or numpy arrays are fine.</span></span><br><span class="line">b = tn.Node(np.ones(<span class="number">10</span>))</span><br><span class="line"><span class="comment"># We "connect" these two nodes by their "0th" edges.</span></span><br><span class="line"><span class="comment"># This line is equal to doing `tn.connect(a[0], b[0])</span></span><br><span class="line"><span class="comment"># but doing it this way is much shorter.</span></span><br><span class="line">edge = a[<span class="number">0</span>] ^ b[<span class="number">0</span>]</span><br><span class="line"><span class="comment"># Finally, we contract the edge, giving us our new node with a tensor</span></span><br><span class="line"><span class="comment"># equal to the inner product of the two earlier vectors</span></span><br><span class="line">c = tn.contract(edge)</span><br><span class="line"><span class="comment"># You can access the underlying tensor of the node via `node.tensor`.</span></span><br><span class="line"><span class="comment"># To convert a Eager mode tensorflow tensor into </span></span><br><span class="line">print(c.tensor)</span><br></pre></td></tr></table></figure>
+<pre><code>10.0
+</code></pre><h3 id="边缘中心连接-（Edge-centric-connection-）"><a href="#边缘中心连接-（Edge-centric-connection-）" class="headerlink" title="边缘中心连接 （Edge-centric connection.）"></a>边缘中心连接 （Edge-centric connection.）</h3><p>在TensorNetwork中创建节点时，该节点将自动填充悬挂的边。为了将两个节点连接在一起，我们实际上删除了节点中的两个悬挂边，并用标准/跟踪边替换它们。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = tn.Node(np.eye(<span class="number">2</span>))</span><br><span class="line"><span class="comment"># Notice that a[0] is actually an "Edge" type.</span></span><br><span class="line">print(<span class="string">"The type of a[0] is:"</span>, type(a[<span class="number">0</span>]))</span><br><span class="line"><span class="comment"># This is a dangling edge, so this method will </span></span><br><span class="line">print(<span class="string">"Is a[0] dangling?:"</span>, a[<span class="number">0</span>].is_dangling())</span><br></pre></td></tr></table></figure>
+<pre><code>The type of a[0] is: &lt;class &apos;tensornetwork.network_components.Edge&apos;&gt;
+Is a[0] dangling?: True
+</code></pre><p>Now, let’s connect a[0] to a[1]. This will create a “trace” edge. 也就是一个二维矩阵，然后他的0轴和1轴</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">trace_edge = a[<span class="number">0</span>] ^ a[<span class="number">1</span>]</span><br><span class="line"><span class="comment"># Notice now that a[0] and a[1] are actually the same edge.</span></span><br><span class="line">print(<span class="string">"Are a[0] and a[1] the same edge?:"</span>, a[<span class="number">0</span>] <span class="keyword">is</span> a[<span class="number">1</span>])</span><br><span class="line">print(<span class="string">"Is a[0] dangling?:"</span>, a[<span class="number">0</span>].is_dangling())</span><br></pre></td></tr></table></figure>
+<pre><code>Are a[0] and a[1] the same edge?: True
+Is a[0] dangling?: False
+</code></pre><p>这里有个地方，a[0]在没有进行缩并时，它是悬挂状态的；但是进行了运算的，就不是悬挂状态了，这里注意！！！！！！！！</p>
+<h3 id="Axis-naming-（轴命名）"><a href="#Axis-naming-（轴命名）" class="headerlink" title="Axis naming （轴命名）"></a>Axis naming （轴命名）</h3><p>有时，使用轴数是非常不容易的，并且很难跟踪某些边缘的目的。为了更简单，您可以选择为节点的每个轴添加一个名称。然后，您可以通过使用名称而不是数字进行索引来获取各自的边缘。  0轴是y方向，1轴x方向</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Here, a[0] is a['alpha'] and a[1] is a['beta']</span></span><br><span class="line">a = tn.Node(np.eye(<span class="number">2</span>), axis_names=[<span class="string">'alpha'</span>, <span class="string">'beta'</span>])</span><br><span class="line">edge = a[<span class="string">'alpha'</span>] ^ a[<span class="string">'beta'</span>]</span><br><span class="line">result = tn.contract(edge)</span><br><span class="line">print(result.tensor)</span><br></pre></td></tr></table></figure>
+<pre><code>2.0
+</code></pre><h1 id="第二节-高级网络收缩"><a href="#第二节-高级网络收缩" class="headerlink" title="第二节  高级网络收缩"></a>第二节  高级网络收缩</h1><h3 id="避免跟踪边缘"><a href="#避免跟踪边缘" class="headerlink" title="避免跟踪边缘"></a>避免跟踪边缘</h3><p>虽然TensorNetwork库完全支持迹edge，但如果避免创建它们，则压缩时间总是更快。这是因为迹边只对底层矩阵的对角线求和，其余的值（占总值的大部分）只是垃圾。【【【【【这里具体看pad 的笔记！！！<br>你们两个都浪费了计算时间和内存，因为有这些无用的跟踪边。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">one_edge_at_a_time</span><span class="params">(a, b)</span>:</span></span><br><span class="line">  node1 = tn.Node(a)</span><br><span class="line">  node2 = tn.Node(b)</span><br><span class="line">  edge1 = node1[<span class="number">0</span>] ^ node2[<span class="number">0</span>]</span><br><span class="line">  edge2 = node1[<span class="number">1</span>] ^ node2[<span class="number">1</span>]</span><br><span class="line">  tn.contract(edge1)</span><br><span class="line">  result = tn.contract(edge2)</span><br><span class="line">  <span class="keyword">return</span> result.tensor</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">use_contract_between</span><span class="params">(a, b)</span>:</span></span><br><span class="line">  node1 = tn.Node(a)</span><br><span class="line">  node2 = tn.Node(b)</span><br><span class="line">  node1[<span class="number">0</span>] ^ node2[<span class="number">0</span>]</span><br><span class="line">  node1[<span class="number">1</span>] ^ node2[<span class="number">1</span>]</span><br><span class="line">  <span class="comment"># This is the same as </span></span><br><span class="line">  <span class="comment"># tn.contract_between(node1, node2)</span></span><br><span class="line">  result = node1 @ node2</span><br><span class="line">  <span class="keyword">return</span> result.tensor</span><br><span class="line"></span><br><span class="line">a = np.ones((<span class="number">1000</span>, <span class="number">1000</span>))</span><br><span class="line">b = np.ones((<span class="number">1000</span>, <span class="number">1000</span>))</span><br><span class="line">print(<span class="string">"Running one_edge_at_a_time"</span>)</span><br><span class="line">%timeit one_edge_at_a_time(a, b)</span><br><span class="line">print(<span class="string">"Running use_cotract_between"</span>)</span><br><span class="line">%timeit use_contract_between(a, b)</span><br></pre></td></tr></table></figure>
+<pre><code>Running one_edge_at_a_time
+35.5 ms ± 1.45 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+Running use_cotract_between
+10.2 ms ± 778 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+</code></pre><p>我们还有contract_parallel，它的作用与contract_between相同，只传递一条边而不是两个节点。这将压缩所有与给定边“平行”的边（意味着与给定边共享同一两个节点的所有边）。 </p>
+<p>使用这两种方法都很好，他们也会做同样的事情。实际上，如果您查看源代码，contract_parallel实际上只是调用contract_between。:)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">use_contract_parallel</span><span class="params">(a, b)</span>:</span></span><br><span class="line">  node1 = tn.Node(a)</span><br><span class="line">  node2 = tn.Node(b)</span><br><span class="line">  edge = node1[<span class="number">0</span>] ^ node2[<span class="number">0</span>]</span><br><span class="line">  node1[<span class="number">1</span>] ^ node2[<span class="number">1</span>]</span><br><span class="line">  result = tn.contract_parallel(edge)</span><br><span class="line">  <span class="comment"># You can use `get_final_node` to make sure your network </span></span><br><span class="line">  <span class="comment"># is fully contracted.</span></span><br><span class="line">  <span class="keyword">return</span> result.tensor</span><br><span class="line"></span><br><span class="line">print(<span class="string">"Running contract_parallel"</span>)</span><br><span class="line">%timeit use_contract_parallel(a, b)</span><br></pre></td></tr></table></figure>
+<pre><code>Running contract_parallel
+8.52 ms ± 287 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+</code></pre><h3 id="复杂收缩"><a href="#复杂收缩" class="headerlink" title="复杂收缩"></a>复杂收缩</h3><p>还记得这种很难写的张量收缩吗？好吧，我们要用13行简单的代码。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Here, we will contract the following shaped network.</span></span><br><span class="line"><span class="comment"># O - O</span></span><br><span class="line"><span class="comment"># | X |</span></span><br><span class="line"><span class="comment"># O - O</span></span><br><span class="line">a = tn.Node(np.ones((<span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>)))</span><br><span class="line">b = tn.Node(np.ones((<span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>)))</span><br><span class="line">c = tn.Node(np.ones((<span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>)))</span><br><span class="line">d = tn.Node(np.ones((<span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>)))</span><br><span class="line"><span class="comment"># Make the network fully connected.</span></span><br><span class="line">a[<span class="number">0</span>] ^ b[<span class="number">0</span>]</span><br><span class="line">a[<span class="number">1</span>] ^ c[<span class="number">1</span>]</span><br><span class="line">a[<span class="number">2</span>] ^ d[<span class="number">2</span>]</span><br><span class="line">b[<span class="number">1</span>] ^ d[<span class="number">1</span>]</span><br><span class="line">b[<span class="number">2</span>] ^ c[<span class="number">2</span>]</span><br><span class="line">c[<span class="number">0</span>] ^ d[<span class="number">0</span>]</span><br><span class="line"><span class="comment"># We are using the "greedy" contraction algorithm.</span></span><br><span class="line"><span class="comment"># Other algorithms we support include "optimal" and "branch".</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Finding the optimial contraction order in the general case is NP-Hard,</span></span><br><span class="line"><span class="comment"># so there is no single algorithm that will work for every tensor network.</span></span><br><span class="line"><span class="comment"># However, there are certain kinds of networks that have nice properties that</span></span><br><span class="line"><span class="comment"># we can expliot to making finding a good contraction order easier.</span></span><br><span class="line"><span class="comment"># These types of contraction algorithms are in developement, and we welcome </span></span><br><span class="line"><span class="comment"># PRs!</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># `tn.reachable` will do a BFS to get all of the nodes reachable from a given</span></span><br><span class="line"><span class="comment"># node or set of nodes.</span></span><br><span class="line"><span class="comment"># nodes = &#123;a, b, c, d&#125;</span></span><br><span class="line">nodes = tn.reachable(a)</span><br><span class="line">result = tn.contractors.greedy(nodes)</span><br><span class="line">print(result.tensor)</span><br></pre></td></tr></table></figure>
+<pre><code>64.0
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># To make connecting a network a little less verbose, we have included</span></span><br><span class="line"><span class="comment"># the NCon API aswell.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># This example is the same as above.</span></span><br><span class="line">ones = np.ones((<span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>))</span><br><span class="line">tn.ncon([ones, ones, ones, ones], </span><br><span class="line">        [[<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>], </span><br><span class="line">         [<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>], </span><br><span class="line">         [<span class="number">2</span>, <span class="number">3</span>, <span class="number">6</span>],</span><br><span class="line">         [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]])</span><br></pre></td></tr></table></figure>
+<pre><code>array(64.)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># To specify dangling edges, simply use a negative number on that index.</span></span><br><span class="line"></span><br><span class="line">ones = np.ones((<span class="number">2</span>, <span class="number">2</span>))</span><br><span class="line">tn.ncon([ones, ones], [[<span class="number">-1</span>, <span class="number">1</span>], [<span class="number">1</span>, <span class="number">-2</span>]])</span><br></pre></td></tr></table></figure>
+<pre><code>array([[2., 2.],
+       [2., 2.]])
+</code></pre><h1 id="Section-3-Node-splitting-第3节：节点拆分"><a href="#Section-3-Node-splitting-第3节：节点拆分" class="headerlink" title="Section 3: Node splitting  第3节：节点拆分"></a>Section 3: Node splitting  第3节：节点拆分</h1><p>在这个colab的最后一部分，将介绍SVD节点分割方法。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># To make the singular values very apparent, we will just take the SVD of a</span></span><br><span class="line"><span class="comment"># diagonal matrix.</span></span><br><span class="line">diagonal_array = np.array([[<span class="number">2.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>],</span><br><span class="line">                           [<span class="number">0.0</span>, <span class="number">2.5</span>, <span class="number">0.0</span>],</span><br><span class="line">                           [<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.5</span>]])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># First, we will go over the simple split_node method.</span></span><br><span class="line">a = tn.Node(diagonal_array)</span><br><span class="line">u, vh, _ = tn.split_node(</span><br><span class="line">    a, left_edges=[a[<span class="number">0</span>]], right_edges=[a[<span class="number">1</span>]])</span><br><span class="line">print(<span class="string">"U node"</span>)</span><br><span class="line">print(u.tensor)</span><br><span class="line">print()</span><br><span class="line">print(<span class="string">"V* node"</span>)</span><br><span class="line">print(vh.tensor)</span><br></pre></td></tr></table></figure>
+<pre><code>U node
+[[0.         1.41421356 0.        ]
+ [1.58113883 0.         0.        ]
+ [0.         0.         1.22474487]]
+
+V* node
+[[0.         1.58113883 0.        ]
+ [1.41421356 0.         0.        ]
+ [0.         0.         1.22474487]]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Now, we can contract u and vh to get back our original tensor!</span></span><br><span class="line">print(<span class="string">"Contraction of U and V*:"</span>)</span><br><span class="line">print((u @ vh).tensor)</span><br></pre></td></tr></table></figure>
+<pre><code>Contraction of U and V*:
+[[2.  0.  0. ]
+ [0.  2.5 0. ]
+ [0.  0.  1.5]]
+</code></pre><p>我们还可以用两种方法降低最低奇异值，<br>通过设置max_singular_values。这是我们希望保留的原始奇异值的最大数目。<br>通过设置max_trun_error。这是去除的奇异值之和的最大量。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># We can also drop the lowest singular values in 2 ways, </span></span><br><span class="line"><span class="comment"># 1. By setting max_singular_values. This is the maximum number of the original</span></span><br><span class="line"><span class="comment"># singular values that we want to keep.</span></span><br><span class="line">a = tn.Node(diagonal_array)</span><br><span class="line">u, vh, truncation_error = tn.split_node</span><br><span class="line">     a, left_edges=[a[<span class="number">0</span>]], right_edges=[a[<span class="number">1</span>]], max_singular_values=<span class="number">2</span>)</span><br><span class="line"><span class="comment"># Notice how the two largest singular values (2.0 and 2.5) remain</span></span><br><span class="line"><span class="comment"># but the smallest singular value (1.5) is removed.</span></span><br><span class="line">print((u @ vh).tensor)</span><br></pre></td></tr></table></figure>
+<pre><code>[[2.  0.  0. ]
+ [0.  2.5 0. ]
+ [0.  0.  0. ]]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">通过查看返回的截断误差，我们可以看到移除的奇异值的值</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># truncation_error is just a normal tensorflow tensor.</span></span><br><span class="line">print(truncation_error)</span><br></pre></td></tr></table></figure>
+<pre><code>[1.5]
+</code></pre><h1 id="Section-4-running-on-GPUs"><a href="#Section-4-running-on-GPUs" class="headerlink" title="Section 4: running on GPUs"></a>Section 4: running on GPUs</h1><p>为了在GPU上运行，我们建议使用JAX后端，因为它与numpy有几乎完全相同的API。<br>To get a GPU, go to Runtime -&gt; Change runtime type -&gt; GPU</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">calculate_abc_trace</span><span class="params">(a, b, c)</span>:</span></span><br><span class="line">  an = tn.Node(a)</span><br><span class="line">  bn = tn.Node(b)</span><br><span class="line">  cn = tn.Node(c)</span><br><span class="line">  an[<span class="number">1</span>] ^ bn[<span class="number">0</span>]</span><br><span class="line">  bn[<span class="number">1</span>] ^ cn[<span class="number">0</span>]</span><br><span class="line">  cn[<span class="number">1</span>] ^ an[<span class="number">0</span>]</span><br><span class="line">  <span class="keyword">return</span> (an @ bn @ cn).tensor</span><br><span class="line"></span><br><span class="line">a = np.ones((<span class="number">4096</span>, <span class="number">4096</span>))</span><br><span class="line">b = np.ones((<span class="number">4096</span>, <span class="number">4096</span>))</span><br><span class="line">c = np.ones((<span class="number">4096</span>, <span class="number">4096</span>))</span><br><span class="line"></span><br><span class="line">tn.set_default_backend(<span class="string">"numpy"</span>)</span><br><span class="line">print(<span class="string">"Numpy Backend"</span>)</span><br><span class="line">%timeit calculate_abc_trace(a, b, c)</span><br><span class="line">tn.set_default_backend(<span class="string">"jax"</span>)</span><br><span class="line"><span class="comment"># Running with a GPU: 202 ms</span></span><br><span class="line"><span class="comment"># Running with a CPU: 2960 ms</span></span><br><span class="line">print(<span class="string">"JAX Backend"</span>)</span><br><span class="line">%timeit np.array(calculate_abc_trace(a, b, c))</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://github.com/Baxlumen/Baxlumens.github.io.git/2019/11/26/norm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -384,14 +588,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Erstellt: 2019-11-26 10:38:46 / Geändert am: 10:43:14" itemprop="dateCreated datePublished" datetime="2019-11-26T10:38:46+08:00">2019-11-26</time>
+              <time title="Created: 2019-11-26 10:38:46 / Modified: 10:43:14" itemprop="dateCreated datePublished" datetime="2019-11-26T10:38:46+08:00">2019-11-26</time>
             
 
             
@@ -528,14 +732,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Erstellt: 2019-08-31 16:19:59" itemprop="dateCreated datePublished" datetime="2019-08-31T16:19:59+08:00">2019-08-31</time>
+              <time title="Created: 2019-08-31 16:19:59" itemprop="dateCreated datePublished" datetime="2019-08-31T16:19:59+08:00">2019-08-31</time>
             
 
             
@@ -550,9 +754,9 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Bearbeitet am</span>
+                  <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Geändert am: 2019-09-08 14:43:10" itemprop="dateModified" datetime="2019-09-08T14:43:10+08:00">2019-09-08</time>
+                <time title="Modified: 2019-09-08 14:43:10" itemprop="dateModified" datetime="2019-09-08T14:43:10+08:00">2019-09-08</time>
               
             
           </span>
@@ -718,14 +922,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Erstellt: 2019-08-16 16:31:23" itemprop="dateCreated datePublished" datetime="2019-08-16T16:31:23+08:00">2019-08-16</time>
+              <time title="Created: 2019-08-16 16:31:23" itemprop="dateCreated datePublished" datetime="2019-08-16T16:31:23+08:00">2019-08-16</time>
             
 
             
@@ -740,9 +944,9 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Bearbeitet am</span>
+                  <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Geändert am: 2019-09-07 19:41:07" itemprop="dateModified" datetime="2019-09-07T19:41:07+08:00">2019-09-07</time>
+                <time title="Modified: 2019-09-07 19:41:07" itemprop="dateModified" datetime="2019-09-07T19:41:07+08:00">2019-09-07</time>
               
             
           </span>
@@ -885,14 +1089,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Erstellt: 2019-06-24 11:57:23 / Geändert am: 14:58:03" itemprop="dateCreated datePublished" datetime="2019-06-24T11:57:23+08:00">2019-06-24</time>
+              <time title="Created: 2019-06-24 11:57:23 / Modified: 14:58:03" itemprop="dateCreated datePublished" datetime="2019-06-24T11:57:23+08:00">2019-06-24</time>
             
 
             
@@ -937,7 +1141,7 @@
           
             <div class="post-button text-center">
               <a class="btn" href="/2019/06/24/numpy-4/#more" rel="contents">
-                Weiterlesen &raquo;
+                Read more &raquo;
               </a>
             </div>
           
@@ -1034,14 +1238,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Erstellt: 2019-06-24 11:57:19 / Geändert am: 20:02:04" itemprop="dateCreated datePublished" datetime="2019-06-24T11:57:19+08:00">2019-06-24</time>
+              <time title="Created: 2019-06-24 11:57:19 / Modified: 20:02:04" itemprop="dateCreated datePublished" datetime="2019-06-24T11:57:19+08:00">2019-06-24</time>
             
 
             
@@ -1086,7 +1290,7 @@
           
             <div class="post-button text-center">
               <a class="btn" href="/2019/06/24/numpy-3/#more" rel="contents">
-                Weiterlesen &raquo;
+                Read more &raquo;
               </a>
             </div>
           
@@ -1183,14 +1387,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Erstellt: 2019-06-24 11:57:12 / Geändert am: 13:22:11" itemprop="dateCreated datePublished" datetime="2019-06-24T11:57:12+08:00">2019-06-24</time>
+              <time title="Created: 2019-06-24 11:57:12 / Modified: 13:22:11" itemprop="dateCreated datePublished" datetime="2019-06-24T11:57:12+08:00">2019-06-24</time>
             
 
             
@@ -1235,7 +1439,7 @@
           
             <div class="post-button text-center">
               <a class="btn" href="/2019/06/24/numpy-2/#more" rel="contents">
-                Weiterlesen &raquo;
+                Read more &raquo;
               </a>
             </div>
           
@@ -1332,14 +1536,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Erstellt: 2019-06-24 11:55:10 / Geändert am: 13:22:46" itemprop="dateCreated datePublished" datetime="2019-06-24T11:55:10+08:00">2019-06-24</time>
+              <time title="Created: 2019-06-24 11:55:10 / Modified: 13:22:46" itemprop="dateCreated datePublished" datetime="2019-06-24T11:55:10+08:00">2019-06-24</time>
             
 
             
@@ -1384,7 +1588,7 @@
           
             <div class="post-button text-center">
               <a class="btn" href="/2019/06/24/numpy-1/#more" rel="contents">
-                Weiterlesen &raquo;
+                Read more &raquo;
               </a>
             </div>
           
@@ -1481,14 +1685,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Erstellt: 2019-06-19 18:48:46 / Geändert am: 19:56:24" itemprop="dateCreated datePublished" datetime="2019-06-19T18:48:46+08:00">2019-06-19</time>
+              <time title="Created: 2019-06-19 18:48:46 / Modified: 19:56:24" itemprop="dateCreated datePublished" datetime="2019-06-19T18:48:46+08:00">2019-06-19</time>
             
 
             
@@ -1533,7 +1737,7 @@
           
             <div class="post-button text-center">
               <a class="btn" href="/2019/06/19/BaiduPCSGo/#more" rel="contents">
-                Weiterlesen &raquo;
+                Read more &raquo;
               </a>
             </div>
           
@@ -1630,14 +1834,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Erstellt: 2019-06-06 19:10:31 / Geändert am: 19:14:51" itemprop="dateCreated datePublished" datetime="2019-06-06T19:10:31+08:00">2019-06-06</time>
+              <time title="Created: 2019-06-06 19:10:31 / Modified: 19:14:51" itemprop="dateCreated datePublished" datetime="2019-06-06T19:10:31+08:00">2019-06-06</time>
             
 
             
@@ -1683,168 +1887,7 @@
           
             <div class="post-button text-center">
               <a class="btn" href="/2019/06/06/pythonTest-2/#more" rel="contents">
-                Weiterlesen &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/Baxlumen/Baxlumens.github.io.git/2019/06/03/pythonTest-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Baxlumen">
-      <meta itemprop="description" content="半醒半醉日复日，无风无雨年复年">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="山渐青">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/06/03/pythonTest-1/" class="post-title-link" itemprop="url">虚拟茶话会</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Erstellt: 2019-06-03 20:05:05" itemprop="dateCreated datePublished" datetime="2019-06-03T20:05:05+08:00">2019-06-03</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Bearbeitet am</span>
-                
-                <time title="Geändert am: 2019-08-31 16:28:27" itemprop="dateModified" datetime="2019-08-31T16:28:27+08:00">2019-08-31</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="实现虚拟茶话会"><a href="#实现虚拟茶话会" class="headerlink" title="实现虚拟茶话会"></a>实现虚拟茶话会</h1><h2 id="问题1：关于客户端的问题。"><a href="#问题1：关于客户端的问题。" class="headerlink" title="问题1：关于客户端的问题。"></a>问题1：关于客户端的问题。</h2><p>在WIN7中，需要手动打开telnet的客户端与服务端。但是在WIN10里，只有telnet的客户端，这是不能使用的，还需要自己安装telnet的服务器才行，安装到网上查找即可（我当然有资源啊，求我啊~）然后再cmd里输入telnet IP PORT即可；<br></p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/06/03/pythonTest-1/#more" rel="contents">
-                Weiterlesen &raquo;
+                Read more &raquo;
               </a>
             </div>
           
@@ -1892,7 +1935,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Nächste Seite"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1936,8 +1979,8 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">23</span>
-                    <span class="site-state-item-name">Artikel</span>
+                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
               
@@ -1977,8 +2020,10 @@
                     
                       
                     
-                    <span class="site-state-item-count">11</span>
-                    <span class="site-state-item-name">schlagwörter</span>
+                      
+                    
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
               
@@ -2045,7 +2090,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
 
 
 
@@ -2053,7 +2098,7 @@
 
 
 
-  <div class="theme-info">Design – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.1</div>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.1</div>
 
 
 
